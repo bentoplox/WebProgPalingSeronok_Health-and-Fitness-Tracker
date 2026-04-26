@@ -12,7 +12,7 @@ function calculateCalories() {
     let genderElement = document.querySelector('input[name="gender"]:checked')//Get gender
 
     // 2. Validation: Check if anything is empty
-    if (!age || !height || !weight || !genderElement || !activityElement) {
+    if (!age || !height || !weight || !genderElement || !activityLevelElement) {
         // If anything is missing, tell the user and stop the function
         document.getElementById("resultContainer").innerHTML = `<div class="alert alert-danger">Please fill out all fields!</div>`;
         return; // This stops the rest of the code from running
@@ -32,5 +32,22 @@ function calculateCalories() {
     }
 
     //4. Calculate Total Daily Energy Expenditure (TDEE) = BMR * activity level
+    let tdee = 0;
+    switch (activityLevel) {
+        case "light":
+            tdee = bmr * 1.375;
+            break;
+        case "moderate":
+            tdee = bmr * 1.55;
+            break;
+        case "active":
+            tdee = bmr * 1.725;
+            break;
+        case "very-active":
+            tdee = bmr * 1.9;
+            break;
+    }
 
+    // 5. Display the result to user  
+        document.getElementById("resultContainer").innerHTML = '<div class="alert alert-success">Your daily goal: <strong>' + Math.round(tdee) + ' calories</strong></div>';
 }
