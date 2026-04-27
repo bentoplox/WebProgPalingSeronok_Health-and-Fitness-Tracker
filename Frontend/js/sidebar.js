@@ -19,7 +19,7 @@ const sidebarContent = `
             <li><a href="dashboard.html" class="nav-link sidebar-link"><i class="fa-solid fa-house me-2"></i> Overview</a></li>
             <li><a href="#" class="nav-link sidebar-link"><i class="fa-solid fa-person-running me-2"></i> Fitness Tracker</a></li>
             <li><a href="progress.html" class="nav-link sidebar-link"><i class="fa-solid fa-chart-line me-2"></i> Progress Chart</a></li>
-            <li><a href="#" class="nav-link sidebar-link"><i class="fa-solid fa-apple-whole me-2"></i> Nutrition Planner</a></li>
+            <li><a href="nutrition.html" class="nav-link sidebar-link"><i class="fa-solid fa-apple-whole me-2"></i> Nutrition Planner</a></li>
             <li><a href="#" class="nav-link sidebar-link"><i class="fa-solid fa-bell me-2"></i> Noti & Reminders</a></li>
             
             <hr class="border-secondary opacity-25 my-2">
