@@ -141,8 +141,8 @@ function generateMeals() {
                     <div class="card-body text-center d-flex flex-column">
                         <h6 class="card-title fw-bold mb-1">${meal.name}</h6>
                         <small class="text-muted mb-3">🕒 ${meal.prepTime} | 🥦 ${meal.diet}</small>
-                        <h5 class="fw-bold text-success mb-3">${meal.calories} kcal</h5>
-                        <button class="btn btn-outline-success mt-auto">View Recipe</button>
+                        <h5 class="fw-bold calories-text mb-3">${meal.calories} kcal</h5>
+                        <button class="btn btn-recipe mt-auto">View Recipe</button>
                     </div>
                 </div>
             </div>
@@ -198,8 +198,8 @@ function displayAllRecipes() {
                     <div class="card-body text-center d-flex flex-column">
                         <h6 class="card-title fw-bold mb-1">${meal.name}</h6>
                         <small class="text-muted mb-3">🕒 ${meal.prepTime} | 🥦 ${meal.diet}</small>
-                        <h5 class="fw-bold text-success mb-3">${meal.calories} kcal</h5>
-                        <button class="btn btn-outline-success mt-auto">View Recipe</button>
+                        <h5 class="fw-bold calories-text mb-3">${meal.calories} kcal</h5>
+                        <button class="btn btn-recipe mt-auto">View Recipe</button>
                     </div>
                 </div>
             </div>
