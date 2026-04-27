@@ -4,9 +4,9 @@ body {
 
 .card {
     /* Pure white, or a very faint green */
-    background-color: #faebd0; 
+    background-color: #f8decd; 
     border: none; 
-    box-shadow: 0 4px 5px rgba(142, 131, 121, 0.05); /* Soft drop shadow */
+    box-shadow: 0 4px 5px rgba(116, 107, 99, 0.05); /* Soft drop shadow */
 }
 
 .nav-tabs .nav-link.active {
@@ -25,7 +25,7 @@ body {
 
 /* 2. When the user hovers over an inactive tab */
 .nav-tabs .nav-link:hover {
-    background-color: #d2f1ce;
+    background-color: #becabb;
     color:rgb(121, 128, 120);
 }
 
@@ -53,9 +53,8 @@ body {
 
 /* Diet selector hover */
 .btn-outline-success:hover {
-    background-color: #d2f1ce;
-    color: #395e32;
-    border-color: #77a86e;
+    background-color: #395e32;
+    color: #fbf0e3;
 }
 
 /* Specific selector targeting the label when the hidden radio button is checked */
