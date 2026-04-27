@@ -1,0 +1,93 @@
+body {
+    background-color: #fff8ec; 
+}
+
+.card {
+    /* Pure white, or a very faint green */
+    background-color: #f8decd; 
+    border: none; 
+    box-shadow: 0 4px 5px rgba(116, 107, 99, 0.05); /* Soft drop shadow */
+}
+
+.nav-tabs .nav-link.active {
+    border: none;
+    background-color: #96ba90;
+    color:rgb(251, 240, 227);
+}
+
+/* 1. The base inactive tab */
+.nav-tabs .nav-link {
+    color: #96ba90;
+    border: none; /* Remove default bootdtrap border so it doesnt suddenly appear on hover */
+    /* transition: property | duration | timing-function | delay */
+    transition: background-color 0.2s ease-in-out 2ms;
+}
+
+/* 2. When the user hovers over an inactive tab */
+.nav-tabs .nav-link:hover {
+    background-color: #becabb;
+    color:rgb(121, 128, 120);
+}
+
+.btn-success {
+    background-color: #77a86e;
+    border: none;
+    transition: background-color 0.2s ease-in-out 2ms;
+}
+
+.btn-success:hover{
+    background-color: #395e32;
+}
+
+.btn-success:focus, .btn-success:active {
+    box-shadow: none;
+    background-color: #395e32; /* Keep it dark when clicked, no green glowing outline */
+}
+
+/* Diet selector base outline */
+.btn-outline-success {
+    color: #77a86e;
+    border-color: #77a86e;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Diet selector hover */
+.btn-outline-success:hover {
+    background-color: #395e32;
+    color: #fbf0e3;
+}
+
+/* Specific selector targeting the label when the hidden radio button is checked */
+/* The + symbol is standard CSS for targeting the label immediately after checking radio button */
+.btn-check:checked + .btn-outline-success, .btn-check:active + .btn-outline-success {
+    background-color: #77a86e;
+    color: #fbf0e3;
+    border-color: #77a86e;
+    box-shadow: none;
+}
+
+/* Custom Recipe Card Button */
+.btn-recipe {
+    color: #395e32;
+    border: 2px solid #9aa698;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-recipe:hover {
+    background-color: #96ba90;
+    color: #fbf0e3;
+    border: none;
+}
+
+/* Kills the weird Bootstrap focus glow when clicked */
+.btn-recipe:focus, .btn-recipe:active {
+    box-shadow: none;
+    border: none;
+    background-color: #395e32;
+    color: #fbf0e3;
+}
+
+.calories-text {
+    color: #395e32; 
+}
