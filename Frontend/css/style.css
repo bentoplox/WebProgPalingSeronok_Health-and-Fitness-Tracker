@@ -136,3 +136,12 @@ body {
     border-bottom: 1px solid var(--color-sand);
     /* Optional: If you want the line to be slightly thicker, change 1px to 2px */
 }
+
+/* 11. Custom Utility Classes */
+.text-olive {
+    color: var(--color-olive) !important;
+}
+
+.border-olive {
+    border: 2px solid var(--color-olive) !important;
+}
