@@ -168,13 +168,15 @@ body {
     left: 0;
     z-index: 100;
     overflow-y: auto;
+    transition: transform 0.3s ease; /* ADD THIS: Smooth slide animation */
 }
 
 /* Main Content Area (offset by sidebar width) */
 .main-content {
     flex-grow: 1;
-    margin-left: 280px; /* Same as sidebar width */
+    margin-left: 280px;
     padding: 2rem 3rem;
+    transition: margin-left 0.3s ease; /* ADD THIS: Smooth expansion animation */
 }
 
 /* Sidebar Navigation Links */
@@ -209,4 +211,13 @@ body {
     transform: scale(1.05);
     background-color: var(--color-dark);
     color: #ffffff;
+}
+
+.dashboard-wrapper.sidebar-hidden .sidebar {
+    transform: translateX(-100%);
+}
+
+/* When the wrapper has the 'sidebar-hidden' class, stretch the main content to full width */
+.dashboard-wrapper.sidebar-hidden .main-content {
+    margin-left: 0;
 }
