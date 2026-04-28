@@ -216,37 +216,34 @@ body {
    13. NOTIFICATION
    ========================================= */
 
-/* Targeted card cleanup - removing shadows */
-.notification-center-card, 
-.feature-card {
-    box-shadow: none !important; /* Removes the heavy shadow */
-    border: 1px solid rgba(0, 0, 0, 0.08) !important; /* Thin, premium border instead */
-    backdrop-filter: blur(10px);
+.notification-center-card {
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Soft border */
+    backdrop-filter: blur(10px); /* Subtle glass effect */
     background: rgba(255, 255, 255, 0.95);
 }
 
 .bg-sage {
-    background-color: #8A9A5B !important; 
+    background-color: #aab196 !important; /* Your olive/sage theme color */
 }
 
 /* Category Buttons in "Set Reminder" */
 .category-btn {
-    flex: 1; 
+    flex: 1; /* Makes all buttons equal width */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px 5px; /* Slightly tighter padding */
+    padding: 12px 5px;
     border-radius: 12px;
-    font-size: 0.7rem; 
+    font-size: 0.75rem; /* Smaller text to fit */
     font-weight: 600;
-    border: 1px solid rgba(0,0,0,0.05); /* Soft border instead of transparent */
+    border: 2px solid transparent;
     background: #fdfdfd;
     transition: 0.3s;
 }
 
 .category-btn i {
-    font-size: 1.2rem; /* Scaled down slightly */
+    font-size: 1.4rem;
     margin-bottom: 5px;
 }
 
@@ -256,49 +253,48 @@ body {
     color: #6c757d;
 }
 
-/* Notification Item Base - Minimal & Spaced */
+/* Notification Item Base */
 .noti-item-minimal {
     transition: all 0.3s ease;
     background: #ffffff;
     border: 1px solid rgba(0,0,0,0.03) !important;
-    box-shadow: none !important; /* Ensuring no nested shadows */
 }
 
 .noti-item-minimal:hover {
-    transform: translateY(-1px);
-    background: #fff !important;
+    transform: translateY(-2px);
+   
 }
 
 /* Icon Box Styling - The white square inside the gradient */
 .noti-icon-box {
-    width: 36px; /* Slightly smaller to feel less bulky */
-    height: 36px;
+    width: 40px;
+    height: 40px;
     background: white;
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
-    border: 1px solid rgba(0,0,0,0.02);
+   
+    font-size: 1.1rem;
 }
 
 /* Soft Gradient Backgrounds (Subtle/Minimal) */
-.glass-blue { background: linear-gradient(90deg, #f3f8ff 0%, #ffffff 100%); }
-.glass-green { background: linear-gradient(90deg, #f4fff6 0%, #ffffff 100%); }
-.glass-yellow { background: linear-gradient(90deg, #fffdf2 0%, #ffffff 100%); }
-.glass-red { background: linear-gradient(90deg, #fff8f8 0%, #ffffff 100%); }
+.glass-blue { background: linear-gradient(90deg, #f0f7ff 0%, #ffffff 100%); }
+.glass-green { background: linear-gradient(90deg, #f2fff5 0%, #ffffff 100%); }
+.glass-yellow { background: linear-gradient(90deg, #fffcf0 0%, #ffffff 100%); }
+.glass-red { background: linear-gradient(90deg, #fff5f5 0%, #ffffff 100%); }
 
 /* Space Gap Adjustment */
 .mb-3 {
-    margin-bottom: 1rem !important; /* Clean, consistent spacing */
+    margin-bottom: 1.25rem !important; /* Increased gap between items */
 }
 
 /* Close Button Refinement */
 .btn-close {
-    width: 0.4em;
-    height: 0.4em;
-    opacity: 0.2;
+    width: 0.5em;
+    height: 0.5em;
+    opacity: 0.3;
 }
 .btn-close:hover {
-    opacity: 0.6;
+    opacity: 0.8;
 }
