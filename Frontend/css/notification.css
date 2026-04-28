@@ -1,0 +1,34 @@
+/* Base style for the buttons */
+.category-btn {
+    background: white;
+    transition: all 0.3s ease;
+    border: 2px solid #dee2e6; /* Default gray border */
+}
+
+/* When the "Log" button has the .active class */
+.category-btn.border-red.active {
+    border-color: #ff4d4d !important;
+    background-color: #fff5f5; /* Light red tint */
+    color: #ff4d4d;
+}
+
+/* When the "Meal" button has the .active class */
+.category-btn.border-yellow.active {
+    border-color: #ffcc00 !important;
+    background-color: #fffdf0;
+    color: #cca300;
+}
+
+/* When the "Info" button has the .active class */
+.category-btn.border-blue.active {
+    border-color: #007bff !important;
+    background-color: #f0f7ff;
+    color: #007bff;
+}
+
+/* When the "Goal" button has the .active class */
+.category-btn.border-green.active {
+    border-color: #28a745 !important;
+    background-color: #f0fff4;
+    color: #28a745;
+}
