@@ -168,13 +168,15 @@ body {
     left: 0;
     z-index: 100;
     overflow-y: auto;
+    transition: transform 0.3s ease; /* ADD THIS: Smooth slide animation */
 }
 
 /* Main Content Area (offset by sidebar width) */
 .main-content {
     flex-grow: 1;
-    margin-left: 280px; /* Same as sidebar width */
+    margin-left: 280px;
     padding: 2rem 3rem;
+    transition: margin-left 0.3s ease; /* ADD THIS: Smooth expansion animation */
 }
 
 /* Sidebar Navigation Links */
@@ -209,92 +211,13 @@ body {
     transform: scale(1.05);
     background-color: var(--color-dark);
     color: #ffffff;
-    
 }
 
-/* =========================================
-   13. NOTIFICATION
-   ========================================= */
-
-.notification-center-card {
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Soft border */
-    backdrop-filter: blur(10px); /* Subtle glass effect */
-    background: rgba(255, 255, 255, 0.95);
+.dashboard-wrapper.sidebar-hidden .sidebar {
+    transform: translateX(-100%);
 }
 
-.bg-sage {
-    background-color: #aab196 !important; /* Your olive/sage theme color */
-}
-
-/* Category Buttons in "Set Reminder" */
-.category-btn {
-    flex: 1; /* Makes all buttons equal width */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 5px;
-    border-radius: 12px;
-    font-size: 0.75rem; /* Smaller text to fit */
-    font-weight: 600;
-    border: 2px solid transparent;
-    background: #fdfdfd;
-    transition: 0.3s;
-}
-
-.category-btn i {
-    font-size: 1.4rem;
-    margin-bottom: 5px;
-}
-
-/* Minimal Text Sizes */
-.extra-small {
-    font-size: 0.75rem;
-    color: #6c757d;
-}
-
-/* Notification Item Base */
-.noti-item-minimal {
-    transition: all 0.3s ease;
-    background: #ffffff;
-    border: 1px solid rgba(0,0,0,0.03) !important;
-}
-
-.noti-item-minimal:hover {
-    transform: translateY(-2px);
-   
-}
-
-/* Icon Box Styling - The white square inside the gradient */
-.noti-icon-box {
-    width: 40px;
-    height: 40px;
-    background: white;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
-    font-size: 1.1rem;
-}
-
-/* Soft Gradient Backgrounds (Subtle/Minimal) */
-.glass-blue { background: linear-gradient(90deg, #f0f7ff 0%, #ffffff 100%); }
-.glass-green { background: linear-gradient(90deg, #f2fff5 0%, #ffffff 100%); }
-.glass-yellow { background: linear-gradient(90deg, #fffcf0 0%, #ffffff 100%); }
-.glass-red { background: linear-gradient(90deg, #fff5f5 0%, #ffffff 100%); }
-
-/* Space Gap Adjustment */
-.mb-3 {
-    margin-bottom: 1.25rem !important; /* Increased gap between items */
-}
-
-/* Close Button Refinement */
-.btn-close {
-    width: 0.5em;
-    height: 0.5em;
-    opacity: 0.3;
-}
-.btn-close:hover {
-    opacity: 0.8;
+/* When the wrapper has the 'sidebar-hidden' class, stretch the main content to full width */
+.dashboard-wrapper.sidebar-hidden .main-content {
+    margin-left: 0;
 }
