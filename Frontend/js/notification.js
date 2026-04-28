@@ -58,3 +58,5 @@ window.onload = function() {
             insightDisplay.innerText = "Check your nutrition planner for daily tips!";
         });
 };
+
+
