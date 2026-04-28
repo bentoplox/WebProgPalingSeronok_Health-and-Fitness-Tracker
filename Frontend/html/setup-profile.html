@@ -20,7 +20,7 @@
     <main class="container flex-grow-1 py-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="card shadow-lg border-0 rounded-4 feature-card">
+                <div class="card shadow-sm border-0 rounded-5 feature-card">
                     <div class="card-body p-5">
 
                         <div class="text-center mb-5">
@@ -31,66 +31,135 @@
 
                         <form id="setupForm" class="needs-validation" novalidate>
 
-                            <h5 class="fw-bold text-olive mb-3 border-bottom border-olive pb-2">1. Core Biometrics</h5>
-                            <div class="row g-3 mb-4">
+                            <p class="text-uppercase text-olive fw-bold small mb-3 opacity-75" style="letter-spacing: 1px;">Core Biometrics</p>
+                            <div class="row g-3">
                                 <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <select class="form-select rounded-3" id="userGender" required>
-                                            <option value="" disabled selected>Select Biological Sex</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                        </select>
-                                        <label for="userGender">Biological Sex (For BMR calc)</label>
-                                    </div>
+                                    <label class="form-label small text-muted fw-bold" for="userGender">Biological Sex (For BMR calc)</label>
+                                    <select class="form-select rounded-3 border-sand px-3 py-2" id="userGender" required>
+                                        <option value="" disabled selected>Select Biological Sex</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
                                 </div>
+
                                 <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="number" class="form-control rounded-3" id="userHeight" placeholder="Height" required>
-                                        <label for="userHeight">Height (cm)</label>
-                                    </div>
+                                    <label class="form-label small text-muted fw-bold" for="userHeight">Height (cm)</label>
+                                    <input type="number" class="form-control rounded-3 border-sand px-3 py-2" id="userHeight" placeholder="Height" required>
                                 </div>
                             </div>
 
-                            <h5 class="fw-bold text-olive mb-3 border-bottom border-olive pb-2">2. Lifestyle & Goals</h5>
-                            <div class="row g-3 mb-4">
+                            <hr class="my-4 text-secondary opacity-25">
+
+                            <p class="text-uppercase text-olive fw-bold small mb-3 opacity-75" style="letter-spacing: 1px;">Lifestyle & Goals</p>
+                            <div class="row g-3">
                                 <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <select class="form-select rounded-3" id="userActivity" required>
-                                            <option value="" disabled selected>Select Activity Level</option>
-                                            <option value="sedentary">Sedentary (Little to no exercise)</option>
-                                            <option value="light">Lightly Active (Exercise 1-3 days/week)</option>
-                                            <option value="moderate">Moderately Active (Exercise 3-5 days/week)</option>
-                                            <option value="active">Very Active (Exercise 6-7 days/week)</option>
-                                        </select>
-                                        <label for="userActivity">Activity Level</label>
-                                    </div>
+                                    <label class="form-label small text-muted fw-bold" for="userActivity">Activity Level</label>
+                                    <select class="form-select rounded-3 border-sand px-3 py-2" id="userActivity" required>
+                                        <option value="" disabled selected>Select Activity Level</option>
+                                        <option value="sedentary">Sedentary (Little to no exercise)</option>
+                                        <option value="light">Lightly Active (Exercise 1-3 days/week)</option>
+                                        <option value="moderate">Moderately Active (Exercise 3-5 days/week)</option>
+                                        <option value="active">Very Active (Exercise 6-7 days/week)</option>
+                                    </select>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <select class="form-select rounded-3" id="userGoal" required>
-                                            <option value="" disabled selected>Select Primary Goal</option>
-                                            <option value="lose">Lose Weight</option>
-                                            <option value="maintain">Maintain Health</option>
-                                            <option value="gain">Build Muscle</option>
-                                        </select>
-                                        <label for="userGoal">Primary Goal</label>
-                                    </div>
+                                    <label class="form-label small text-muted fw-bold" for="userGoal">Primary Goal</label>
+                                    <select class="form-select rounded-3 border-sand px-3 py-2" id="userGoal" required>
+                                        <option value="" disabled selected>Select Primary Goal</option>
+                                        <option value="lose">Lose Weight</option>
+                                        <option value="maintain">Maintain Health</option>
+                                        <option value="gain">Build Muscle</option>
+                                    </select>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="number" class="form-control rounded-3" id="targetWeight" placeholder="Target Weight" step="0.1" required>
-                                        <label for="targetWeight">Target Weight (kg)</label>
+                                    <label class="form-label small text-muted fw-bold" for="targetWeight">Target Weight (kg)</label>
+                                    <input type="number" class="form-control rounded-3 border-sand px-3 py-2" id="targetWeight" placeholder="Target Weight" step="0.1" required>
+                                </div>
+                            </div>
+
+                            <hr class="my-4 text-secondary opacity-25">
+
+                            <p class="text-uppercase text-olive fw-bold small mb-3 opacity-75" style="letter-spacing: 1px;">Nutrition Preferences</p>
+                            <div class="row g-3 mb-5">
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label small text-muted fw-bold" for="userDiet">Dietary Restrictions</label>
+                                    <select class="form-select rounded-3 border-sand px-3 py-2" id="userDiet">
+                                        <option value="none" selected>No spesific restrictions</option>
+                                        <option value="halal">Halal</option>
+                                        <option value="vegetarian">Vegetarian</option>
+                                        <option value="vegan">Vegan</option>
+                                        <option value="keto">Keto</option>
+                                    </select> 
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label class="form-label small text-muted fw-bold mb-2">Food Allergies (Check all that apply)</label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" value="seafood" id="allergySeafood">
+                                            <label class="form-check-label" for="allergySeafood">Seafood</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" value="nuts" id="allergyNuts">
+                                            <label class="form-check-label" for="allergyNuts">Nuts</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" value="dairy" id="allergyDairy">
+                                            <label class="form-check-label" for="allergyDairy">Dairy</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" value="gluten" id="allergyGluten">
+                                            <label class="form-check-label" for="allergyGluten">Gluten</label>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
 
-                            
+                            <button type="submit" class="btn btn-premium w-100 py-3 fw-bold rounded-3">Complete Setup</button>
                         </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/auth.js"></script>
+
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="row mb-5 align-items-center">
+                <div class="col-md-4">
+                    <h2 class="fw-bold mb-1">Join the Flow</h2>
+                    <p class="text-olive opacity-75">Get weekly nutrition and training insights!</p>
+                    <p class="fw-bold mb-1">brought to you by WPPS Fitness Inc.</p>
+                    <p class="text-olive opacity-75">Transforming health through data.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5 class="fw-bold mb-1 border-olive p-2 d-inline-block">"PUSHING YOUR LIMITS"</h5>
+                </div>
+                <div class="col-md-4 text-md-end text-center mt-4 mt-md-0">
+                    <a href="#contact" class="text-light text-decoration-underline">Contact Us</a>
+                    <p class="mb-1 text-olive">📍 Universiti Malaya, Kuala Lumpur, Malaysia</p>
+                    <p class="mb-1 text-olive">📧 wppsfitness@gmail.com</p>
+                </div>
+            </div>
+  
+            <div class="text-center mt-4 pb-2">
+                <p class="mb-0 text-olive opacity-50">&copy; 2026 | Web Programming Project</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
+
+
+
+</html>
