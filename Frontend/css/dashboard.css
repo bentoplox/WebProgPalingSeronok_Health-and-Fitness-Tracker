@@ -1,0 +1,74 @@
+/* =========================================
+   DASHBOARD / OVERVIEW UI
+   ========================================= */
+
+/* Inside css/style.css */
+.main-content {
+    flex-grow: 1;
+    margin-left: 280px;
+    padding: 40px 60px; /* ADD THIS LINE BACK IN */
+    transition: margin-left 0.3s ease;
+}
+
+/* Stat & Content Card Design */
+.stat-card, .content-card {
+    background: #ffffff;
+    border: 1px solid rgba(218, 204, 172, 0.4);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(84, 107, 65, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+}
+
+.stat-card:hover, .content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(84, 107, 65, 0.1);
+    border-color: var(--color-sage);
+}
+
+/* Typography Hierarchy */
+.card-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-sage);
+    margin-bottom: 12px;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--color-olive);
+    line-height: 1;
+}
+
+.stat-unit {
+    font-size: 1.2rem;
+    color: var(--color-sand);
+    font-weight: 500;
+}
+
+/* List Items (Meals/Reminders) */
+.dashboard-list-item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 12px;
+    background: var(--color-cream);
+    border-radius: 16px;
+    transition: var(--transition-smooth);
+}
+
+.dashboard-list-item:hover {
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.reminder-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 16px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+}

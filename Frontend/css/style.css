@@ -78,13 +78,13 @@ body {
 /* 6. Staggered Layout Utilities */
 @media (min-width: 768px) {
     .stagger-down {
-        margin-top: 80px; 
+        margin-top: 80px;
         /* Removed the negative bottom margin as padding handles the space better */
     }
 
     /* This must be its own rule, NOT nested inside .stagger-down */
     #features {
-        padding-bottom: 120px !important; 
+        padding-bottom: 120px !important;
     }
 }
 
@@ -168,7 +168,8 @@ body {
     left: 0;
     z-index: 100;
     overflow-y: auto;
-    transition: transform 0.3s ease; /* ADD THIS: Smooth slide animation */
+    transition: transform 0.3s ease;
+    /* ADD THIS: Smooth slide animation */
 }
 
 /* Main Content Area (offset by sidebar width) */
@@ -176,7 +177,8 @@ body {
     flex-grow: 1;
     margin-left: 280px;
     padding: 2rem 3rem;
-    transition: margin-left 0.3s ease; /* ADD THIS: Smooth expansion animation */
+    transition: margin-left 0.3s ease;
+    /* ADD THIS: Smooth expansion animation */
 }
 
 /* Sidebar Navigation Links */
@@ -187,7 +189,8 @@ body {
     transition: all 0.2s ease;
 }
 
-.sidebar-link:hover, .sidebar-link.active {
+.sidebar-link:hover,
+.sidebar-link.active {
     background-color: var(--color-sage);
     color: #ffffff;
 }
@@ -221,3 +224,16 @@ body {
 .dashboard-wrapper.sidebar-hidden .main-content {
     margin-left: 0;
 }
+
+/* for reminders*/
+.text-olive { color: var(--color-olive) !important; }
+.bg-cream { background-color: var(--color-cream) !important; }
+.bg-olive { background-color: var(--color-olive) !important; } /* ADD THIS LINE */
+
+/* for progress chart*/
+.text-olive { color: var(--color-olive) !important; }
+.text-cream { color: var(--color-cream) !important; } /* ADD THIS */
+.text-sage  { color: var(--color-sage) !important; }  /* ADD THIS */
+.bg-cream { background-color: var(--color-cream) !important; }
+.bg-olive { background-color: var(--color-olive) !important; }
+.bg-sage  { background-color: var(--color-sage) !important; }  /* ADD THIS */
