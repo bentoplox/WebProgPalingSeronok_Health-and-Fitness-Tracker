@@ -9,43 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <style>
-        .inspo-card {
-            background-color: #ffffff;
-            border: none;
-            border-radius: 24px;
-            box-shadow: 0 8px 24px rgba(84, 107, 65, 0.05);
-            /* Soft olive shadow */
-            transition: transform 0.3s ease;
-        }
-
-        .inspo-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(84, 107, 65, 0.1);
-        }
-
-        .icon-box-large {
-            width: 60px;
-            height: 60px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 18px;
-            margin-bottom: 15px;
-        }
-
-        /* Background overlay trick for the colored cards */
-        .card-bg-overlay {
-            position: absolute;
-            right: -20px;
-            bottom: -20px;
-            font-size: 8rem;
-            opacity: 0.1;
-            z-index: 0;
-            transform: rotate(-15deg);
-        }
-    </style>
+    <link rel="stylesheet" href="../css/progress.css">
 </head>
 
 <body>
@@ -219,8 +183,7 @@
                                     style="width: 0%; background-color: var(--color-sage);"></div>
                             </div>
 
-                            <div
-                                class="d-flex justify-content-between align-items-center mt-4">
+                            <div class="d-flex justify-content-between align-items-center mt-4">
                                 <small class="text-muted fw-bold">0 / 1 Session</small>
                                 <span
                                     class="badge bg-cream border border-sand text-olive rounded-pill px-3 py-2 shadow-sm">1
@@ -249,8 +212,7 @@
                                     style="width: 100%; background-color: var(--color-sage);"></div>
                             </div>
 
-                            <div
-                                class="d-flex justify-content-between align-items-center mt-4">
+                            <div class="d-flex justify-content-between align-items-center mt-4">
                                 <small class="text-muted fw-bold">1 / 1 Session</small>
                                 <span class="badge bg-sage bg-opacity-25 text-olive rounded-pill px-3 py-2 shadow-sm"><i
                                         class="fa-solid fa-check me-1"></i> Done</span>
@@ -268,9 +230,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/sidebar.js"></script>
     <script src="../js/main.js"></script>
-
-    <script src="../js/progress_barchart.js">       
-    </script>
+    <script src="../js/progress_barchart.js"></script>
 </body>
 
 </html>
