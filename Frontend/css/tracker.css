@@ -1,0 +1,37 @@
+.main-content {
+    background-color: var(--color-cream);
+}
+
+.table thead th {
+    background-color: transparent;
+    border-bottom: 2px solid var(--color-sand);
+    padding-bottom: 15px;
+}
+
+.table tbody td {
+    padding: 20px 10px;
+    border-bottom: 1px solid rgba(212, 204, 172, 0.3);
+}
+
+/* Form input styling */
+.form-control, .form-select {
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 0.9rem;
+}
+
+.form-control:focus {
+    border-color: var(--color-olive);
+    box-shadow: 0 0 0 0.25rem rgba(84, 107, 65, 0.1);
+}
+
+.tracker-card{
+    background-color: #ffffff;
+    border: 1px solid var(--color-sand);
+    border-radius: 24px;
+    /* Soft modern corners */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}

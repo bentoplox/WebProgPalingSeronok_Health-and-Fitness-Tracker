@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity Tracking | FlowState</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tracker.css">
+  <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+  <div id="sidebar-container"></div>
+
+  <main class="main-content">
+    <header class="mb-5">
+      <p class="section-label mb-1">Performance Tracking</p>
+      <h2 class="hero-title" style="font-size: 3rem;">ACTIVITIES</h2>
+    </header>
+
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="card tracker-card shadow-sm">
+          <div class="card-body p-4">
+            <h5 class="fw-bold text-olive mb-4">Log New Activity</h5>
+            <form id="activityForm">
+              <div class="mb-3">
+                <label class="section-label" style="font-size: 0.7rem;">Activity Type</label>
+                <select class="form-select border-sand py-2" required>
+                  <option value="" selected disabled>Choose type...</option>
+                  <option>Running</option>
+                  <option>Weightlifting</option>
+                  <option>Swimming</option>
+                  <option>Cycling</option>
+                  <option>Yoga</option>
+                </select>
+              </div>
+
+              <div class="row">
+                <div class="col-6 mb-3">
+                  <label class="section-label" style="font-size: 0.7rem;">Duration (Min)</label>
+                  <input type="number" class="form-control border-sand" placeholder="0" required>
+                </div>
+                <div class="col-6 mb-3">
+                  <label class="section-label" style="font-size: 0.7rem;">Calories</label>
+                  <input type="number" class="form-control border-sand" placeholder="0">
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="section-label" style="font-size: 0.7rem;">Date</label>
+                <input type="date" class="form-control border-sand" required>
+              </div>
+
+              <div class="mb-4">
+                <label class="section-label" style="font-size: 0.7rem;">Notes</label>
+                <textarea class="form-control border-sand" rows="3" placeholder="Notes..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-premium w-100 py-3">SAVE LOG</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="card tracker-card shadow-sm h-100">
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="fw-bold text-olive m-0">Recent History</h5>
+              <input type="text" class="form-control border-sand w-25 form-control-sm" placeholder="Search...">
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                <tr class="section-label" style="font-size: 0.65rem;">
+                  <th>Activity</th>
+                  <th>Date</th>
+                  <th>Duration</th>
+                  <th class="text-end">Action</th>
+                </tr>
+                </thead>
+                <tbody id="historyTableBody">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+<script src="../js/sidebar.js"></script>
+<script src = "../js/tracker.js"></script>
+</html>
