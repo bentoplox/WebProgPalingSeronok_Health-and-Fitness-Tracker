@@ -3,10 +3,11 @@ let selectedFiles = [];
 
 document.getElementById('activityDate').valueAsDate = new Date();
 
-let activityList
-fetchActivityHistory()
+let activityList = getMockActivity()
+let goals = getMockGoals()
 fillHistoryTable()
 initializeFormSubmission()
+renderGoals();
 
 //Data Related Functions
 async function fillHistoryTable(){
@@ -16,10 +17,6 @@ async function fillHistoryTable(){
     }
 }
 
-async function fetchActivityHistory() {
-    // mock for now later replace with real loading logic from backend
-    activityList = getMockActivity()
-}
 
 function newHistoryTableElement(activity) {
     return `<tr>
@@ -175,6 +172,81 @@ function removeActivity(id){
     fillHistoryTable()
 }
 
+//dslkfjas;lkfjawdkl;fjwae;lfj
+
+function newGoal(id, category, target){
+    return {
+        id: id,
+        category: category,
+        target: target
+    }
+}
+
+function addGoal() {
+    const catSelect = document.getElementById('goalCategory');
+    const targetInput = document.getElementById('goalTarget');
+
+    if (!catSelect.value || targetInput.value.trim() === '') {
+        alert('Please select a category and enter a target.');
+        return;
+    }
+
+    const newGoal = newGoal(Date.now(), catSelect.value, targetInput.value);
+
+    goals.push(newGoal);
+
+    // Reset and Close Modal
+    catSelect.selectedIndex = 0;
+    targetInput.value = '';
+    const modalElement = document.getElementById('goalModal');
+    const modal = bootstrap.Modal.getInstance(modalElement);
+    modal.hide();
+
+    renderGoals();
+}
+
+function deleteGoal(id) {
+    goals = goals.filter(g => g.id !== id);
+    renderGoals();
+}
+
+function renderGoals() {
+    const container = document.getElementById('goalsContainer');
+    container.innerHTML = '';
+
+    // First, render existing goals
+    goals.forEach(goal => {
+        container.innerHTML += `
+        <div class="col-md-4">
+          <div class="goal-card-item p-3">
+            <div class="d-flex justify-content-between">
+                <p class="text-uppercase text-muted mb-1" style="font-size: 0.6rem;">Goal</p>
+                <button class="btn btn-sm text-danger p-0 border-0" onclick="deleteGoal(${goal.id})">
+                    <i class="bi bi-x-circle"></i>
+                </button>
+            </div>
+            <h6 class="fw-bold text-olive mb-1">${goal.category}</h6>
+            <p class="text-muted small mb-0">${goal.target} Sessions</p>
+          </div>
+        </div>`;
+    });
+
+    // Then, always append the "Add New Goal" button card at the end
+    container.innerHTML += `
+      <div class="col-md-4">
+        <div class="add-goal-placeholder" data-bs-toggle="modal" data-bs-target="#goalModal">
+          <i class="bi bi-plus-circle fs-4 mb-1"></i>
+          <span class="small fw-bold">Add Weekly Goal</span>
+        </div>
+      </div>`;
+}
+
+function selectType(type, icon) {
+    document.getElementById('selectedActivityType').value = type;
+    document.getElementById('typeDropdown').innerHTML = `<i class="bi ${icon} me-2"></i> ${type}`;
+}
+
+
 
 //UI functions//
 function resetForm() {
@@ -258,4 +330,12 @@ function getMockActivity(){
             "Focused on flexibility and breathing. Felt very relaxed afterward." // Notes
         )
     ]
+}
+
+function getMockGoals(){
+    return [
+        newGoal(1, 'Running', 3),
+        newGoal(2, 'Weightlifting', 4),
+        newGoal(3, 'Yoga/Pilates', 2)
+    ];
 }

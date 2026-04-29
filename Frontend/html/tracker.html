@@ -12,7 +12,40 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/tracker.css">
   <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-
+  <style>
+    /* Goal Card Styling */
+    .goal-card-item {
+      background: #fff;
+      border: 1px solid #e9e4de;
+      border-left: 4px solid #3d4a3e;
+      border-radius: 10px;
+      transition: transform 0.2s ease;
+      height: 100%;
+    }
+    .goal-card-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    /* Add Goal Placeholder Styling */
+    .add-goal-placeholder {
+      border: 2px dashed #e9e4de;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      height: 100%;
+      cursor: pointer;
+      color: #3d4a3e;
+      transition: all 0.2s ease;
+      min-height: 105px;
+    }
+    .add-goal-placeholder:hover {
+      background-color: #fcfbf9;
+      border-color: #3d4a3e;
+    }
+  </style>
 </head>
 <body>
 
@@ -40,13 +73,7 @@
             <form id="activityForm">
               <div class="mb-3">
                 <label for="activityName" class="section-label" style="font-size: 0.7rem;">Activity Name</label>
-                <input
-                        type="text"
-                        id="activityName"
-                        class="form-control border-sand py-2"
-                        placeholder="e.g. Morning Jog"
-                        required
-                >
+                <input type="text" id="activityName" class="form-control border-sand py-2" placeholder="e.g. Morning Jog" required>
               </div>
 
               <div class="dropdown mb-3">
@@ -61,31 +88,20 @@
                   <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Swimming', 'bi-water')"><i class="bi bi-water me-2"></i> Swimming</a></li>
                   <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Walking', 'bi-person-walking')"><i class="bi bi-person-walking me-2"></i> Walking</a></li>
                   <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Hiking', 'bi-reception-4')"><i class="bi bi-reception-4 me-2"></i> Hiking</a></li>
-
                   <li><hr class="dropdown-divider"></li>
-
                   <li><h6 class="dropdown-header">Strength & Power</h6></li>
                   <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Weightlifting', 'bi-p-circle')"><i class="bi bi-p-circle me-2"></i> Weightlifting</a></li>
                   <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Bodyweight', 'bi-person-arms-up')"><i class="bi bi-person-arms-up me-2"></i> Bodyweight/Calisthenics</a></li>
                   <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Crossfit', 'bi-boxes')"><i class="bi bi-boxes me-2"></i> CrossFit</a></li>
-
                   <li><hr class="dropdown-divider"></li>
-
                   <li><h6 class="dropdown-header">Sports</h6></li>
                   <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Badminton', 'bi-trophy')"><i class="bi bi-trophy me-2"></i> Badminton</a></li>
-                  <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Football', 'bi- dribbble')"><i class="bi bi-dribbble me-2"></i> Football/Futsal</a></li>
-                  <li>
-                    <a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Basketball', 'bi-dribbble')">
-                      <i class="bi bi-dribbble me-2"></i> Basketball
-                    </a>
-                  </li>
-
+                  <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Football', 'bi-dribbble')"><i class="bi bi-dribbble me-2"></i> Football/Futsal</a></li>
+                  <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Basketball', 'bi-dribbble')"><i class="bi bi-dribbble me-2"></i> Basketball</a></li>
                   <li><hr class="dropdown-divider"></li>
-
                   <li><h6 class="dropdown-header">Wellness</h6></li>
                   <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Yoga', 'bi-flower1')"><i class="bi bi-flower1 me-2"></i> Yoga/Pilates</a></li>
-                  <li><a class="dropdown-item" href = "javascript:void(0)" onclick="selectType('Stretching', 'bi-universal-access')"><i class="bi bi-universal-access me-2"></i> Stretching</a></li>
-
+                  <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Stretching', 'bi-universal-access')"><i class="bi bi-universal-access me-2"></i> Stretching</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="javascript:void(0)" onclick="selectType('Other', 'bi-plus-circle')"><i class="bi bi-plus-circle me-2"></i> Other</a></li>
                 </ul>
@@ -97,10 +113,8 @@
                 <div class="btn-group w-100" role="group">
                   <input type="radio" class="btn-check" name="intensity" id="low" value="1">
                   <label class="btn btn-outline-sand" for="low">Low</label>
-
                   <input type="radio" class="btn-check" name="intensity" id="med" value="2" checked>
                   <label class="btn btn-outline-sand" for="med">Med</label>
-
                   <input type="radio" class="btn-check" name="intensity" id="high" value="3">
                   <label class="btn btn-outline-sand" for="high">High</label>
                 </div>
@@ -115,24 +129,14 @@
 
               <div class="mb-3">
                 <label class="section-label" style="font-size: 0.7rem;">Date</label>
-                <input id = "activityDate" type="date" class="form-control border-sand" required>
+                <input id="activityDate" type="date" class="form-control border-sand" required>
               </div>
 
               <div class="mb-3">
                 <label class="section-label" style="font-size: 0.7rem;">Workout Proof (Photos)</label>
                 <div class="image-upload-wrapper">
-                  <input
-                          type="file"
-                          id="workoutPhotos"
-                          class="form-control border-sand py-2"
-                          accept="image/*"
-                          multiple
-                          onchange="previewMultipleImages(event)"
-                  >
-
-                  <div id="imageGalleryPreview" class="d-flex flex-wrap gap-2 mt-2">
-                  </div>
-
+                  <input type="file" id="workoutPhotos" class="form-control border-sand py-2" accept="image/*" multiple onchange="previewMultipleImages(event)">
+                  <div id="imageGalleryPreview" class="d-flex flex-wrap gap-2 mt-2"></div>
                   <button type="button" id="clearPhotosBtn" class="btn btn-sm btn-link text-danger p-0 mt-1 d-none" onclick="clearAllPhotos()">
                     <i class="bi bi-x-circle me-1"></i> Clear all photos
                   </button>
@@ -151,6 +155,12 @@
       </div>
 
       <div class="col-lg-8">
+        <div id="goalsDisplaySection" class="mb-4">
+          <h5 class="fw-bold text-olive mb-3">Weekly Goal Targets</h5>
+          <div id="goalsContainer" class="row g-3">
+          </div>
+        </div>
+
         <div class="card tracker-card shadow-sm h-100">
           <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -180,7 +190,54 @@
     </div>
   </main>
 </div>
-</body>
+
+<div class="modal fade" id="goalModal" tabindex="-1" aria-labelledby="goalModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-olive text-white">
+        <h5 class="modal-title fw-bold" id="goalModalLabel">Set Weekly Goal</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="mb-3">
+          <label class="section-label">Category</label>
+          <select id="goalCategory" class="form-select border-sand">
+            <option value="" selected disabled>Select Category</option>
+            <optgroup label="Cardio & Endurance">
+              <option value="Running">Running</option>
+              <option value="Cycling">Cycling</option>
+              <option value="Swimming">Swimming</option>
+              <option value="Walking">Walking</option>
+              <option value="Hiking">Hiking</option>
+            </optgroup>
+            <optgroup label="Strength & Power">
+              <option value="Weightlifting">Weightlifting</option>
+              <option value="Bodyweight">Bodyweight/Calisthenics</option>
+              <option value="Crossfit">CrossFit</option>
+            </optgroup>
+            <optgroup label="Sports">
+              <option value="Badminton">Badminton</option>
+              <option value="Football">Football/Futsal</option>
+              <option value="Basketball">Basketball</option>
+            </optgroup>
+            <optgroup label="Wellness">
+              <option value="Yoga">Yoga/Pilates</option>
+              <option value="Stretching">Stretching</option>
+            </optgroup>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="section-label">Target Sessions</label>
+          <input type="number" id="goalTarget" class="form-control border-sand" placeholder="e.g. 3 sessions">
+        </div>
+        <button type="button" class="btn btn-premium w-100 py-2" onclick="addGoal()">Save Goal</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="../js/sidebar.js"></script>
-<script src = "../js/tracker.js"></script>
+<script src="../js/tracker.js"></script>
+</body>
 </html>
