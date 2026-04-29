@@ -20,8 +20,8 @@ const sidebarContent = `
             <li><a href="tracker.html" class="nav-link sidebar-link"><i class="fa-solid fa-person-running me-2"></i> Fitness Tracker</a></li>
             <li><a href="progress.html" class="nav-link sidebar-link"><i class="fa-solid fa-chart-line me-2"></i> Progress Chart</a></li>
             <li><a href="nutrition.html" class="nav-link sidebar-link"><i class="fa-solid fa-apple-whole me-2"></i> Nutrition Planner</a></li>
-            <li><a href="#" class="nav-link sidebar-link"><i class="fa-solid fa-bell me-2"></i> Noti & Reminders</a></li>
-                
+            <li><a href="notification.html" class="nav-link sidebar-link"><i class="fa-solid fa-bell me-2"></i> Noti & Reminders</a></li>
+            
             <hr class="border-secondary opacity-25 my-2">
             
             <li><a href="#" class="nav-link sidebar-link"><i class="fa-solid fa-gear me-2"></i> Settings</a></li>

@@ -6,217 +6,318 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Progress Chart | Flow State</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .inspo-card {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 24px;
+            box-shadow: 0 8px 24px rgba(84, 107, 65, 0.05);
+            /* Soft olive shadow */
+            transition: transform 0.3s ease;
+        }
+
+        .inspo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(84, 107, 65, 0.1);
+        }
+
+        .icon-box-large {
+            width: 60px;
+            height: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            margin-bottom: 15px;
+        }
+
+        /* Background overlay trick for the colored cards */
+        .card-bg-overlay {
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            font-size: 8rem;
+            opacity: 0.1;
+            z-index: 0;
+            transform: rotate(-15deg);
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="dashboard-wrapper">
-
         <div id="sidebar-container"></div>
 
         <main class="main-content">
 
-            <header class="d-flex justify-content-between align-items-center mb-5">
+            <header class="d-flex justify-content-between align-items-center mb-4">
                 <div class="d-flex align-items-center">
                     <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
                         <i class="fa-solid fa-bars fs-5"></i>
                     </button>
-                    
                     <div>
                         <h2 class="fw-bold text-olive mb-0">Progress Chart</h2>
                         <p class="text-muted small fw-bold mb-1">VISUALIZING YOUR JOURNEY</p>
                     </div>
                 </div>
-
-                <a href="#" class="btn btn-outline-secondary rounded-pill fw-bold text-olive border-sand">
-                    Feb Recap <i class="fa-solid fa-play ms-1"></i>
-                </a>
             </header>
 
-            <div class="card feature-card p-4 mb-4">
-                <h5 class="fw-bold text-olive mb-4">Your Weekly Snapshot</h5>
-                <div class="row text-center">
-                    <div class="col border-end border-sand">
-                        <p class="text-muted mb-1">Activities</p>
-                        <h3 class="fw-bold text-olive">5</h3>
-                    </div>
-                    <div class="col border-end border-sand">
-                        <p class="text-muted mb-1">Time</p>
-                        <h3 class="fw-bold text-olive">5h 49m</h3>
-                        <small class="text-success fw-bold"><i class="fa-solid fa-caret-up"></i> 3h 2m</small>
-                    </div>
-                    <div class="col border-end border-sand">
-                        <p class="text-muted mb-1">Recovery Time</p>
-                        <h3 class="fw-bold text-olive">12h</h3>
-                        <small class="text-sage">Intensive session logged</small>
-                    </div>
-                    <div class="col border-end border-sand">
-                        <p class="text-muted mb-1">Caloric Burn</p>
-                        <h3 class="fw-bold text-olive">4709 <span class="fs-6 text-muted">Kcal</span></h3>
-                    </div>
-                    <div class="col">
-                        <p class="text-muted mb-1">Goals</p>
-                        <h3 class="fw-bold text-olive">1/4</h3>
-                        <small class="text-muted">Activities Done</small>
-                    </div>
+            <div
+                class="inspo-card bg-pastel-blue p-4 mb-4 d-flex align-items-center justify-content-between position-relative overflow-hidden">
+                <div class="position-relative z-1">
+                    <h3 class="fw-bold text-olive mb-1">Great job this month! 🏆</h3>
+                    <p class="text-olive opacity-75 mb-0 fw-medium">You've burned 18% more calories than last week. Keep
+                        the momentum going!</p>
                 </div>
+                <i class="fa-solid fa-ranking-star card-bg-overlay text-olive opacity-25"></i>
             </div>
 
             <div class="row g-4 mb-4">
-                <div class="col-md-4">
-                    <div class="card feature-card p-4 h-100">
-                        <h5 class="fw-bold text-olive mb-3">Your Streaks</h5>
-                        <p class="text-muted small mb-4">5 Weeks</p>
-                        <canvas id="streaksChart"></canvas>
+
+                <div class="col-lg-8">
+                    <div class="inspo-card p-4 h-100 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="fw-bold text-olive mb-0">Overview Analytics</h5>
+                            <select
+                                class="form-select form-select-sm w-auto border-sand text-muted rounded-pill px-3 fw-bold bg-cream border-0">
+                                <option>Monthly View</option>
+                                <option>Weekly View</option>
+                            </select>
+                        </div>
+
+                        <div class="flex-grow-1" style="min-height: 250px; position: relative;">
+                            <canvas id="overviewBarChart"></canvas>
+                        </div>
+
+                        <div class="row text-center mt-4 border-top border-sand pt-3">
+                            <div class="col">
+                                <small class="text-muted fw-bold d-block text-uppercase"
+                                    style="font-size: 0.7rem;">Total Time</small>
+                                <h5 class="fw-bold text-olive mb-0">823 <span
+                                        class="fs-6 fw-normal text-muted">Hr</span></h5>
+                            </div>
+                            <div class="col border-start border-end border-sand">
+                                <small class="text-muted fw-bold d-block text-uppercase"
+                                    style="font-size: 0.7rem;">Total Steps</small>
+                                <h5 class="fw-bold text-sage mb-0">9,879 <span
+                                        class="fs-6 fw-normal text-muted">St</span></h5>
+                            </div>
+                            <div class="col">
+                                <small class="text-muted fw-bold d-block text-uppercase"
+                                    style="font-size: 0.7rem;">Target</small>
+                                <h5 class="fw-bold text-olive mb-0">10,000 <span
+                                        class="fs-6 fw-normal text-muted">St</span></h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card feature-card p-4 h-100">
-                        <h5 class="fw-bold text-olive mb-4">Weekly Comparison</h5>
-                        <canvas id="comparisonChart"></canvas>
-                    </div>
-                </div>
+                <div class="col-lg-4 d-flex flex-column gap-4">
 
-                <div class="col-md-4">
-                    <div class="card feature-card p-4 h-100 d-flex flex-column align-items-center">
-                        <h5 class="fw-bold text-olive w-100 mb-2">Calories Goals</h5>
-                        <div style="position: relative; width: 100%; max-width: 200px;">
-                            <canvas id="caloriesChart"></canvas>
-                            <div class="position-absolute top-50 start-50 translate-middle text-center mt-2">
-                                <h4 class="fw-bold text-olive mb-0">1565</h4>
-                                <small class="text-muted">Kcal</small>
+                    <div class="inspo-card p-4 h-100 bg-olive text-white position-relative overflow-hidden">
+                        <div class="position-relative z-1">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-white bg-opacity-25 rounded-3 p-2 me-2">
+                                    <i class="fa-solid fa-fire text-cream"></i>
+                                </div>
+                                <span class="fw-bold text-cream">Calories Burned</span>
                             </div>
+                            <h2 class="display-5 fw-bold mb-1">2,780 <span class="fs-5 fw-normal opacity-75">kcal</span>
+                            </h2>
+                            <small class="badge bg-white bg-opacity-25 text-cream fw-bold rounded-pill">
+                                <i class="fa-solid fa-arrow-trend-up"></i> +18% vs last week
+                            </small>
                         </div>
-                        <div class="d-flex justify-content-between w-100 mt-4 px-2">
-                            <div class="text-center">
-                                <div class="d-inline-block rounded-circle me-1"
-                                    style="width: 10px; height: 10px; background-color: var(--color-sage);"></div>
-                                <small class="fw-bold d-block">118g Protein</small>
-                            </div>
-                            <div class="text-center">
-                                <div class="d-inline-block rounded-circle me-1"
-                                    style="width: 10px; height: 10px; background-color: var(--color-sand);"></div>
-                                <small class="fw-bold d-block">220g Carbs</small>
-                            </div>
-                        </div>
+                        <i class="fa-solid fa-fire card-bg-overlay"></i>
                     </div>
+
+                    <div class="inspo-card p-4 h-100 bg-sage text-white position-relative overflow-hidden">
+                        <div class="position-relative z-1">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-white bg-opacity-25 rounded-3 p-2 me-2">
+                                    <i class="fa-solid fa-stopwatch text-cream"></i>
+                                </div>
+                                <span class="fw-bold text-cream">Time Spent</span>
+                            </div>
+                            <h2 class="display-5 fw-bold mb-1">55 <span class="fs-5 fw-normal opacity-75">hr</span></h2>
+                            <small class="text-cream opacity-75 fw-bold">Active in April</small>
+                        </div>
+                        <i class="fa-solid fa-clock card-bg-overlay"></i>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="card feature-card p-4">
-                <h5 class="fw-bold text-olive mb-4">Type of Activity</h5>
-                <div class="d-flex align-items-center mb-2">
-                    <div class="bg-pastel-blue p-3 rounded-3 me-3 text-olive">
-                        <i class="fa-solid fa-person-biking fs-4"></i>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="fw-bold text-olive">Bicycle</span>
-                            <span class="fw-bold text-olive">47%</span>
+            <div class="d-flex justify-content-between align-items-end mb-3 mt-5">
+                <div>
+                    <h4 class="fw-bold text-olive mb-1">Weekly Goals Breakdown</h4>
+                    <p class="text-muted small fw-bold mb-0 text-uppercase">Tracking your dashboard targets</p>
+                </div>
+                <span class="badge bg-olive text-cream rounded-pill px-3 py-2 fs-6 shadow-sm">67% Overall</span>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="inspo-card p-4 text-center h-100 d-flex flex-column">
+                        <div class="icon-box-large bg-pastel-blue text-olive mx-auto">
+                            <i class="fa-solid fa-dumbbell fs-3"></i>
                         </div>
-                        <div class="progress" style="height: 12px; background-color: var(--color-cream);">
-                            <div class="progress-bar" role="progressbar"
-                                style="width: 47%; background-color: var(--color-sage);" aria-valuenow="47"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+                        <h5 class="fw-bold text-olive mb-1">Strength Training</h5>
+                        <small class="text-muted d-block mb-4 fw-bold">5 sessions / week</small>
+
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between mb-2">
+                                <small class="fw-bold text-muted">Progress</small>
+                                <small class="fw-bold text-olive">60%</small>
+                            </div>
+                            <div class="progress mb-3 rounded-pill"
+                                style="height: 6px; background-color: var(--color-cream);">
+                                <div class="progress-bar rounded-pill"
+                                    style="width: 60%; background-color: var(--color-olive);"></div>
+                            </div>
+
+                            <div
+                                class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-sand">
+                                <small class="text-muted fw-bold">3 / 5 Sessions</small>
+                                <span class="badge bg-pastel-blue text-olive rounded-pill px-3 py-2 shadow-sm">2
+                                    left</span>
+                            </div>
                         </div>
-                        <small class="text-muted mt-1 d-block">Progress: 40 km / 1 Week</small>
                     </div>
                 </div>
+
+                <div class="col-md-4">
+                    <div class="inspo-card p-4 text-center h-100 d-flex flex-column">
+                        <div class="icon-box-large bg-cream text-olive mx-auto border border-sand">
+                            <i class="fa-solid fa-person-running fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold text-olive mb-1">Cardio Running</h5>
+                        <small class="text-muted d-block mb-4 fw-bold">1 session / week</small>
+
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between mb-2">
+                                <small class="fw-bold text-muted">Progress</small>
+                                <small class="fw-bold text-olive">0%</small>
+                            </div>
+                            <div class="progress mb-3 rounded-pill"
+                                style="height: 6px; background-color: var(--color-cream);">
+                                <div class="progress-bar rounded-pill"
+                                    style="width: 0%; background-color: var(--color-sage);"></div>
+                            </div>
+
+                            <div
+                                class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-sand">
+                                <small class="text-muted fw-bold">0 / 1 Session</small>
+                                <span
+                                    class="badge bg-cream border border-sand text-olive rounded-pill px-3 py-2 shadow-sm">1
+                                    left</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="inspo-card p-4 text-center h-100 d-flex flex-column">
+                        <div class="icon-box-large bg-sage bg-opacity-25 text-olive mx-auto">
+                            <i class="fa-solid fa-person-swimming fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold text-olive mb-1">Pool Laps</h5>
+                        <small class="text-muted d-block mb-4 fw-bold">1 session / week</small>
+
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between mb-2">
+                                <small class="fw-bold text-muted">Progress</small>
+                                <small class="fw-bold text-olive">100%</small>
+                            </div>
+                            <div class="progress mb-3 rounded-pill"
+                                style="height: 6px; background-color: var(--color-cream);">
+                                <div class="progress-bar rounded-pill"
+                                    style="width: 100%; background-color: var(--color-sage);"></div>
+                            </div>
+
+                            <div
+                                class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-sand">
+                                <small class="text-muted fw-bold">1 / 1 Session</small>
+                                <span class="badge bg-sage bg-opacity-25 text-olive rounded-pill px-3 py-2 shadow-sm"><i
+                                        class="fa-solid fa-check me-1"></i> Done</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
 
         </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/main.js"></script>
 
     <script>
-        // Ensure the DOM is loaded before rendering charts
         document.addEventListener("DOMContentLoaded", function () {
-
-            // Brand Colors from your CSS
             const colorOlive = '#546B41';
             const colorSage = '#99AD7A';
             const colorSand = '#DCCCAC';
-            const colorPastelBlue = '#B3CDE0';
-            const colorCream = '#FFF8EC';
 
-            // 1. Streaks Line Chart
-            const ctxStreaks = document.getElementById('streaksChart').getContext('2d');
-            new Chart(ctxStreaks, {
-                type: 'line',
-                data: {
-                    labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-                    datasets: [{
-                        label: 'Activity Level',
-                        data: [2, 5, 3, 6, 4, 7, 5],
-                        borderColor: colorSage,
-                        backgroundColor: colorSage,
-                        borderWidth: 3,
-                        pointBackgroundColor: colorOlive,
-                        pointRadius: 5,
-                        tension: 0.4 // Makes the line wavy/smooth
-                    }]
-                },
-                options: {
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: { display: false }, // Hide Y axis for cleaner look
-                        x: { grid: { display: false } }
-                    }
-                }
-            });
+            const ctx = document.getElementById('overviewBarChart').getContext('2d');
 
-            // 2. Weekly Comparison Bar Chart
-            const ctxComparison = document.getElementById('comparisonChart').getContext('2d');
-            new Chart(ctxComparison, {
+            // Adding a subtle gradient to the bars for that premium look
+            let gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, colorSage);
+            gradient.addColorStop(1, 'rgba(153, 173, 122, 0.2)');
+
+            new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                     datasets: [{
-                        label: 'Workouts',
-                        data: [3, 4, 2, 5],
-                        backgroundColor: [colorSand, colorSand, colorSand, colorSage],
-                        borderRadius: 8 // Rounded tops on the bars
+                        label: 'Activity Level',
+                        // Dummy data matching a fitness curve
+                        data: [40, 25, 60, 55, 80, 50, 95, 65, 40, 70, 85, 60],
+                        backgroundColor: gradient,
+                        borderRadius: 8, // Rounded bar tops!
+                        barPercentage: 0.6, // Makes bars thinner
+                        borderSkipped: false
                     }]
                 },
                 options: {
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: { beginAtZero: true, grid: { display: false } },
-                        x: { grid: { display: false } }
-                    }
-                }
-            });
-
-            // 3. Calories Doughnut Chart
-            const ctxCalories = document.getElementById('caloriesChart').getContext('2d');
-            new Chart(ctxCalories, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Protein', 'Carbs', 'Fats'],
-                    datasets: [{
-                        data: [35, 45, 20],
-                        backgroundColor: [colorSage, colorSand, colorPastelBlue],
-                        borderWidth: 0,
-                        cutout: '75%' // Makes it a thin ring
-                    }]
-                },
-                options: {
-                    plugins: { legend: { display: false } },
                     responsive: true,
-                    maintainAspectRatio: true
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: colorOlive,
+                            padding: 12,
+                            cornerRadius: 8,
+                            displayColors: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            display: false // Hides Y axis completely like the inspo
+                        },
+                        x: {
+                            grid: { display: false }, // No vertical lines
+                            border: { display: false }, // Removes the bottom line
+                            ticks: {
+                                color: '#a0a0a0',
+                                font: { weight: 'bold', size: 11 }
+                            }
+                        }
+                    }
                 }
             });
         });
     </script>
-
-    <script src="../js/sidebar.js"></script> 
-    <script src="../js/main.js"></script>
-
 </body>
 
 </html>
