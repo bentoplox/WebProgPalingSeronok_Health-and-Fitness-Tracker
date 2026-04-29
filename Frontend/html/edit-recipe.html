@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customize Recipe - Flow State</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nutrition.css">
+</head>
+<body>
+    <div class="dashboard-wrapper d-flex min-vh-100">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content flex-grow-1 p-4">
+            <header class="d-flex align-items-center mb-4">
+                <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
+                    <i class="fa-solid fa-bars fs-5"></i>
+                </button>
+                <h2 class="fw-bold text-olive mb-0">Create Custom Recipe</h2>
+            </header>
+
+            <a href="recipe-details.html" class="text-decoration-none text-olive mb-4 d-inline-block">
+                <i class="fa-solid fa-arrow-left me-2"></i>Cancel Editing
+            </a>
+
+            <!-- The Main Form Wrapper -->
+            <div class="p-4 p-md-5 rounded-4 bg-white shadow-sm border border-light">
+                
+                <!-- 1. Basic Info Section -->
+                <div class="row mb-5">
+                    <div class="col-md-8">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Recipe Name</label>
+                            <input type="text" class="form-control" value="Hummus Avocado Toast (My Version)">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Description</label>
+                            <textarea class="form-control" rows="3" placeholder="Add a description..."></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex flex-column align-items-center">
+                        <label class="form-label fw-bold d-block w-100">Image</label>
+                        <!-- Added an ID to the image -->
+                        <img id="recipeImagePreview" src="../images/recipes/hummus-avocado-toast.png" class="img-fluid rounded mb-3" style="width: 100%; height: 200px; object-fit: cover;">
+                        
+                        <!-- HIDDEN file input that the JS will trigger -->
+                        <input type="file" id="imageInput" accept="image/*" class="d-none">
+                        
+                        <!-- Added an ID and mt-auto to push it down -->
+                        <button id="uploadImageBtn" class="btn btn-sm btn-outline-secondary mt-auto w-100"><i class="fa-solid fa-cloud-arrow-up me-2"></i>Upload New</button>
+                    </div>
+                </div>
+
+                <hr class="mb-5">
+
+                <!-- 2. Properties Section -->
+                <h4 class="fw-bold text-olive mb-4">Meal Properties</h4>
+                <div class="row mb-5">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-bold d-block">Meal Type</label>
+                        <div class="btn-group w-100">
+                            <input type="radio" class="btn-check" name="mealType" id="mainDish" checked>
+                            <label class="btn btn-outline-success" for="mainDish">Main Dish</label>
+                            <input type="radio" class="btn-check" name="mealType" id="sideDish">
+                            <label class="btn btn-outline-success" for="sideDish">Side Dish</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-bold d-block">Prep Time</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" value="15">
+                            <span class="input-group-text bg-light">minutes</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-bold d-block">Servings</label>
+                        <input type="number" class="form-control" value="1">
+                    </div>
+                </div>
+
+                <hr class="mb-5">
+
+                <!-- 3. Ingredients & Nutrition Split Section -->
+                <div class="row mb-5">
+                    
+                    <!-- Left Side: Ingredients List -->
+                    <div class="col-md-8">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="fw-bold text-olive mb-0">Ingredients</h4>
+                            <button id="addIngredientBtn" class="btn btn-sm btn-outline-success"><i class="fa-solid fa-plus me-1"></i> Add</button>
+                        </div>
+                        
+                        <!-- The Container JS will add to -->
+                        <div id="ingredientsContainer">
+                            <!-- Single Ingredient Item -->
+                            <div class="card mb-3 bg-light border-0 ingredient-row">
+                                <div class="card-body d-flex align-items-center gap-3">
+                                    <!-- Notice: The gray image box is gone! -->
+                                    <div class="flex-grow-1">
+                                        <input type="text" class="form-control fw-bold mb-2 border-0 bg-transparent px-0" value="Avocado, raw" placeholder="Ingredient Name">
+                                        <div class="d-flex gap-2">
+                                            <!-- Added class 'ingredient-qty' for the macro calculator -->
+                                            <input type="number" class="form-control form-control-sm ingredient-qty" value="50" style="width: 80px;">
+                                            <select class="form-select form-select-sm" style="width: 100px;">
+                                                <option>grams</option>
+                                                <option>pieces</option>
+                                                <option>tbsp</option>
+                                            </select>
+                                            <input type="text" class="form-control form-control-sm" placeholder="Notes (e.g. mashed)">
+                                        </div>
+                                    </div>
+                                    <!-- Added an onclick function for the delete button -->
+                                    <button class="btn btn-outline-danger btn-sm border-0" onclick="removeRow(this)"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Nutrition Overview -->
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm" style="background-color: #fcefdc;">
+                            <div class="card-body">
+                                <h5 class="fw-bold text-center mb-4">Nutrition</h5>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between small fw-bold mb-1">
+                                        <span>Carbs</span> <span id="carbsText">55g (42%)</span>
+                                    </div>
+                                    <div class="progress" style="height: 10px;">
+                                        <div id="carbsBar" class="progress-bar bg-warning" style="width: 42%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between small fw-bold mb-1">
+                                        <span>Fat</span> <span id="fatText">26g (44%)</span>
+                                    </div>
+                                    <div class="progress" style="height: 10px;">
+                                        <div id="fatBar" class="progress-bar bg-info" style="width: 44%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between small fw-bold mb-1">
+                                        <span>Protein</span> <span id="proteinText">17g (13%)</span>
+                                    </div>
+                                    <div class="progress" style="height: 10px;">
+                                        <div id="proteinBar" class="progress-bar" style="width: 13%; background-color: #6f42c1;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between fw-bold fs-5">
+                                    <span>Total Calories</span>
+                                    <span id="totalCalsText" class="text-success">496 kcal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mb-5">
+
+                <!-- 4. Directions Section -->
+                <h4 class="fw-bold text-olive mb-4">Directions</h4>
+                <div id="directionsContainer">
+                    <!-- Added 'step-row' to the wrapper, 'step-number' to the circle, and the onclick to the trash can! -->
+                    <div class="d-flex align-items-start gap-3 mb-3 step-row">
+                        <div class="bg-success text-white rounded-circle d-flex justify-content-center align-items-center flex-shrink-0 step-number" style="width: 30px; height: 30px;">1</div>
+                        <textarea class="form-control" rows="2">Toast the slices of bread to your desired crunchiness.</textarea>
+                        <button class="btn btn-outline-danger border-0 mt-2" onclick="removeRow(this)"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3 mb-4 step-row">
+                        <div class="bg-success text-white rounded-circle d-flex justify-content-center align-items-center flex-shrink-0 step-number" style="width: 30px; height: 30px;">2</div>
+                        <textarea class="form-control" rows="2">Top with mashed avocado, salt, and pepper.</textarea>
+                        <button class="btn btn-outline-danger border-0 mt-2" onclick="removeRow(this)"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+
+               <button id="addStepBtn" class="btn btn-sm btn-outline-success mb-5"><i class="fa-solid fa-plus me-1"></i> Add a step</button>
+
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
+                    <a href="recipe-details.html" class="btn btn-outline-secondary px-4">Cancel</a>
+                    <button id="saveCustomRecipeBtn" class="btn btn-success px-5">Save Custom Recipe</button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/edit-recipe.js"></script>
+    <script src="../js/sidebar.js"></script> 
+    <script src="../js/main.js"></script>
+</body>
+</html>
