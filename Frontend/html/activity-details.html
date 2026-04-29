@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Details | FlowState</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tracker.css">
+    <link rel="stylesheet" href="../css/activity-details.css">
+</head>
+
+<body class="bg-light">
+<div class="dashboard-wrapper">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+        <header class="d-flex justify-content-between align-items-center mb-5">
+            <div class="d-flex align-items-center">
+                <a href="tracker.html" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
+                    <i class="fa-solid fa-arrow-left fs-5"></i>
+                </a>
+                <div>
+                    <div id="nameViewContainer">
+                        <h2 class="fw-bold text-olive mb-0" id="viewName">Activity Details</h2>
+                    </div>
+                    <div id="nameEditContainer" class="d-none">
+                        <input type="text" id="editName" class="form-control border-sand fw-bold text-olive fs-4 py-1">
+                    </div>
+                    <p class="text-muted small fw-bold mb-1 text-uppercase" id="viewCategory">Visualizing your session</p>
+                </div>
+            </div>
+            <div id="actionButtons"></div>
+        </header>
+
+        <div class="inspo-card bg-pastel-blue p-4 mb-4 d-flex align-items-center justify-content-between">
+            <div class="position-relative z-1">
+                <h3 class="fw-bold text-olive mb-1">Session Summary ✨</h3>
+                <p class="text-olive opacity-75 mb-0 fw-medium">
+                    You stayed consistent on <span id="viewDateDisplay">--</span>.
+                </p>
+            </div>
+            <i class="fa-solid fa-award card-bg-overlay text-olive opacity-25"></i>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <div class="row g-3 mb-4">
+                    <div class="col-6">
+                        <div class="inspo-card p-4 bg-olive text-white h-100">
+                            <small class="text-cream opacity-75 fw-bold text-uppercase d-block mb-1" style="font-size: 0.6rem;">Duration</small>
+                            <div id="durationViewContainer">
+                                <h3 class="fw-bold mb-0" id="viewDuration">0 <span class="fs-6 fw-normal">min</span></h3>
+                            </div>
+                            <div id="durationEditContainer" class="d-none">
+                                <input type="number" id="editDuration" class="form-control edit-input-transparent fw-bold fs-3 w-100">
+                            </div>
+                            <i class="fa-solid fa-stopwatch card-bg-overlay opacity-25" style="font-size: 4rem;"></i>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="inspo-card p-4 bg-sage text-white h-100">
+                            <small class="text-cream opacity-75 fw-bold text-uppercase d-block mb-1" style="font-size: 0.6rem;">Intensity</small>
+                            <div id="intensityViewContainer">
+                                <h3 class="fw-bold mb-0" id="viewIntensity">Med</h3>
+                            </div>
+                            <div id="intensityEditContainer" class="d-none">
+                                <select id="editIntensity" class="form-select edit-input-transparent fw-bold fs-5">
+                                    <option value="Low">Low</option>
+                                    <option value="Med">Med</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
+                            <i class="fa-solid fa-fire card-bg-overlay opacity-25" style="font-size: 4rem;"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inspo-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-light rounded-3 p-2 me-2"><i class="fa-solid fa-pen-nib text-olive"></i></div>
+                        <h5 class="fw-bold text-olive mb-0">Session Notes</h5>
+                    </div>
+                    <p class="text-muted mb-4" id="viewNotes">No notes provided.</p>
+                    <div id="notesEditContainer" class="d-none mb-4">
+                        <textarea id="editNotes" class="form-control border-sand" rows="4"></textarea>
+                    </div>
+                    <div class="pt-3 border-top border-sand">
+                        <small class="text-muted fw-bold text-uppercase" style="font-size: 0.65rem;">Logged Date</small>
+                        <p class="fw-bold text-olive mb-0" id="viewDate">--</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="inspo-card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold text-olive mb-0">Workout Proof</h5>
+                        <span class="badge bg-cream text-olive border border-sand rounded-pill px-3" id="photoCount">0 Photos</span>
+                    </div>
+
+                    <div id="imageEditContainer" class="d-none mb-4">
+                        <div class="p-3 border border-dashed rounded-3 bg-light text-center">
+                            <i class="fa-solid fa-cloud-arrow-up text-olive fs-2 mb-2"></i>
+                            <p class="small fw-bold text-muted mb-2">Upload New Photo</p>
+                            <input type="file" id="fileInput" class="form-control form-control-sm" accept="image/*" onchange="handleFileUpload(this)" multiple>
+                        </div>
+                    </div>
+
+                    <div id="viewGallery" class="row g-3"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="../js/sidebar.js"></script>
+<script src="../js/activityDetails.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+.inspo-card {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(84, 107, 65, 0.05);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.card-bg-overlay {
+    position: absolute; right: -20px; bottom: -20px;
+    font-size: 8rem; opacity: 0.1; z-index: 0; transform: rotate(-15deg);
+}
+.text-olive { color: #546B41; }
+.bg-olive { background-color: #546B41; }
+.bg-sage { background-color: #99AD7A; }
+.text-cream { color: #F5F5DC; }
+
+.gallery-img-container {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.gallery-img {
+    width: 100%; height: 250px; object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.delete-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(220, 53, 69, 0.8);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s ease;
+    cursor: pointer; z-index: 2;
+}
+
+.gallery-img-container:hover .delete-overlay.active {
+    opacity: 1;
+}
+
+.edit-input-transparent {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white; border-radius: 8px; padding: 2px 8px;
+}
+.edit-input-transparent:focus {
+    background: rgba(255, 255, 255, 0.3);
+    color: white; box-shadow: none; border-color: white;
+}
+select.edit-input-transparent option { color: #546B41; }
+
+.delete-overlay {
+    pointer-events: none; /* Makes it unclickable by default */
+}
+
+.delete-overlay.active {
+    pointer-events: auto; /* Re-enables clicking when active class is present */
+}

@@ -1,3 +1,10 @@
+:root {
+    --olive: #556B2F;
+    --sand: #D2B48C;
+    --premium-gold: #C5A059;
+    --off-white: #F8F5F0;
+}
+
 .main-content {
     background-color: var(--color-cream);
 }
@@ -34,4 +41,29 @@
     height: 100%;
     overflow: hidden;
     position: relative;
+}
+
+.form{
+    height: fit-content;
+}
+
+#imageGalleryPreview img {
+    border: 1px solid var(--sand);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+#imageGalleryPreview img:hover {
+    transform: scale(1.05);
+    border-color: var(--olive);
+}
+
+#workoutPhotos::file-selector-button {
+    background-color: #f8f5f0;
+    color: #4a4a2e;
+    border: 1px solid #dcd7cc;
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8rem;
+    cursor: pointer;
 }
