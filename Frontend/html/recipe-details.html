@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hummus Avocado Toast - Flow State</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nutrition.css">
+</head>
+<body>
+    <div class="dashboard-wrapper d-flex min-vh-100">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content flex-grow-1 p-4">
+            
+            <header class="d-flex align-items-center mb-5">
+                <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
+                    <i class="fa-solid fa-bars fs-5"></i>
+                </button>
+                <h2 class="fw-bold text-olive mb-0">Recipe Details</h2>
+            </header>
+
+            <!-- THE DYNAMIC BACK BUTTON -->
+            <!-- We use href="#" as a temporary placeholder until JS takes over -->
+            <a href="#" id="dynamicBackBtn" class="text-decoration-none text-muted d-inline-block mb-4">
+                <i class="fa-solid fa-arrow-left me-2"></i> <span id="backBtnText">Back</span>
+            </a>
+
+            <div class="p-5 rounded-4" style="background-color: #fcefdc;">
+                <div class="row">
+                    
+                    <div class="col-md-4 text-center mb-4">
+                        <img src="../images/recipes/hummus-avocado-toast.png" class="img-fluid rounded-3 mb-3" alt="Recipe Image">
+                        <h3 class="fw-bold text-olive">Hummus Avocado Toast</h3>
+                        <p class="text-muted"><i class="fa-regular fa-clock me-1"></i> 5 mins | 🌱 Vegan</p>
+                        
+                        <!-- NUTRITION OVERVIEW CARD -->
+                        <div class="card border-0 shadow-sm mb-3">
+                            <div class="card-body text-center p-4">
+                                
+                                <!-- The Main Calorie Count -->
+                                <h3 class="fw-bold text-success mb-4">527 kcal</h3>
+                                
+                                <!-- The Macro Progress Bars -->
+                                <div class="px-2 text-start">
+                                    
+                                    <!-- Carbs -->
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between small fw-bold mb-1 text-muted">
+                                            <span>Carbs (45g)</span> <span>48%</span>
+                                        </div>
+                                        <!-- Note: height is set to 6px for a sleek, modern look! -->
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar bg-warning" style="width: 48%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Fat -->
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between small fw-bold mb-1 text-muted">
+                                            <span>Fat (30g)</span> <span>32%</span>
+                                        </div>
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar bg-info" style="width: 32%"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Protein -->
+                                    <div class="mb-2">
+                                        <div class="d-flex justify-content-between small fw-bold mb-1 text-muted">
+                                            <span>Protein (19g)</span> <span>20%</span>
+                                        </div>
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar" style="width: 20%; background-color: #6f42c1;"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <!-- Save Button -->
+                            <button id="detailsFavBtn" class="btn btn-outline-pink w-100 mb-2" onclick="toggleRecipeDetailsFavorite()">
+                                <i id="detailsFavIcon" class="fa-regular fa-heart"></i> <span id="detailsFavText">Save to Favorites</span>
+                            </button>
+                            <!-- Edit/Customize Button -->
+                            <a href="edit-recipe.html" class="btn btn-success">
+                                <i class="fa-solid fa-pen me-2"></i>Customize Recipe
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <h4 class="fw-bold mb-3">Ingredients</h4>
+                        <ul class="mb-4">
+                            <li>2 slices Whole Wheat Bread</li>
+                            <li>1/2 Avocado, mashed</li>
+                            <li>2 tbsp Hummus</li>
+                            <li>Pinch of salt, pepper, and chili flakes</li>
+                        </ul>
+
+                        <h4 class="fw-bold mb-3">Instructions</h4>
+                        <ol>
+                            <li class="mb-2">Toast the slices of bread to your desired crunchiness.</li>
+                            <li class="mb-2">Spread 1 tablespoon of hummus evenly on each slice of toast.</li>
+                            <li class="mb-2">Top with mashed avocado.</li>
+                            <li class="mb-2">Sprinkle with salt, pepper, and a pinch of chili flakes before serving.</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/recipe-details.js"></script>
+    <script src="../js/sidebar.js"></script> 
+    <script src="../js/main.js"></script>
+</body>
+</html>
