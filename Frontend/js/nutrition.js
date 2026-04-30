@@ -377,3 +377,53 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+// ==========================================
+// RECIPE SEARCH ENGINE (DOM Filtering)
+// ==========================================
+document.addEventListener("DOMContentLoaded", function() {
+    let searchInput = document.getElementById('recipeSearchInput');
+
+    if (searchInput) {
+        searchInput.addEventListener('keyup', function() {
+            let searchTerm = searchInput.value.toLowerCase();
+            let container = document.getElementById('allRecipesContainer');
+            let cardColumns = container.querySelectorAll('[class*="col-"]'); 
+            
+            // 1. Set up our tracker and grab the empty state message
+            let visibleCount = 0;
+            let noResultsMessage = document.getElementById('noResultsMessage');
+
+            cardColumns.forEach(column => {
+                // Safety check: Don't accidentally hide/show the empty state message during the card loop!
+                if (column.id === 'noResultsMessage') return; 
+
+                let titleElement = column.querySelector('.fw-bold, h5, h6'); 
+                
+                if (titleElement) {
+                    let titleText = titleElement.innerText.toLowerCase();
+
+                    if (titleText.includes(searchTerm)) {
+                        column.style.display = ""; 
+                        // 2. We found a match! Increase the count
+                        visibleCount++; 
+                    } else {
+                        column.style.display = "none"; 
+                    }
+                }
+            });
+
+            // 3. The Final Check: Did we find any cards?
+            if (noResultsMessage) {
+                if (visibleCount === 0) {
+                    // No matches found, reveal the friendly message
+                    noResultsMessage.style.display = "block";
+                } else {
+                    // Matches were found, keep the message hidden
+                    noResultsMessage.style.display = "none";
+                }
+            }
+            
+        });
+    }
+});
