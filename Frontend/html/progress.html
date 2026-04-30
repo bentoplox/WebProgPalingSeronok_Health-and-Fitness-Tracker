@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/progress.css">
 </head>
 
@@ -43,35 +42,374 @@
 
             <div class="row g-4 mb-4">
 
-                <div class="col-lg-8">
-                    <div class="inspo-card p-4 h-100 d-flex flex-column">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h5 class="fw-bold text-olive mb-0">Overview Analytics</h5>
-                            <select id="timeframeSelector"
-                                class="form-select form-select-sm w-auto border-sand text-muted rounded-pill px-3 fw-bold bg-cream border-0">
-                                <option value="monthly">Monthly View</option>
-                                <option value="weekly">Weekly View</option>
-                            </select>
+                <!-- OVERVIEW ANALYTICS (CALENDAR STYLE) -->
+                <div class="col-lg-7">
+                    <div class="inspo-card p-4 h-100 d-flex flex-column bg-white border-sand rounded-extra shadow-sm">
+
+                        <!-- Dynamic Calendar Header -->
+                        <div
+                            class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-sand border-opacity-50">
+                            <div>
+                                <h4 id="calendar-title" class="fw-bold text-olive mb-0">May 2026</h4>
+                                <p class="text-muted small mb-0 fw-medium">Your monthly activity snapshot</p>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button id="prevMonthBtn"
+                                    class="btn btn-sm bg-pastel-blue text-olive border-sand rounded-3 px-3 hover-elevate">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button id="nextMonthBtn"
+                                    class="btn btn-sm bg-pastel-blue text-olive border-sand rounded-3 px-3 hover-elevate">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="flex-grow-1" style="min-height: 250px; position: relative;">
-                            <canvas id="overviewBarChart"></canvas>
+                        <div class="calendar-wrapper mb-4 px-lg-4 flex-grow-1">
+
+                            <!-- Days of the Week Header -->
+                            <div class="d-grid text-center mb-3"
+                                style="grid-template-columns: repeat(7, 1fr); gap: 10px;">
+                                <div class="text-muted fw-bold small text-uppercase" style="letter-spacing: 1px;">M
+                                </div>
+                                <div class="text-muted fw-bold small text-uppercase" style="letter-spacing: 1px;">T
+                                </div>
+                                <div class="text-muted fw-bold small text-uppercase" style="letter-spacing: 1px;">W
+                                </div>
+                                <div class="text-muted fw-bold small text-uppercase" style="letter-spacing: 1px;">T
+                                </div>
+                                <div class="text-muted fw-bold small text-uppercase" style="letter-spacing: 1px;">F
+                                </div>
+                                <div class="text-muted fw-bold small text-uppercase" style="letter-spacing: 1px;">S
+                                </div>
+                                <div class="text-muted fw-bold small text-uppercase" style="letter-spacing: 1px;">S
+                                </div>
+                            </div>
+
+                            <!-- ========================================== -->
+                            <!-- MAY 2026 GRID (Active) -->
+                            <!-- ========================================== -->
+                            <div id="grid-may" class="d-grid text-center calendar-month-grid"
+                                style="grid-template-columns: repeat(7, 1fr); gap: 10px; row-gap: 15px;">
+                                <!-- Row 1 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">27</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm hover-elevate"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">28</span><i
+                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm hover-elevate"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">29</span><i
+                                        class="fa-solid fa-person-running"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">30</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-pastel-blue text-olive border border-2 border-amber shadow-sm hover-elevate"
+                                    style="width: 45px; height: 45px; position: relative;"><span
+                                        class="fw-bold lh-1">1</span><i class="fa-solid fa-water"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle text-olive hover-elevate"
+                                    style="width: 45px; height: 45px; border: 1px dashed var(--color-sand);">2</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle text-olive hover-elevate"
+                                    style="width: 45px; height: 45px; border: 1px dashed var(--color-sand);">3</div>
+                                <!-- Row 2 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">4</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">5</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">6</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">7</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">8</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">9</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">10</div>
+                                <!-- Row 3 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">11</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">12</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">13</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">14</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">15</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">16</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">17</div>
+                                <!-- Row 4 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">18</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">19</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">20</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">21</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">22</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">23</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">24</div>
+                                <!-- Row 5 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">25</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">26</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">27</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">28</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">29</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">30</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">31</div>
+                            </div>
+
+                            <!-- ========================================== -->
+                            <!-- APRIL 2026 GRID (Hidden by default) -->
+                            <!-- ========================================== -->
+                            <div id="grid-apr" class="d-grid text-center calendar-month-grid d-none"
+                                style="grid-template-columns: repeat(7, 1fr); gap: 10px; row-gap: 15px;">
+                                <!-- Row 1 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">30</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">31</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">1</span><i
+                                        class="fa-solid fa-person-running"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">2</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">3</span><i
+                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">4</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">5</div>
+                                <!-- Row 2 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">6</span><i
+                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">7</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">8</span><i
+                                        class="fa-solid fa-person-running"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">9</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">10</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">11</span><i
+                                        class="fa-solid fa-water" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">12</div>
+                                <!-- Row 3 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">13</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">14</span><i
+                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">15</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">16</span><i
+                                        class="fa-solid fa-person-running"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">17</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">18</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">19</div>
+                                <!-- Row 4 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">20</span><i
+                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">21</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">22</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">23</span><i
+                                        class="fa-solid fa-person-running"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">24</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">25</span><i
+                                        class="fa-solid fa-water" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">26</div>
+                                <!-- Row 5 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">27</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">28</span><i
+                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">29</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">30</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">1</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">2</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">3</div>
+                            </div>
+
+                            <!-- ========================================== -->
+                            <!-- MARCH 2026 GRID (Hidden by default) -->
+                            <!-- ========================================== -->
+                            <div id="grid-mar" class="d-grid text-center calendar-month-grid d-none"
+                                style="grid-template-columns: repeat(7, 1fr); gap: 10px; row-gap: 15px;">
+                                <!-- Row 1 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">23</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">24</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">25</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">26</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">27</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">28</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">1</span><i
+                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <!-- Row 2 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">2</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">3</span><i
+                                        class="fa-solid fa-person-running"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">4</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">5</span><i
+                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">6</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">7</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">8</span><i
+                                        class="fa-solid fa-water" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <!-- Row 3 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">9</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">10</span><i
+                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">11</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">12</span><i
+                                        class="fa-solid fa-person-running"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">13</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">14</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">15</div>
+                                <!-- Row 4 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">16</span><i
+                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">17</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">18</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">19</span><i
+                                        class="fa-solid fa-person-running"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">20</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">21</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">22</div>
+                                <!-- Row 5 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">23</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">24</span><i
+                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">25</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">26</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
+                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">27</span><i
+                                        class="fa-solid fa-person-running"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">28</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">29</div>
+                                <!-- Row 6 -->
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">30</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
+                                    style="width: 45px; height: 45px;">31</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">1</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">2</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">3</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">4</div>
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">5</div>
+                            </div>
                         </div>
 
-                        <div class="row text-center mt-5">
+                        <!-- DYNAMIC KPI FOOTER -->
+                        <div class="row text-center mt-auto pt-4 border-top border-sand border-opacity-50">
                             <div class="col">
                                 <small class="text-muted fw-bold d-block text-uppercase"
                                     style="font-size: 0.7rem;">Active Days</small>
                                 <h5 id="kpi-active" class="fw-bold text-amber mb-0 display-6">14 <span
-                                        class="fs-6 fw-normal text-muted">/ 30</span></h5>
+                                        class="fs-6 fw-normal text-muted">/ 31</span></h5>
                             </div>
 
-                            <div class="col">
+                            <div class="col border-start border-end border-sand border-opacity-50">
                                 <small class="text-muted fw-bold d-block text-uppercase"
                                     style="font-size: 0.7rem;">Active Streak</small>
-                                <h5 id="kpi-streak" class="fw-bold text-amber mb-0 display-6">
-                                    5 <span class="fs-6 fw-normal text-muted">Weeks</span>
-                                </h5>
+                                <h5 id="kpi-streak" class="fw-bold text-amber mb-0 display-6">3 <span
+                                        class="fs-6 fw-normal text-muted">Weeks</span></h5>
                             </div>
 
                             <div class="col">
@@ -84,7 +422,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 d-flex flex-column gap-4">
+                <div class="col-lg-5 d-flex flex-column gap-4">
 
                     <div class="inspo-card p-4 h-100 bg-olive text-white position-relative overflow-hidden">
                         <div class="position-relative z-1">
@@ -134,7 +472,6 @@
             </div>
 
             <div class="row g-4">
-
                 <div class="col-md-4">
                     <div class="inspo-card p-4 text-center h-100 d-flex flex-column">
                         <div class="icon-box-large bg-pastel-blue text-olive mx-auto">
@@ -142,7 +479,6 @@
                         </div>
                         <h5 class="fw-bold text-olive mb-1">Strength Training</h5>
                         <small class="text-muted d-block mb-4 fw-bold">5 sessions / week</small>
-
                         <div class="mt-auto">
                             <div class="d-flex justify-content-between mb-2">
                                 <small class="fw-bold text-muted">Progress</small>
@@ -153,7 +489,6 @@
                                 <div class="progress-bar rounded-pill"
                                     style="width: 60%; background-color: var(--color-olive);"></div>
                             </div>
-
                             <div class="d-flex justify-content-between align-items-center mt-4">
                                 <small class="text-muted fw-bold">3 / 5 Sessions</small>
                                 <span
@@ -171,7 +506,6 @@
                         </div>
                         <h5 class="fw-bold text-olive mb-1">Cardio Running</h5>
                         <small class="text-muted d-block mb-4 fw-bold">1 session / week</small>
-
                         <div class="mt-auto">
                             <div class="d-flex justify-content-between mb-2">
                                 <small class="fw-bold text-muted">Progress</small>
@@ -182,7 +516,6 @@
                                 <div class="progress-bar rounded-pill"
                                     style="width: 0%; background-color: var(--color-sage);"></div>
                             </div>
-
                             <div class="d-flex justify-content-between align-items-center mt-4">
                                 <small class="text-muted fw-bold">0 / 1 Session</small>
                                 <span
@@ -200,7 +533,6 @@
                         </div>
                         <h5 class="fw-bold text-olive mb-1">Pool Laps</h5>
                         <small class="text-muted d-block mb-4 fw-bold">1 session / week</small>
-
                         <div class="mt-auto">
                             <div class="d-flex justify-content-between mb-2">
                                 <small class="fw-bold text-muted">Progress</small>
@@ -211,7 +543,6 @@
                                 <div class="progress-bar rounded-pill"
                                     style="width: 100%; background-color: var(--color-sage);"></div>
                             </div>
-
                             <div class="d-flex justify-content-between align-items-center mt-4">
                                 <small class="text-muted fw-bold">1 / 1 Session</small>
                                 <span class="badge bg-sage bg-opacity-25 text-olive rounded-pill px-3 py-2 shadow-sm"><i
@@ -220,9 +551,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
 
         </main>
     </div>
@@ -230,7 +559,64 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/sidebar.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/progress_barchart.js"></script>
+
+    <!-- NEW INTERACTIVE CALENDAR SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Data logic for the 3 months
+            const monthData = [
+                { id: 'grid-mar', title: 'March 2026', active: 18, total: 31, streak: 2, hit: 78 },
+                { id: 'grid-apr', title: 'April 2026', active: 22, total: 30, streak: 4, hit: 92 },
+                { id: 'grid-may', title: 'May 2026', active: 14, total: 31, streak: 3, hit: 85 }
+            ];
+
+            let currentIndex = 2; // Starts on May 2026
+
+            const titleEl = document.getElementById('calendar-title');
+            const btnPrev = document.getElementById('prevMonthBtn');
+            const btnNext = document.getElementById('nextMonthBtn');
+
+            const kpiActive = document.getElementById('kpi-active');
+            const kpiStreak = document.getElementById('kpi-streak');
+            const kpiHitRate = document.getElementById('kpi-hitrate');
+
+            function updateCalendar() {
+                const currentMonth = monthData[currentIndex];
+
+                // 1. Update Title
+                titleEl.innerText = currentMonth.title;
+
+                // 2. Hide all grids, show active grid
+                document.querySelectorAll('.calendar-month-grid').forEach(grid => grid.classList.add('d-none'));
+                document.getElementById(currentMonth.id).classList.remove('d-none');
+
+                // 3. Update the KPI numbers
+                kpiActive.innerHTML = `${currentMonth.active} <span class="fs-6 fw-normal text-muted">/ ${currentMonth.total}</span>`;
+                kpiStreak.innerHTML = `${currentMonth.streak} <span class="fs-6 fw-normal text-muted">Weeks</span>`;
+                kpiHitRate.innerHTML = `${currentMonth.hit} <span class="fs-6 fw-normal text-muted">%</span>`;
+
+                // Disable buttons if at edges
+                btnPrev.disabled = currentIndex === 0;
+                btnNext.disabled = currentIndex === monthData.length - 1;
+
+                // Adjust button styles dynamically
+                btnPrev.style.opacity = currentIndex === 0 ? "0.3" : "1";
+                btnNext.style.opacity = currentIndex === monthData.length - 1 ? "0.3" : "1";
+            }
+
+            // Click Events
+            btnPrev.addEventListener('click', () => {
+                if (currentIndex > 0) { currentIndex--; updateCalendar(); }
+            });
+
+            btnNext.addEventListener('click', () => {
+                if (currentIndex < monthData.length - 1) { currentIndex++; updateCalendar(); }
+            });
+
+            // Initialize default state
+            updateCalendar();
+        });
+    </script>
 </body>
 
 </html>
