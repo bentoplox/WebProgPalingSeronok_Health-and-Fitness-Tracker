@@ -7,12 +7,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/nutrition.css">
+
 </head>
 <body>
     <div class="dashboard-wrapper d-flex min-vh-100">
         <div id="sidebar-container"></div>
 
         <main class="main-content flex-grow-1 p-4">
+            <!-- 1. Keep the Sidebar Toggle up top -->
+            <header class="d-flex align-items-center mb-4">
+                <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
+                    <i class="fa-solid fa-bars fs-5"></i>
+                </button>
+                <h2 class="fw-bold text-olive mb-0">Saved Recipes</h2>
+            </header>
             <div class="mt-4 p-5 rounded-4" style="background-color: #fcefdc;">
                 <!-- THE BACK BUTTON -->
                 <!-- d-inline-block lets us add margin to the bottom. text-decoration-none removes the ugly blue underline! -->

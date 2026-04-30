@@ -13,34 +13,62 @@
         <div id="sidebar-container"></div>
 
         <main class="main-content flex-grow-1 p-4">
-            <header class="d-flex align-items-center mb-5">
+            <!-- 1. Keep the Sidebar Toggle up top -->
+            <header class="d-flex align-items-center mb-4">
                 <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
                     <i class="fa-solid fa-bars fs-5"></i>
                 </button>
                 <h2 class="fw-bold text-olive mb-0">Custom Recipes</h2>
             </header>
 
-            <a href="nutrition.html" class="text-decoration-none text-olive mb-4 d-inline-block">
-                <i class="fa-solid fa-arrow-left me-2"></i>Back to Planner
-            </a>
+            <!-- 2. The Beige Wrapper (Matches Saved Recipes) -->
+            <div class="mt-4 p-5 rounded-4" style="background-color: #fcefdc;">
+                
+                <!-- THE BACK BUTTON -->
+                <a href="nutrition.html" class="text-decoration-none text-muted d-inline-block mb-4">
+                    <i class="fa-solid fa-arrow-left me-2"></i> Back to Planner
+                </a>
 
-            <!-- The Grid -->
-            <div class="row mt-3">
-                <!-- Recipe Card 1 -->
-                <div class="col-md-3 mb-4">
-                    <div class="card h-100 shadow-sm border-0" style="background-color: #fcefdc;">
-                        <img src="../images/recipes/hummus-avocado-toast.png" class="card-img-top" alt="Food">
-                        <div class="card-body text-center">
-                            <h6 class="fw-bold text-olive">Hummus Avocado Toast</h6>
-                            <p class="text-muted small"><i class="fa-regular fa-clock"></i> 5 mins | 🌱 Vegan</p>
-                            <h5 class="text-success fw-bold mb-3">527 kcal</h5>
-                            <a href="recipe-details.html" class="btn btn-outline-success w-100">View Recipe</a>
-                        </div>
-                    </div>
+                <!-- Centered Titles -->
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold">My Custom Recipes</h2>
+                    <p class="text-muted">Meals you have tweaked, created, and customized.</p>
                 </div>
-                <!-- You can copy-paste that col-md-3 block to add more cards -->
-            </div>
 
+                <!-- 3. The Grid (Centered) -->
+                <div class="row justify-content-center g-4">
+                    
+                    <!-- Updated Recipe Card (Using your span button fix!) -->
+                    <div class="col-md-3">
+                        <a href="recipe-details.html" class="text-decoration-none text-dark d-block h-100 position-relative">
+                            <div class="card h-100 shadow-sm border-0 rounded-extra hover-elevate">
+                                <img src="../images/recipes/hummus-avocado-toast.png" class="card-img-top" alt="Hummus Avocado Toast" style="height: 160px; object-fit: cover; border-radius: 8px 8px 0 0;">
+                                <div class="card-body text-center d-flex flex-column">
+                                    <div><span class="badge bg-success me-1 mb-2">Low Calorie</span></div>
+                                    <h6 class="card-title fw-bold mb-1">Hummus Avocado Toast (My Version)</h6>
+                                    <small class="text-muted mb-3">🕒 15 mins | 🥦 Vegan</small>
+                                    <h5 class="fw-bold calories-text mb-3">496 kcal</h5>
+                                    <span class="btn btn-recipe mt-auto">View Recipe</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- THE UX BONUS: "Create New" Card -->
+                    <div class="col-md-3">
+                        <a href="edit-recipe.html" class="text-decoration-none text-dark d-block h-100">
+                            <!-- Dashed border and transparent background makes it look like an "add" slot -->
+                            <div class="card h-100 shadow-sm border-2 rounded-extra hover-elevate d-flex justify-content-center align-items-center" style="background-color: transparent; border: 2px dashed #bcaaa4 !important; min-height: 280px;">
+                                <div class="text-center text-muted">
+                                    <i class="fa-solid fa-plus-circle fs-1 mb-2 text-success"></i>
+                                    <h6 class="fw-bold">Create New Recipe</h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
         </main>
     </div>
 
