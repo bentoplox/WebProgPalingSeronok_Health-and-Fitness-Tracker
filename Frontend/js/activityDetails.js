@@ -34,6 +34,8 @@ function renderViewMode() {
     document.getElementById('viewNotes').innerText = currentActivity.notes || "No notes.";
     document.getElementById('viewDate').innerText = currentActivity.date;
     document.getElementById('viewDateDisplay').innerText = currentActivity.date;
+    document.getElementById('viewCalories').innerHTML = `${currentActivity.calories} <span class="fs-6 fw-normal">kcal</span>`;
+
 
     document.getElementById('actionButtons').innerHTML = `
         <button onclick="toggleEditMode()" class="btn btn-outline-secondary border-sand text-olive btn-sm rounded-pill px-3">
@@ -167,10 +169,41 @@ function renderGallery(images) {
 }
 
 function getMockActivity(){
+    function newActivity(id, name, type, date, duration,intensity, images, notes){
+        return {
+            id:id,
+            name: name,
+            type: type,
+            date: date,
+            duration: duration,
+            calories: Math.floor(Math.random() * (1000 - 300 + 1)) + 300,
+            images: images,
+            intensity: intensity,
+            notes: notes
+        }
+    }
     return [
-        { id:0, name: "Morning KLCC Run", type: "Running", date: "2026-04-28", duration: 45, intensity: "High", images: ["../images/mock/KlccRunMock1.jpg", "../images/mock/KlccRunMock2.jpg" ], notes: "Great weather!" },
-        { id:1, name: "Sunset Yoga", type: "Yoga", date: "2026-04-29", duration: 60, intensity: "Low", images: [], notes: "Relaxing." }
-    ];
+        newActivity(
+            0,                // Unique ID using timestamp
+            "Morning KLCC Run",         // Name
+            "Running",                  // Type
+            "2026-04-28",               // Date
+            45,                         // Duration
+            "High",                     // Intensity
+            ["../images/mock/KlccRunMock1.jpg", "../images/mock/KlccRunMock2.jpg" ], // Image Array
+            "Great weather today at the park! Managed to beat my personal best." // Notes
+        ),
+        newActivity(
+            1,             // Unique ID (offset to ensure uniqueness)
+            "Sunset Yoga Session",      // Name
+            "Yoga",                     // Type
+            "2026-04-29",               // Date
+            60,                         // Duration
+            "Low",                      // Intensity
+            ["../images/mock/yoga1.jpg"], // Image Array
+            "Focused on flexibility and breathing. Felt very relaxed afterward." // Notes
+        )
+    ]
 }
 
 initializePage();

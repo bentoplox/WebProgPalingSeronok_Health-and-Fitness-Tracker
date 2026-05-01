@@ -316,7 +316,7 @@ function getMockActivity(){
             "2026-04-28",               // Date
             45,                         // Duration
             "High",                     // Intensity
-            ["../images/mock/run1.jpg", "../images/mock/run2.jpg"], // Image Array
+            ["../images/mock/KlccRunMock1.jpg", "../images/mock/KlccRunMock2.jpg" ], // Image Array
             "Great weather today at the park! Managed to beat my personal best." // Notes
         ),
         newActivity(
