@@ -159,6 +159,30 @@ if(saveBtn) {
     });
 }
 
+// ==========================================
+// DYNAMIC BREADCRUMB ROUTER
+// ==========================================
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Grab the origin (e.g., CUSTOM RECIPES)
+    let origin = localStorage.getItem('recipeOrigin') || 'VIEW ALL RECIPES';
+    
+    // 2. Grab our new path crumb (Did they click 'create' or 'customize'?)
+    let editPath = localStorage.getItem('editPath') || 'create'; 
+    
+    let breadcrumb = document.getElementById('dynamic-breadcrumb');
+    
+    // 3. Build the accurate trail based on the path!
+    if (breadcrumb) {
+        if (editPath === 'customize') {
+            // If they came from an existing recipe:
+            breadcrumb.innerText = "NUTRITION PLANNER / " + origin + " / RECIPE DETAILS / CREATE NEW RECIPE";
+        } else {
+            // If they clicked the blank Create New card:
+            breadcrumb.innerText = "NUTRITION PLANNER / " + origin + " / CREATE NEW RECIPE";
+        }
+    }
+});
+
 // Initial setup on page load
 updateStepNumbers();
 recalculateMacros(); 
