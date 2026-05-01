@@ -5,15 +5,18 @@
 .main-content {
     padding: 40px 60px;
     background-image: linear-gradient(rgba(218, 204, 172, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(218, 204, 172, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px; /* Subtle grid texture */
+    background-size: 50px 50px;
+    /* Subtle grid texture */
 }
 
 /* Card Design (Stronger Shadows, defined Radius) */
-.stat-card, .content-card {
+.stat-card,
+.content-card {
     background: #ffffff;
     border-radius: 24px;
     padding: 32px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03); /* Lighter, broader shadow */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    /* Lighter, broader shadow */
     transition: var(--transition-smooth);
     height: 100%;
     position: relative;
@@ -27,14 +30,21 @@
     top: 15px;
     right: 15px;
     font-size: 1.5rem;
-    color: var(--color-sage);
-    opacity: 0.1;
+    color: var(--color-blue-pastel); /* Changed from sage to pastel blue */
+    opacity: 0.8; /* Increased from 0.1 to 0.8 to make it clearly visible */
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
+    transition: var(--transition-smooth)
 }
-.stat-card[onclick]::after { content: "\f0a9"; } /* Chevron Circle Right */
 
-.stat-card:hover, .content-card:hover {
+.stat-card[onclick]::after { 
+    content: "\f0a9";
+}
+
+/* Chevron Circle Right */
+
+.stat-card:hover,
+.content-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.06);
 }
@@ -52,7 +62,8 @@
 .stat-number {
     font-size: 3.5rem;
     font-weight: 800;
-    color: var(--color-amber-gold); /* Amber pop! */
+    color: var(--color-amber-gold);
+    /* Amber pop! */
     line-height: 1;
 }
 
@@ -63,12 +74,19 @@
 }
 
 /* Top Activities List (Compact) */
-.vr { width: 2px; opacity: 0.2; } /* Softer Vertical divider */
+.vr {
+    width: 2px;
+    opacity: 0.2;
+}
+
+/* Softer Vertical divider */
 
 /* Reminder Boxes for Dark Background (V2 Glassmorphism) */
 .reminder-box {
-    background: rgba(255, 255, 255, 0.4); /* Transparent glass */
-    backdrop-filter: blur(5px); /* Frost effect */
+    background: rgba(255, 255, 255, 0.4);
+    /* Transparent glass */
+    backdrop-filter: blur(5px);
+    /* Frost effect */
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     padding: 16px;
     border-radius: 16px;

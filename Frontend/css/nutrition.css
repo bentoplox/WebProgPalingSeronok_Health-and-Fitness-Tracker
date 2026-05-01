@@ -91,3 +91,81 @@ body {
 .calories-text {
     color: #395e32; 
 }
+
+/* Custom utility class for smooth hover elevation */
+.hover-elevate {
+    /* The transition makes the animation smooth instead of instant */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.hover-elevate:hover {
+    /* Moves the card up by 5 pixels */
+    transform: translateY(-5px); 
+    
+    /* Creates a soft, widespread shadow to make it look like it's floating */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important; 
+    
+    /* Optional: changes the cursor to a pointer so it feels clickable */
+    cursor: pointer; 
+}
+
+/* 1. Custom Theme Border for Saved and Custom Recipes cards */
+.border-olive {
+    /* Adjust this hex code to exactly match the green from your dashboard! */
+    border: 2px solid #5C715E !important; 
+}
+
+/* 2. Custom Extra-Round Corners */
+.rounded-extra {
+    border-radius: 20px !important; 
+}
+
+/* Creates a perfect circle for the step numbers */
+.step-badge {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+/* Strips the box away from inputs to leave a clean underline */
+.input-underlined {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    border-radius: 0;
+    box-shadow: none !important; /* Prevents the blue glow */
+    background-color: transparent;
+}
+
+/* Changes the underline color to green when clicking on it */
+.input-underlined:focus {
+    border-bottom-color: #198754; /* Bootstrap success green */
+}
+
+/* Custom Pink Button Styles */
+/* 1. INACTIVE STATE (Not Saved) */
+.btn-outline-pink {
+    color: #e07a82; /* Rosy salmon text */
+    border-color: #e07a82; /* Matching border */
+    background-color: transparent; 
+}
+
+.btn-outline-pink:hover {
+    background-color: #e07a82; /* Fills in with salmon on hover */
+    color: white;
+}
+
+/* 2. ACTIVE STATE (Saved to Favorites) */
+.btn-pink {
+    background-color: #e07a82; /* Solid rosy salmon background */
+    color: white;
+    border: 1px solid #e07a82;
+}
+
+.btn-pink:hover {
+    background-color: #cf666e; /* A slightly darker, richer salmon for the hover effect */
+    color: white;
+    border-color: #cf666e;
+}
