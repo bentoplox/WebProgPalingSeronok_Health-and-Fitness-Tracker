@@ -1,50 +1,67 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Check if the canvas exists on this page
-    const ctx = document.getElementById('dashboardChart');
+    const ctx = document.getElementById('dashboardChart').getContext('2d');
+    
+    const colorSage = '#99AD7A';    
+    const colorAmber = '#DCAE1D';   
 
     if (ctx) {
         new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                // THE TRICK: We build the dot and the hours directly into the final label!
+                labels: ['MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR  •  35 HRS'],
                 datasets: [{
-                    label: 'Active Minutes',
-                    data: [45, 60, 30, 90, 45, 120, 60], // Your dummy data
-                    borderColor: '#546B41', // Your Olive color
-                    backgroundColor: 'rgba(153, 173, 122, 0.2)', // Your Sage color with 20% opacity for the fill
-                    borderWidth: 2,
-                    pointBackgroundColor: '#546B41',
-                    pointBorderColor: '#ffffff',
-                    pointBorderWidth: 2,
-                    pointRadius: 4,
-                    pointHoverRadius: 6,
-                    fill: true,
-                    tension: 0.4 // Makes the line wavy and smooth
+                    label: 'Active Hours',
+                    data: [5, 2, 3, 6, 12, 25, 45, 60, 80, 40, 50, 35],
+                    backgroundColor: [
+                        colorSage, colorSage, colorSage, colorSage, 
+                        colorSage, colorSage, colorSage, colorSage, 
+                        colorSage, colorSage, colorSage, colorAmber 
+                    ],
+                    barThickness: 4, 
+                    borderRadius: 5,
+                    borderSkipped: false
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                    padding: { bottom: 10 } // Adds a tiny bit of space so our long label doesn't get cut off
+                },
                 plugins: {
-                    legend: { display: false }, // Hides the top legend for a cleaner look
+                    legend: { display: false }, 
                     tooltip: {
-                        backgroundColor: '#1A1A1A',
-                        padding: 10,
+                        backgroundColor: '#344B2A', 
+                        titleColor: '#ffffff',
+                        bodyColor: colorAmber,
                         displayColors: false,
+                        padding: 10,
+                        cornerRadius: 8,
                         callbacks: {
                             label: function (context) {
-                                return context.parsed.y + ' mins';
+                                return context.parsed.y + ' hrs';
                             }
                         }
                     }
                 },
                 scales: {
                     x: {
-                        grid: { display: false }, // Hides vertical grid lines
-                        ticks: { color: '#a0a0a0', font: { size: 11 } }
+                        grid: { display: false }, 
+                        border: { display: false },
+                        ticks: { 
+                            // This highlights the last label (APR) in Amber!
+                            color: function(context) {
+                                return context.index === 11 ? colorAmber : '#a0a0a0';
+                            },
+                            font: { size: 10, weight: 'bold' },
+                            maxRotation: 90, 
+                            minRotation: 90,
+                            autoSkip: false // Ensures it doesn't hide labels to save space
+                        }
                     },
                     y: {
-                        display: false, // Completely hides the Y-axis numbers for a minimalist "widget" look
+                        display: false, 
                         min: 0
                     }
                 }

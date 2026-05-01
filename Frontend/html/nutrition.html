@@ -22,11 +22,14 @@
                 <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
                     <i class="fa-solid fa-bars fs-5"></i>
                 </button>
-                <h2 class="fw-bold text-olive mb-0">Nutrition Planner</h2>
+                <div>
+                    <h2 class="fw-bold text-olive mb-0">Nutrition Planner</h2>
+                    <p class="text-muted small fw-bold mb-1">CALCULATE CALORIES AND PLAN YOUR MEALS</p>
+                </div>
             </header>
 
             <div class="container-fluid">
-                <h5 style="color: grey;" class="mb-4">Plan your meals and track your nutrition</h5>
+                <!-- <h5 style="color: grey;" class="mb-4">Plan your meals and track your nutrition</h5> -->
                 <!-- Quick Access Cards -->
                 <div class="row mb-5">
                     <!-- Card One: Saved Recipes -->
@@ -73,7 +76,7 @@
 
                 <ul class="nav nav-tabs justify-content-center my-4">
                     <li class="nav-item">
-                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#calculator" type="button">Calculator</button>
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#calculator" type="button">Calorie Calculator</button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#generator" type="button">Meal Generator</button>
@@ -217,7 +220,7 @@
                     <!-- MEAL GENERATOR -->
                     <div class="tab-pane fade" id="generator">
                         <div class="mt-4 p-4 rounded-4" style="background-color: #fcefdc;">
-                            <h2 class="text-center">Meal Generator</h2>
+                            <h2 class="text-center fw-bold">Meal Generator</h2>
                             <p class="text-center mb-4"> Generate meal ideas based on your dietary preferences and calorie needs! </p>
                             
                             <div class="row justify-content-center">
@@ -310,18 +313,38 @@
                     </div>
 
                     <div class="tab-pane fade" id="recipe">
-                    <!-- We add the exact same beige box wrapper as your other tabs! -->
-                    <div class="mt-4 p-4 rounded-4" style="background-color: #fcefdc;">
-                        
-                        <div class="text-center mb-5">
-                            <h2 class="fw-bold">All Recipes</h2>
-                            <p class="text-muted">Browse through all the recipes in our database, and save your favourites to your profile!</p>
+                        <div class="mt-4 p-4 rounded-4" style="background-color: #fcefdc;">
+                            
+                            <div class="text-center mb-4">
+                                <h2 class="fw-bold">All Recipes</h2>
+                                <p class="text-muted">Browse through all the recipes and save your favourites to your profile!</p>
+                            </div>
+                            
+                            <!-- THE NEW SEARCH BAR -->
+                            <div class="row justify-content-center mb-5">
+                                <div class="col-md-8 col-lg-6">
+                                    <!-- A rounded-pill input group makes it look like a modern native app -->
+                                    <div class="input-group shadow-sm rounded-pill overflow-hidden border border-white bg-white">
+                                        <span class="input-group-text bg-transparent border-0 text-muted ps-4">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </span>
+                                        <!-- Notice the ID here! -->
+                                        <input type="text" id="recipeSearchInput" class="form-control border-0 py-2 shadow-none" placeholder="Search for meals (e.g., Avocado, Salmon...)">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="allRecipesContainer" class="row justify-content-center g-4">
+                                <!-- Cards live here -->
+                            </div>
+                            
+                            <!-- THE NEW EMPTY STATE MESSAGE (Hidden by default) -->
+                            <div id="noResultsMessage" class="col-12 text-center py-5" style="display: none;">
+                                <i class="fa-solid fa-plate-wheat fs-1 text-muted mb-3 opacity-50"></i>
+                                <h5 class="fw-bold text-muted">No recipes found</h5>
+                                <p class="text-muted small">Try searching for a different meal.</p>
+                            </div>
                         </div>
-                        
-                        <!-- Added g-4 for perfect grid spacing -->
-                        <div id="allRecipesContainer" class="row justify-content-center g-4">
-                        </div>
-                        
                     </div>
                 </div>
             </div>

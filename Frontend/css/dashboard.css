@@ -24,20 +24,20 @@
 }
 
 /* Faint Header Icon Pattern for Cards */
-.stat-card::after,
-.content-card::after {
+.stat-card::after, .content-card::after {
     content: "";
     position: absolute;
     top: 15px;
     right: 15px;
     font-size: 1.5rem;
-    color: var(--color-sage);
-    opacity: 0.1;
+    color: var(--color-blue-pastel); /* Changed from sage to pastel blue */
+    opacity: 0.8; /* Increased from 0.1 to 0.8 to make it clearly visible */
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
+    transition: var(--transition-smooth)
 }
 
-.stat-card[onclick]::after {
+.stat-card[onclick]::after { 
     content: "\f0a9";
 }
 

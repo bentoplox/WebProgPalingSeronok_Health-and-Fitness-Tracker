@@ -252,7 +252,7 @@ function getRecipeBadges(recipe) {
     let badgesHTML = "";
 
     // Insight 1: Low Calorie (Under 500 kcal)
-    if (recipe.calories < 500) {
+    if (recipe.calories <= 500) {
         badgesHTML += `<span class="badge bg-success me-1 mb-2">Low Calorie</span>`;
     }
 
@@ -343,3 +343,87 @@ function toggleFavorite(event, recipeId) {
         displaySavedRecipes();
     }
 }
+
+// ==========================================
+// TAB MEMORY (Persistence)
+// ==========================================
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Grab all the tab buttons on the page
+    let tabButtons = document.querySelectorAll('button[data-bs-toggle="tab"]');
+    
+    // Safety check: if there are no tabs on this page, stop running the script!
+    if (tabButtons.length === 0) return;
+
+    // 2. CHECK MEMORY ON LOAD: Did we save a tab previously?
+    let savedTab = localStorage.getItem('lastActiveNutritionTab');
+    if (savedTab) {
+        // Find the specific button that matches our saved memory
+        let targetButton = document.querySelector(`button[data-bs-target="${savedTab}"]`);
+        if (targetButton) {
+            // Simulate a click on it to activate it immediately!
+            targetButton.click(); 
+        }
+    }
+
+    // 3. SAVE TO MEMORY ON CLICK: Watch for whenever the user clicks a tab
+    tabButtons.forEach(button => {
+        // 'shown.bs.tab' is a special Bootstrap event that fires AFTER a tab is fully opened
+        button.addEventListener('shown.bs.tab', function(event) {
+            // Get the ID of the tab that just opened (e.g., "#generator" or "#recipe")
+            let activeTabId = event.target.getAttribute('data-bs-target');
+            
+            // Save it to the browser's memory
+            localStorage.setItem('lastActiveNutritionTab', activeTabId);
+        });
+    });
+});
+
+// ==========================================
+// RECIPE SEARCH ENGINE (DOM Filtering)
+// ==========================================
+document.addEventListener("DOMContentLoaded", function() {
+    let searchInput = document.getElementById('recipeSearchInput');
+
+    if (searchInput) {
+        searchInput.addEventListener('keyup', function() {
+            let searchTerm = searchInput.value.toLowerCase();
+            let container = document.getElementById('allRecipesContainer');
+            let cardColumns = container.querySelectorAll('[class*="col-"]'); 
+            
+            // 1. Set up our tracker and grab the empty state message
+            let visibleCount = 0;
+            let noResultsMessage = document.getElementById('noResultsMessage');
+
+            cardColumns.forEach(column => {
+                // Safety check: Don't accidentally hide/show the empty state message during the card loop!
+                if (column.id === 'noResultsMessage') return; 
+
+                let titleElement = column.querySelector('.fw-bold, h5, h6'); 
+                
+                if (titleElement) {
+                    let titleText = titleElement.innerText.toLowerCase();
+
+                    if (titleText.includes(searchTerm)) {
+                        column.style.display = ""; 
+                        // 2. We found a match! Increase the count
+                        visibleCount++; 
+                    } else {
+                        column.style.display = "none"; 
+                    }
+                }
+            });
+
+            // 3. The Final Check: Did we find any cards?
+            if (noResultsMessage) {
+                if (visibleCount === 0) {
+                    // No matches found, reveal the friendly message
+                    noResultsMessage.style.display = "block";
+                } else {
+                    // Matches were found, keep the message hidden
+                    noResultsMessage.style.display = "none";
+                }
+            }
+            
+        });
+    }
+});

@@ -152,8 +152,9 @@ if(saveBtn) {
             // Here is where you would normally save to localStorage or a database.
             alert("Recipe saved successfully!");
             
-            // Redirect the user back to the custom recipes page
-            window.location.href = "custom-recipes.html";
+            // Redirect the user back to the custom recipes page 
+            // Use .replace sbb it overwrites the history state so the user can't accidentally "go back" to the editor
+            window.location.replace("custom-recipes.html");
         }
     });
 }
