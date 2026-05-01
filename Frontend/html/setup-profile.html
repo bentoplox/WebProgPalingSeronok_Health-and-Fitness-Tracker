@@ -7,41 +7,87 @@
     <title>Setup Profile | Flow State</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
+
+    <!--Animation-->
+    <style>
+        /*Slide up and fade in*/
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px);}
+            100% { opacity: 1; transform: translateY(0);}
+        }
+
+        .animate-up {
+            opacity: 0; /*Hidden before animation starts*/
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+
+        /*Sway the timing so they load one after another*/
+        .delay-1 {animation-delay: 0.1s;}
+        .delay-2 {animation-delay: 0.3s;}
+        .delay-3 {animation-delay: 0.5s;}
+        .delay-4 {animation-delay: 0.7s;}
+
+        /*Make inputs feel alive when clicked*/
+        .form-control:focus, .form-select:focus {
+            box-shadow: 0 0 0 0.25rem rgba(136, 150, 117, 0.25); /*Subtle olive glow*/
+            border-color: var(--color-olive, #889675);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select {
+            transition: all 0.3s ease;
+        }
+    </style>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" style="background-color: var(--color-cream, #fdfbf7);">
 
+    <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" style="background-color: var(--color-cream);">
         <div class="container">
             <img src="../images/favicon.ico" alt="Flow State Logo" height="40"
                 class="d-inline-block align-text-top me-2">
-            <a class="navbar-brand fw-bold text-olive">Flow State</a>
+            <a class="navbar-brand fw-bold text-olive" href="index.html">Flow State</a>
+            <div class="ms-auto">
+                <a href="" class="nav-link fw-bold text-olive"></a>
+            </div>
         </div>
     </nav>
 
-    <nav class="navbar navbar-expand-lg navbar-light py-3" style="background-color: var(--color-cream);">
-        <div class="container justify-content-center">
-            <h4 class="fw-bold text-olive mb-0">Flow State Setup</h4>
-        </div>
-    </nav>
-
-    <main class="container flex-grow-1 py-5">
+    <main class="container flex-grow-1 py-5 mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="card shadow-sm border-0 rounded-5 feature-card">
+
+                <!--The main card-->
+                <div class="card shadow-sm border-0 rounded-5 feature-card animate-up delay-1">
                     <div class="card-body p-5">
 
+                        <!--Progress Bar-->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-1 small text-muted fw-bold">
+                                <span>Account Created</span>
+                                <span class="text-olive">Profile Setup</span>
+                            </div>
+                            <div class="progress" style="height: 6px;">
+                                <div class="progress-bar" role="progressbar" style="width: 100%; background-color: var(--color-olive, #889675);" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+
+                        <!--Header-->
                         <div class="text-center mb-5">
-                            <h2 class="fw-bold text-olive">Personalize Your Journey</h2>
-                            <p class="text-muted">We need a few details to calculate your baseline metrics.</p>
+                            <h2 class="fw-bold text-olive">Let's Get to Know You</h2>
+                            <p class="text-muted">Tell us a bit about your body and goals so we can build your perfect plan.</p>
                         </div>
 
                         <form id="setupForm" class="needs-validation" novalidate>
 
-                            <p class="text-uppercase text-olive fw-bold small mb-3 opacity-75" style="letter-spacing: 1px;">Core Biometrics</p>
+                            <!--Section 1-->
+                            <div class="animate-up delay-2">
+                            <p class="text-uppercase text-olive fw-bold small mb-3 opacity-75" style="letter-spacing: 1px;">Step 1: The Basics</p>
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label class="form-label small text-muted fw-bold" for="userGender">Biological Sex (For BMR calc)</label>
+                                    <label class="form-label small text-muted fw-bold" for="userGender">Biological Sex <span class="fw-normal fst-italic">(Help us calculate calorie burn)</span></label>
                                     <select class="form-select rounded-3 border-sand px-3 py-2" id="userGender" required>
                                         <option value="" disabled selected>Select Biological Sex</option>
                                         <option value="male">Male</option>
@@ -54,81 +100,87 @@
                                     <input type="number" class="form-control rounded-3 border-sand px-3 py-2" id="userHeight" placeholder="Height" required>
                                 </div>
                             </div>
-
                             <hr class="my-4 text-secondary opacity-25">
-
-                            <p class="text-uppercase text-olive fw-bold small mb-3 opacity-75" style="letter-spacing: 1px;">Lifestyle & Goals</p>
-                            <div class="row g-3">
-                                <div class="col-md-12">
-                                    <label class="form-label small text-muted fw-bold" for="userActivity">Activity Level</label>
-                                    <select class="form-select rounded-3 border-sand px-3 py-2" id="userActivity" required>
-                                        <option value="" disabled selected>Select Activity Level</option>
-                                        <option value="sedentary">Sedentary (Little to no exercise)</option>
-                                        <option value="light">Lightly Active (Exercise 1-3 days/week)</option>
-                                        <option value="moderate">Moderately Active (Exercise 3-5 days/week)</option>
-                                        <option value="active">Very Active (Exercise 6-7 days/week)</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label small text-muted fw-bold" for="userGoal">Primary Goal</label>
-                                    <select class="form-select rounded-3 border-sand px-3 py-2" id="userGoal" required>
-                                        <option value="" disabled selected>Select Primary Goal</option>
-                                        <option value="lose">Lose Weight</option>
-                                        <option value="maintain">Maintain Health</option>
-                                        <option value="gain">Build Muscle</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label class="form-label small text-muted fw-bold" for="targetWeight">Target Weight (kg)</label>
-                                    <input type="number" class="form-control rounded-3 border-sand px-3 py-2" id="targetWeight" placeholder="Target Weight" step="0.1" required>
-                                </div>
                             </div>
 
-                            <hr class="my-4 text-secondary opacity-25">
+                            <!--Section 2-->
+                            <div class="animate-up delay-3">
+                                <p class="text-uppercase text-olive fw-bold small mb-3 opacity-75" style="letter-spacing: 1px;">Step 2: Your Goals</p>
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <label class="form-label small text-muted fw-bold" for="userActivity">Daily Activity Level</label>
+                                        <select class="form-select rounded-3 border-sand px-3 py-2" id="userActivity" required>
+                                            <option value="" disabled selected>How active are you?</option>
+                                            <option value="light">Lightly Active</option>
+                                            <option value="moderate">Moderately Active</option>
+                                            <option value="active">Active</option>
+                                            <option value="very-active">Very Active</option>
+                                        </select>
+                                    </div>
 
-                            <p class="text-uppercase text-olive fw-bold small mb-3 opacity-75" style="letter-spacing: 1px;">Nutrition Preferences</p>
-                            <div class="row g-3 mb-5">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label small text-muted fw-bold" for="userDiet">Dietary Restrictions</label>
-                                    <select class="form-select rounded-3 border-sand px-3 py-2" id="userDiet">
-                                        <option value="none" selected>No spesific restrictions</option>
-                                        <option value="halal">Halal</option>
-                                        <option value="vegetarian">Vegetarian</option>
-                                        <option value="vegan">Vegan</option>
-                                        <option value="keto">Keto</option>
-                                    </select> 
-                                </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small text-muted fw-bold" for="userGoal">What is your main focus?</label>
+                                        <select class="form-select rounded-3 border-sand px-3 py-2" id="userGoal" required>
+                                            <option value="" disabled selected>Select a goal</option>
+                                            <option value="lose">Lose Weight</option>
+                                            <option value="maintain">Maintain Health</option>
+                                            <option value="gain">Build Muscle</option>
+                                        </select>
+                                    </div>
 
-                                <div class="col-md-12">
-                                    <label class="form-label small text-muted fw-bold mb-2">Food Allergies (Check all that apply)</label>
-                                    <div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" value="seafood" id="allergySeafood">
-                                            <label class="form-check-label" for="allergySeafood">Seafood</label>
-                                        </div>
-
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" value="nuts" id="allergyNuts">
-                                            <label class="form-check-label" for="allergyNuts">Nuts</label>
-                                        </div>
-
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" value="dairy" id="allergyDairy">
-                                            <label class="form-check-label" for="allergyDairy">Dairy</label>
-                                        </div>
-
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" value="gluten" id="allergyGluten">
-                                            <label class="form-check-label" for="allergyGluten">Gluten</label>
-                                        </div>
-
+                                    <div class="col-md-6">
+                                        <label class="form-label small text-muted fw-bold" for="currentWeight">Current Weight (kg)</label>
+                                        <input type="number" class="form-control rounded-3 border-sand px-3 py-2" id="currentWeight" placeholder="Current Weight" step="0.01" lang="en" required>
                                     </div>
                                 </div>
-                            </div>
+                                <hr class="my-4 text-secondary opacity-25">
+                                </div>
 
-                            <button type="submit" class="btn btn-premium w-100 py-3 fw-bold rounded-3">Complete Setup</button>
+                            <!--Section 3-->
+                            <div class="animate-up delay-4">
+                                <p class="text-uppercase text-olive fw-bold small mb-3 opacity-75" style="letter-spacing: 1px;">Step 3: What's on the menu?</p>
+                                <div class="row g-3 mb-5">
+                                    <div class="col-md-12 mb-3">
+                                        <label class="form-label small text-muted fw-bold" for="userDiet">Preferred Diet</label>
+                                        <select class="form-select rounded-3 border-sand px-3 py-2" id="userDiet">
+                                            <option value="none" selected>Anything</option>
+                                            <option value="keto">Keto</option>
+                                            <option value="mediterranean">Mediterranean</option>
+                                            <option value="paleo">Paleo</option>
+                                            <option value="vegan">Vegan</option>
+                                            <option value="vegetarian">Vegetarian</option>
+                                        </select> 
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label class="form-label small text-muted fw-bold mb-2">Food Allergies (Check all that apply)</label>
+                                        <div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="seafood" id="allergySeafood">
+                                                <label class="form-check-label" for="allergySeafood">Seafood</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="nuts" id="allergyNuts">
+                                                <label class="form-check-label" for="allergyNuts">Nuts</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="dairy" id="allergyDairy">
+                                                <label class="form-check-label" for="allergyDairy">Dairy</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="gluten" id="allergyGluten">
+                                                <label class="form-check-label" for="allergyGluten">Gluten</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-premium w-100 py-3 fw-bold rounded-3">Show My Dashboard</button>
+                            </div>
                         </form>
 
                     </div>
