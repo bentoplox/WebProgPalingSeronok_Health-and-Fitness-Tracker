@@ -16,7 +16,7 @@
         
         <div id="sidebar-container"></div>
 
-        <main class="main-content">
+        <main class="main-content flex-grow-1 p-4">
             
             <header class="d-flex align-items-center mb-5">
                 <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
@@ -24,7 +24,7 @@
                 </button>
                 <div>
                     <h2 class="fw-bold text-olive mb-0">Nutrition Planner</h2>
-                    <p class="text-muted small fw-bold mb-1">CALCULATE CALORIES AND PLAN YOUR MEALS</p>
+                    <p id="dynamic-breadcrumb" class="text-muted small fw-bold mb-0" style="letter-spacing: 1px;">NUTRITION PLANNER / CALORIE CALCULATOR</p>
                 </div>
             </header>
 
@@ -35,8 +35,10 @@
                     <!-- Card One: Saved Recipes -->
                     <div class="col-md-6 col-lg-4 mb-3"> <!-- Use col-lg-4 so they don't stretch too wide on huge screens --> 
                         <a href="saved-recipes.html" class="text-decoration-none text-dark d-block h-100">
-                            <div class="card h-100 bg-white border-olive rounded-extra hover-elevate p-3">
-                                <div class="card-body">
+                            <div class="card h-100 bg-white border-0 rounded-extra shadow-sm hover-elevate p-3 position-relative overflow-hidden">
+                                <!-- opacity is set to 0.05 so it's very faint, and rotate(-15deg) tilts it -->
+                                <i class="fa-solid fa-bookmark text-secondary" style="position: absolute; bottom: -20px; right: -0px; font-size: 8rem; opacity: 0.1; transform: rotate(-15deg); z-index: 0;"></i>
+                                <div class="card-body position-relative z-1">
                                     <h4 class="card-title text-muted fw-bold mb-3">Saved Recipes</h4> 
                                     <!-- Large number -->
                                     <div class="d-flex align-items-baseline gap-2 mb-3">
@@ -55,8 +57,9 @@
                     <!-- Card Two: Custom Recipes -->
                     <div class="col-md-6 col-lg-4 mb-3"> <!-- Use col-lg-4 so they don't stretch too wide on huge screens -->
                         <a href="custom-recipes.html" class="text-decoration-none text-dark d-block h-100">
-                            <div class="card h-100 bg-white border-olive rounded-extra hover-elevate p-3">
-                                <div class="card-body">
+                            <div class="card h-100 bg-white border-0 rounded-extra shadow-sm hover-elevate p-3 position-relative overflow-hidden">
+                                <i class="fa-solid fa-utensils text-secondary" style="position: absolute; bottom: -20px; right: -0px; font-size: 8rem; opacity: 0.1; transform: rotate(-15deg); z-index: 0;"></i>
+                                <div class="card-body position-relative z-1">
                                     <h4 class="card-title text-muted fw-bold mb-3">Custom Recipes</h4>
                                     <!-- Large number -->
                                     <div class="d-flex align-items-baseline gap-2 mb-3">
@@ -93,7 +96,7 @@
                         <!-- ------------------ -->
                         <!-- CALORIE CALCULATOR -->
                         <!-- ------------------ -->
-                        <div class="mt-4 p-4 rounded-4" style="background-color: #fcefdc;">
+                        <div class="mt-4 p-5 rounded-4" style="background-color: #fcefdc;">
                             
                             <div class="text-center mb-5">
                                 <!-- <span class="badge bg-success mb-2 px-3 py-2">KCAL</span> -->
@@ -108,7 +111,7 @@
                                 <!-- Question 1: Gender -->
                                 <div class="col-md-6">
                                     <!-- Notice position-relative! This acts as the anchor for the absolute badge -->
-                                    <div class="card bg-white border-olive rounded-4 position-relative pt-5 pb-4 text-center h-100 shadow-sm">
+                                    <div class="card bg-white border-olive rounded-extra position-relative pt-5 pb-4 text-center h-100 shadow-sm">
                                         
                                         <!-- The Overlapping Step Badge -->
                                         <span class="position-absolute top-0 start-50 translate-middle badge rounded-circle bg-success step-badge">1</span>
@@ -133,7 +136,7 @@
 
                                 <!-- Question 2: Age -->
                                 <div class="col-md-6">
-                                    <div class="card bg-white border-olive rounded-4 position-relative pt-5 pb-4 text-center h-100 shadow-sm">
+                                    <div class="card bg-white border-olive rounded-extra position-relative pt-5 pb-4 text-center h-100 shadow-sm">
                                         <span class="position-absolute top-0 start-50 translate-middle badge rounded-circle bg-success step-badge">2</span>
                                         <h5 class="fw-bold mb-4">How old are you?</h5>
                                         
@@ -150,7 +153,7 @@
                             <div class="row g-4 mb-4">
                                 <!-- Question 3: Height -->
                                 <div class="col-md-6">
-                                    <div class="card bg-white border-olive rounded-4 position-relative pt-5 pb-4 text-center h-100 shadow-sm">
+                                    <div class="card bg-white border-olive rounded-extra position-relative pt-5 pb-4 text-center h-100 shadow-sm">
                                         <span class="position-absolute top-0 start-50 translate-middle badge rounded-circle bg-success step-badge">3</span>
                                         <h5 class="fw-bold mb-4">How tall are you?</h5>
                                         <div class="d-flex justify-content-center align-items-baseline gap-2 mt-3">
@@ -162,7 +165,7 @@
 
                                 <!-- Question 4: Weight -->
                                 <div class="col-md-6">
-                                    <div class="card bg-white border-olive rounded-4 position-relative pt-5 pb-4 text-center h-100 shadow-sm">
+                                    <div class="card bg-white border-olive rounded-extra position-relative pt-5 pb-4 text-center h-100 shadow-sm">
                                         <span class="position-absolute top-0 start-50 translate-middle badge rounded-circle bg-success step-badge">4</span>
                                         <h5 class="fw-bold mb-4">How much do you weigh?</h5>
                                         <div class="d-flex justify-content-center align-items-baseline gap-2 mt-3">
@@ -177,7 +180,7 @@
                             <div class="row g-4 mb-4">
                                 <!-- Question 5: Activity -->
                                 <div class="col-12">
-                                    <div class="card bg-white border-olive rounded-4 position-relative pt-5 pb-4 text-center shadow-sm">
+                                    <div class="card bg-white border-olive rounded-extra position-relative pt-5 pb-4 text-center shadow-sm">
                                         <span class="position-absolute top-0 start-50 translate-middle badge rounded-circle bg-success step-badge">5</span>
                                         <h5 class="fw-bold mb-4">How active are you on a daily basis?</h5>
                                         
@@ -219,7 +222,7 @@
                     
                     <!-- MEAL GENERATOR -->
                     <div class="tab-pane fade" id="generator">
-                        <div class="mt-4 p-4 rounded-4" style="background-color: #fcefdc;">
+                        <div class="mt-4 p-5 rounded-4" style="background-color: #fcefdc;">
                             <h2 class="text-center fw-bold">Meal Generator</h2>
                             <p class="text-center mb-4"> Generate meal ideas based on your dietary preferences and calorie needs! </p>
                             
@@ -313,7 +316,7 @@
                     </div>
 
                     <div class="tab-pane fade" id="recipe">
-                        <div class="mt-4 p-4 rounded-4" style="background-color: #fcefdc;">
+                        <div class="mt-4 p-5 rounded-4" style="background-color: #fcefdc;">
                             
                             <div class="text-center mb-4">
                                 <h2 class="fw-bold">All Recipes</h2>

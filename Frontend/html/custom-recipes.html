@@ -18,7 +18,10 @@
                 <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
                     <i class="fa-solid fa-bars fs-5"></i>
                 </button>
-                <h2 class="fw-bold text-olive mb-0">Custom Recipes</h2>
+                <div>
+                    <h2 class="fw-bold text-olive mb-0">Custom Recipes</h2>
+                    <p class="text-muted small fw-bold mb-1" style="letter-spacing: 1px;">NUTRITION PLANNER / CUSTOM RECIPES</p>
+                </div>
             </header>
 
             <!-- 2. The Beige Wrapper (Matches Saved Recipes) -->
@@ -56,7 +59,7 @@
 
                     <!-- THE UX BONUS: "Create New" Card -->
                     <div class="col-md-3">
-                        <a href="edit-recipe.html" class="text-decoration-none text-dark d-block h-100">
+                        <a href="edit-recipe.html" class="text-decoration-none text-dark d-block h-100" onclick="localStorage.setItem('editPath', 'create')">
                             <!-- Dashed border and transparent background makes it look like an "add" slot -->
                             <div class="card h-100 shadow-sm border-2 rounded-extra hover-elevate d-flex justify-content-center align-items-center" style="background-color: transparent; border: 2px dashed #bcaaa4 !important; min-height: 280px;">
                                 <div class="text-center text-muted">
@@ -75,5 +78,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/sidebar.js"></script> 
     <script src="../js/main.js"></script>
+    <script>
+        // Drop the Origin crumb for this page
+        localStorage.setItem('recipeOrigin', 'CUSTOM RECIPES');
+    </script>
 </body>
 </html>

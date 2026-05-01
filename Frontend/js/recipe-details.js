@@ -79,6 +79,22 @@ function setupBackButton() {
     }
 }
 
+// ==========================================
+// DYNAMIC BREADCRUMB ROUTER
+// ==========================================
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Grab the origin crumb we left behind (Default to 'VIEW ALL RECIPES' just in case)
+    let origin = localStorage.getItem('recipeOrigin') || 'VIEW ALL RECIPES';
+    
+    // 2. Find the breadcrumb text on the page
+    let breadcrumb = document.getElementById('dynamic-breadcrumb');
+    
+    // 3. Build the accurate trail!
+    if (breadcrumb) {
+        breadcrumb.innerText = "NUTRITION PLANNER / " + origin + " / RECIPE DETAILS";
+    }
+});
+
 // Run the setup functions immediately when the page loads
 checkFavoriteState();
 setupBackButton();

@@ -1,5 +1,37 @@
+/* Custom Uiverse Woven Pattern (Salmon Pink Edition) */
 body {
-    background-color: #fff8ec; 
+    background-color: #fff8ec; /* Your base cream color */
+
+    background-image:
+        /* 1. The Mask: Transparent in the top right, solid cream everywhere else */
+        radial-gradient(circle at 100% 0%, transparent 0%, #fff8ec 70%),
+
+        /* 2. The Uiverse Pattern Layers (Using your theme's Rosy Salmon Pink: 224, 122, 130 at 20% opacity) */
+        repeating-linear-gradient(45deg, transparent calc(-650% / 13) calc(50% / 13), rgba(224, 122, 130, 0.2) 0 calc(100% / 13), transparent 0 calc(150% / 13), rgba(224, 122, 130, 0.2) 0 calc(200% / 13), transparent 0 calc(250% / 13), rgba(224, 122, 130, 0.2) 0 calc(300% / 13)),
+        repeating-linear-gradient(45deg, transparent calc(-650% / 13) calc(50% / 13), rgba(224, 122, 130, 0.2) 0 calc(100% / 13), transparent 0 calc(150% / 13), rgba(224, 122, 130, 0.2) 0 calc(200% / 13), transparent 0 calc(250% / 13), rgba(224, 122, 130, 0.2) 0 calc(300% / 13)),
+        repeating-linear-gradient(-45deg, transparent calc(-650% / 13) calc(50% / 13), rgba(224, 122, 130, 0.2) 0 calc(100% / 13), transparent 0 calc(150% / 13), rgba(224, 122, 130, 0.2) 0 calc(200% / 13), transparent 0 calc(250% / 13), rgba(224, 122, 130, 0.2) 0 calc(300% / 13)),
+        repeating-linear-gradient(-45deg, transparent calc(-650% / 13) calc(50% / 13), rgba(224, 122, 130, 0.2) 0 calc(100% / 13), transparent 0 calc(150% / 13), rgba(224, 122, 130, 0.2) 0 calc(200% / 13), transparent 0 calc(250% / 13), rgba(224, 122, 130, 0.2) 0 calc(300% / 13));
+
+    background-position:
+        0 0,         /* Mask */
+        0px 0px,     /* Pattern Layer 1 */
+        32px 32px,   /* Pattern Layer 2 */
+        0px 0px,     /* Pattern Layer 3 */
+        32px 32px;   /* Pattern Layer 4 */
+
+    background-size:
+        100% 100%,   /* Mask Size */
+        64px 64px,   /* Pattern Sizes */
+        64px 64px,
+        64px 64px,
+        64px 64px;
+
+    background-attachment: fixed;
+}
+
+/* Reveal the body background by making the main wrappers transparent */
+.dashboard-wrapper, .main-content {
+    background-color: transparent !important; 
 }
 
 .card {

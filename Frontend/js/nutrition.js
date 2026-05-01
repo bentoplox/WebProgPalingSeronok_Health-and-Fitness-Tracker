@@ -362,18 +362,36 @@ document.addEventListener("DOMContentLoaded", function() {
         if (targetButton) {
             // Simulate a click on it to activate it immediately!
             targetButton.click(); 
+
+            // --- THE NEW FAILSAFE FIX ---
+            // Force the breadcrumb to update instantly on page load
+            let breadcrumb = document.getElementById('dynamic-breadcrumb');
+            if (breadcrumb) {
+                let tabName = targetButton.innerText.toUpperCase();
+                breadcrumb.innerText = "NUTRITION PLANNER / " + tabName;
+            }
         }
     }
 
     // 3. SAVE TO MEMORY ON CLICK: Watch for whenever the user clicks a tab
     tabButtons.forEach(button => {
-        // 'shown.bs.tab' is a special Bootstrap event that fires AFTER a tab is fully opened
         button.addEventListener('shown.bs.tab', function(event) {
-            // Get the ID of the tab that just opened (e.g., "#generator" or "#recipe")
-            let activeTabId = event.target.getAttribute('data-bs-target');
             
-            // Save it to the browser's memory
+            // 1. Save which tab ID is active (for reloading the page)
+            let activeTabId = event.target.getAttribute('data-bs-target');
             localStorage.setItem('lastActiveNutritionTab', activeTabId);
+            
+            // 2. Create the tabName variable FIRST (e.g., "MEAL GENERATOR")
+            let tabName = event.target.innerText.toUpperCase(); 
+
+            // 3. Now we can safely save it as our Origin Crumb!
+            localStorage.setItem('recipeOrigin', tabName);
+
+            // 4. Finally, update the text on the screen
+            let breadcrumb = document.getElementById('dynamic-breadcrumb');
+            if (breadcrumb) {
+                breadcrumb.innerText = "NUTRITION PLANNER / " + tabName;
+            }
         });
     });
 });
