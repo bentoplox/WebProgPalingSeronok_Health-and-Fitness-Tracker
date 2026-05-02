@@ -1,0 +1,25 @@
+/* --- LANDING PAGE PARTITION EFFECTS --- */
+
+/* 1. Features Section (Bottom Part) */
+.texture-partition {
+    position: relative;
+    /* Base sand color */
+    background-color: #F5F3ED; 
+    
+    /* Layer 1: Gradient fading from a dark shadow down to transparent */
+    /* Layer 2: Olive topographic pattern */
+    background-image: 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0) 150px),
+        url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.392-5.024 1.547-9.601 3.595-13.332 2.64-4.814 6.82-8.528 12.064-10.364C39.023-4.5 43.155-2.02 47.93.53c4.806 2.565 10.151 5.378 16.593 5.378 6.442 0 11.787-2.813 16.593-5.378C85.891-2.02 90.023-4.5 92.207-2.696c5.244 1.836 9.424 5.55 12.064 10.364 2.048 3.731 3.203 8.308 3.595 13.332h-2.016c-.38-4.74-1.464-9.053-3.328-12.446-2.316-4.22-6.04-7.554-10.638-9.165-1.503-1.127-4.908.687-9.422 3.097-4.966 2.651-10.672 5.696-17.462 5.696-6.79 0-12.496-3.045-17.462-5.696-4.514-2.41-7.919-4.224-9.422-3.097-4.598 1.611-8.322 4.945-10.638 9.165-1.864 3.393-2.948 7.706-3.328 12.446h-2.016z' fill='%23556b2f' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* 2. Hero Section (Upper Part) */
+.hero-texture {
+    background-color: var(--color-cream);
+    
+    /* Layer 1: Gradient fading from transparent down to a dark shadow */
+    /* Layer 2: Pastel Blue topographic pattern */
+    background-image: 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.06) 100%),
+        url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.392-5.024 1.547-9.601 3.595-13.332 2.64-4.814 6.82-8.528 12.064-10.364C39.023-4.5 43.155-2.02 47.93.53c4.806 2.565 10.151 5.378 16.593 5.378 6.442 0 11.787-2.813 16.593-5.378C85.891-2.02 90.023-4.5 92.207-2.696c5.244 1.836 9.424 5.55 12.064 10.364 2.048 3.731 3.203 8.308 3.595 13.332h-2.016c-.38-4.74-1.464-9.053-3.328-12.446-2.316-4.22-6.04-7.554-10.638-9.165-1.503-1.127-4.908.687-9.422 3.097-4.966 2.651-10.672 5.696-17.462 5.696-6.79 0-12.496-3.045-17.462-5.696-4.514-2.41-7.919-4.224-9.422-3.097-4.598 1.611-8.322 4.945-10.638 9.165-1.864 3.393-2.948 7.706-3.328 12.446h-2.016z' fill='%239abfe3' fill-opacity='0.15' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
