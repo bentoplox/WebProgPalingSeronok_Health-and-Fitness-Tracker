@@ -1,8 +1,5 @@
-/* --- ABOUT US: FANNED CARD LAYOUT --- */
-
 .about-header {
-    margin-top: 5vh;
-    margin-bottom: 8vh;
+    margin: 5vh 0 8vh;
 }
 
 .team-fan-container {
@@ -22,11 +19,9 @@
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Snappy, premium easing */
-    transform-origin: bottom center;
     cursor: pointer;
-    
-    /* Using CSS variables mapped to each specific card */
+    transform-origin: bottom center;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     transform: translateX(var(--tx)) translateY(var(--ty)) rotate(var(--rot));
     z-index: var(--z);
 }
@@ -38,14 +33,13 @@
     transition: transform 0.5s ease;
 }
 
-/* Card Information Overlay (Hidden by default) */
 .card-info-overlay {
     position: absolute;
-    bottom: -80px; /* Hidden below the card */
+    bottom: -85px;
     left: 0;
     width: 100%;
-    padding: 40px 20px 20px 20px;
-    background: linear-gradient(to top, rgba(14, 28, 14, 0.95) 0%, rgba(14, 28, 14, 0.7) 60%, transparent 100%);
+    padding: 40px 20px 20px;
+    background: linear-gradient(to top, #0e1c0e 0%, rgba(14, 28, 14, 0.7) 60%, transparent 100%);
     color: var(--color-cream);
     text-align: center;
     transition: bottom 0.4s ease;
@@ -54,35 +48,30 @@
 .card-info-overlay h5 {
     font-weight: 700;
     margin-bottom: 4px;
-    color: var(--color-cream);
 }
 
 .card-info-overlay p {
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--color-sand);
-    margin-bottom: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* --- THE HOVER EFFECT --- */
 .team-card:hover {
-    /* Straighten out, move up, and scale slightly */
     transform: translateX(var(--tx)) translateY(calc(var(--ty) - 50px)) rotate(0deg) scale(1.08);
-    z-index: 100 !important; /* Bring to very front */
+    z-index: 100 !important;
     box-shadow: 0 30px 60px rgba(0,0,0,0.3);
 }
 
 .team-card:hover .card-info-overlay {
-    bottom: 0; /* Slide text up */
+    bottom: 0;
 }
 
 .team-card:hover img {
-    transform: scale(1.05); /* Slight zoom on image */
+    transform: scale(1.05);
 }
 
-/* --- INDIVIDUAL CARD POSITIONS (The "Fan" Math) --- */
 .card-1 { --tx: -340px; --ty: 90px; --rot: -22deg; --z: 1; }
 .card-2 { --tx: -200px; --ty: 40px; --rot: -12deg; --z: 2; }
 .card-3 { --tx: -65px;  --ty: 10px; --rot: -4deg;  --z: 3; }
@@ -90,10 +79,13 @@
 .card-5 { --tx: 200px;  --ty: 40px; --rot: 12deg;  --z: 2; }
 .card-6 { --tx: 340px;  --ty: 90px; --rot: 22deg;  --z: 1; }
 
-/* Responsive scaling for smaller screens */
 @media (max-width: 992px) {
     .team-fan-container { transform: scale(0.8); }
 }
+
 @media (max-width: 768px) {
-    .team-fan-container { transform: scale(0.5); height: 300px; }
+    .team-fan-container { 
+        transform: scale(0.5); 
+        height: 300px; 
+    }
 }

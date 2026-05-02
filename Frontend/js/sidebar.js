@@ -1,5 +1,3 @@
-// js/sidebar.js
-
 const sidebarContent = `
     <aside class="sidebar d-flex flex-column p-4">
         <a href="dashboard.html" class="d-flex align-items-center mb-4 text-decoration-none">
@@ -32,14 +30,12 @@ const sidebarContent = `
     </aside>
 `;
 
-// Insert the sidebar into the page
 document.addEventListener("DOMContentLoaded", function() {
     const container = document.getElementById("sidebar-container");
     if (container) {
         container.innerHTML = sidebarContent;
 
-        // Auto-Active Link Logic: This automatically highlights the correct button!
-        const currentPath = window.location.pathname.split("/").pop(); // Gets 'dashboard.html' or 'progress.html'
+        const currentPath = window.location.pathname.split("/").pop();
         const navLinks = document.querySelectorAll(".sidebar-link");
         
         navLinks.forEach(link => {
@@ -52,14 +48,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// ==========================================
-// SIDEBAR ACTIVE STATE ROUTING
-// ==========================================
 setTimeout(() => {
-    // 1. Get the current page URL
+
     let currentPath = window.location.pathname;
 
-    // 2. Define the "Nutrition Module" family
     const nutritionPages = [
         "nutrition.html", 
         "saved-recipes.html", 
@@ -68,24 +60,18 @@ setTimeout(() => {
         "edit-recipe.html"
     ];
 
-    // 3. Check if the current page is part of the Nutrition family
     let isNutritionPage = nutritionPages.some(page => currentPath.includes(page));
 
     if (isNutritionPage) {
-        // Find the specific Nutrition Planner link in your sidebar
-        // Note: Adjust the href selector if your link points somewhere slightly different!
         let nutritionLink = document.querySelector('.sidebar a[href*="nutrition.html"]');
         
         if (nutritionLink) {
-            // Apply the blue highlight (Assuming Bootstrap's standard active classes)
-            // If you use custom CSS classes for the blue highlight, swap them here!
             nutritionLink.classList.add('active', 'bg-primary', 'text-white');
         }
     }
-}, 100); // 100ms delay ensures the sidebar has finished loading into the DOM
+}, 100)
 
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Sidebar Toggle Logic
     const toggleBtn = document.getElementById("sidebarToggle");
     const wrapper = document.querySelector(".dashboard-wrapper");
 

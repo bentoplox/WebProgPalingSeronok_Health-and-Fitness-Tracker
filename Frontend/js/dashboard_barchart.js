@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const ctx = document.getElementById('dashboardChart').getContext('2d');
+    const ctx = document.getElementById('dashboardChart')?.getContext('2d');
     
     const colorSage = '#99AD7A';    
     const colorAmber = '#DCAE1D';   
@@ -8,11 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
         new Chart(ctx, {
             type: 'bar',
             data: {
-                // THE TRICK: We build the dot and the hours directly into the final label!
-                labels: ['MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR  •  35 HRS'],
+                labels: ['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'MAY \u2022 18 HRS'],
                 datasets: [{
                     label: 'Active Hours',
-                    data: [5, 2, 3, 6, 12, 25, 45, 60, 80, 40, 50, 35],
+                    data: [3, 6, 12, 25, 45, 60, 80, 40, 50, 35, 22, 18],
                     backgroundColor: [
                         colorSage, colorSage, colorSage, colorSage, 
                         colorSage, colorSage, colorSage, colorSage, 
@@ -27,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 responsive: true,
                 maintainAspectRatio: false,
                 layout: {
-                    padding: { bottom: 10 } // Adds a tiny bit of space so our long label doesn't get cut off
+                    padding: { bottom: 10 }
                 },
                 plugins: {
                     legend: { display: false }, 
@@ -50,14 +49,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         grid: { display: false }, 
                         border: { display: false },
                         ticks: { 
-                            // This highlights the last label (APR) in Amber!
                             color: function(context) {
                                 return context.index === 11 ? colorAmber : '#a0a0a0';
                             },
                             font: { size: 10, weight: 'bold' },
                             maxRotation: 90, 
                             minRotation: 90,
-                            autoSkip: false // Ensures it doesn't hide labels to save space
+                            autoSkip: false
                         }
                     },
                     y: {

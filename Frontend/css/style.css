@@ -1,11 +1,5 @@
-/* =========================================
-   WPPS FITNESS INC. - PREMIUM DESIGN SYSTEM
-   ========================================= */
-
-/* 1. Import Web Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
 
-/* 2. Enhanced Color Palette Variables */
 :root {
     --color-cream: #FFF8EC;
     --color-sand: #DCCCAC;
@@ -13,12 +7,14 @@
     --color-olive: #546B41;
     --color-blue-pastel: #B3CDE0;
     --color-dark: #1A1A1A;
-
     --font-main: 'Inter', sans-serif;
     --font-display: 'Inter', sans-serif;
 }
 
-/* 3. Global Styles */
+/* =========================================
+   GLOBAL STYLES & UTILITIES
+   ========================================= */
+
 body {
     background-color: var(--color-cream);
     color: var(--color-dark);
@@ -26,101 +22,6 @@ body {
     overflow-x: hidden;
 }
 
-/* 4. High-Impact Typography */
-.hero-title {
-    font-size: clamp(3.5rem, 10vw, 8rem);
-    font-weight: 800;
-    line-height: 0.85;
-    letter-spacing: -3px;
-    text-transform: uppercase;
-    color: var(--color-olive);
-}
-
-.section-label {
-    font-family: var(--font-main);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.8rem;
-    color: var(--color-sage);
-}
-
-/* 5. Modern "Bento" Feature Cards */
-.feature-card {
-    background-color: #ffffff;
-    border: 1px solid var(--color-sand);
-    border-radius: 24px;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-}
-
-.feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(84, 107, 65, 0.1);
-    border-color: var(--color-sage);
-}
-
-.feature-card .card-body {
-    padding: 2.5rem;
-}
-
-/* 6. Staggered Layout Utilities */
-@media (min-width: 768px) {
-    .stagger-down {
-        margin-top: 80px;
-    }
-
-    #features {
-        padding-bottom: 120px !important;
-    }
-}
-
-/* 7. Button Customization */
-.btn-premium {
-    background-color: var(--color-olive);
-    color: var(--color-cream);
-    border-radius: 0;
-    font-weight: 700;
-    padding: 18px 40px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
-    transition: 0.3s;
-}
-
-.btn-premium:hover {
-    background-color: var(--color-dark);
-    color: #ffffff;
-    letter-spacing: 2px;
-}
-
-/* 8. Immersive Hero Image Container */
-.hero-image-container {
-    min-height: 100vh;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    border-radius: 0 0 0 0px;
-    z-index: 1;
-}
-
-/* 9. Footer Section */
-.custom-footer {
-    background-color: var(--color-blue-pastel);
-    padding: 80px 0 40px;
-    position: relative;
-    clear: both;
-    width: 100%;
-}
-
-/* 10. Header / Navbar Divider */
-.navbar {
-    border-bottom: 1px solid var(--color-sand);
-}
-
-/* 11. Custom Utility Classes (Consolidated) */
 .text-olive { color: var(--color-olive) !important; }
 .text-sage { color: var(--color-sage) !important; }
 .text-cream { color: var(--color-cream) !important; }
@@ -134,9 +35,42 @@ body {
 .border-olive { border: 2px solid var(--color-olive) !important; }
 .border-sand { border-color: var(--color-sand) !important; }
 
+/* =========================================
+   SHARED COMPONENTS (Buttons, Nav, Footer)
+   ========================================= */
+
+.navbar {
+    border-bottom: 1px solid var(--color-sand);
+}
+
+.custom-footer {
+    position: relative;
+    width: 100%;
+    padding: 80px 0 40px;
+    background-color: var(--color-blue-pastel);
+    clear: both;
+}
+
+.btn-premium {
+    padding: 18px 40px;
+    background-color: var(--color-olive);
+    color: var(--color-cream);
+    border: none;
+    border-radius: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-premium:hover {
+    background-color: var(--color-dark);
+    color: #ffffff;
+    letter-spacing: 2px;
+}
 
 /* =========================================
-   12. DASHBOARD LAYOUT (Post-Login)
+   DASHBOARD LAYOUT & SIDEBAR
    ========================================= */
 
 .dashboard-wrapper {
@@ -146,13 +80,13 @@ body {
 }
 
 .sidebar {
-    width: 280px;
-    background-color: #ffffff;
-    border-right: 1px solid var(--color-sand);
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
+    width: 280px;
+    background-color: #ffffff;
+    border-right: 1px solid var(--color-sand);
     z-index: 100;
     overflow-y: auto;
     transition: transform 0.3s ease;
@@ -165,10 +99,18 @@ body {
     transition: margin-left 0.3s ease;
 }
 
+.dashboard-wrapper.sidebar-hidden .sidebar {
+    transform: translateX(-100%);
+}
+
+.dashboard-wrapper.sidebar-hidden .main-content {
+    margin-left: 0;
+}
+
 .sidebar-link {
     color: var(--color-olive);
-    border-radius: 12px;
     font-weight: 500;
+    border-radius: 12px;
     transition: all 0.2s ease;
 }
 
@@ -178,55 +120,43 @@ body {
     color: #ffffff;
 }
 
-.btn-add {
-    background-color: var(--color-olive);
-    color: var(--color-cream);
-    width: 45px;
-    height: 45px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    border: none;
-    transition: transform 0.2s;
-}
-
-.btn-add:hover {
-    transform: scale(1.05);
-    background-color: var(--color-dark);
-    color: #ffffff;
-}
-
-/* Target the profile link specifically */
 .profile-link-card {
-    text-decoration: none !important;
     display: block;
+    text-decoration: none !important;
     transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .profile-link-card:hover {
-    transform: translateY(-4px); /* Subtle lift */
+    transform: translateY(-4px);
 }
 
 .profile-link-card:hover .d-flex {
-    background-color: #ffffff !important; /* Brighter on hover */
-    border-color: var(--color-sage) !important; /* Border turns sage */
-    box-shadow: 0 10px 20px rgba(84, 107, 65, 0.1) !important; /* Earthy shadow */
+    background-color: #ffffff !important;
+    border-color: var(--color-sage) !important;
+    box-shadow: 0 10px 20px rgba(84, 107, 65, 0.1) !important;
 }
 
-/* Optional: Slight zoom on the image when hovering */
 .profile-link-card:hover img {
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
 
-/* Sidebar Toggle Logic */
-.dashboard-wrapper.sidebar-hidden .sidebar {
-    transform: translateX(-100%);
+.btn-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: var(--color-olive);
+    color: var(--color-cream);
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.2s;
 }
 
-.dashboard-wrapper.sidebar-hidden .main-content {
-    margin-left: 0;
+.btn-add:hover {
+    background-color: var(--color-dark);
+    color: #ffffff;
+    transform: scale(1.05);
 }
-
