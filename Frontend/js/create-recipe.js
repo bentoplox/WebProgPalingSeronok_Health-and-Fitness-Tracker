@@ -1,24 +1,32 @@
+// Inside create-recipe.js
+
 // ==========================================
 // 1. IMAGE UPLOAD LOGIC
 // ==========================================
-let uploadBtn = document.getElementById('uploadImageBtn');
+let uploadSlot = document.getElementById('imageUploadSlot'); // We now target the whole slot
 let hiddenInput = document.getElementById('imageInput');
 let imagePreview = document.getElementById('recipeImagePreview');
 
-// When user clicks the button, pretend they clicked the hidden file input
-if(uploadBtn) {
-    uploadBtn.addEventListener('click', function() {
+// When user clicks the blank slot, pretend they clicked the hidden file input
+if(uploadSlot) {
+    uploadSlot.addEventListener('click', function() {
         hiddenInput.click();
     });
 }
 
-// When a file is chosen, swap the image preview
+// When a file is chosen, update the UI
 if(hiddenInput) {
     hiddenInput.addEventListener('change', function(event) {
         let file = event.target.files[0];
         if (file) {
             // URL.createObjectURL creates a temporary link to the file on the user's computer!
             imagePreview.src = URL.createObjectURL(file);
+            
+            // THE NEW DYNAMIC PART:
+            // Remove 'd-none' from the image so it shows up
+            imagePreview.classList.remove('d-none');
+            // Add 'd-none' to the blank slot to hide it
+            uploadSlot.classList.add('d-none');
         }
     });
 }
@@ -199,57 +207,16 @@ function cancelEditing(event) {
 // ==========================================
 // DYNAMIC BREADCRUMB ROUTER
 // ==========================================
+// Inside create-recipe.js
+
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Grab the origin (e.g., CUSTOM RECIPES)
-    let origin = localStorage.getItem('recipeOrigin') || 'VIEW ALL RECIPES';
-    
-    // 2. Grab our new path crumb (Did they click 'create' or 'customize'?)
-    let editPath = localStorage.getItem('editPath') || 'create'; 
-    
+    // A simple, static breadcrumb for a dedicated page.
     let breadcrumb = document.getElementById('dynamic-breadcrumb');
-    
-    // 3. Build the accurate trail based on the path!
-    if (breadcrumb) {
-        if (editPath === 'customize') {
-            // If they came from an existing recipe:
-            breadcrumb.innerText = "NUTRITION PLANNER / " + origin + " / RECIPE DETAILS / EDIT RECIPE";
-        } else {
-            // If they clicked the blank Create New card:
-            breadcrumb.innerText = "NUTRITION PLANNER / " + origin + " / CREATE NEW RECIPE";
-        }
-    }
-    
-    // ==========================================
-    // DYNAMIC EDIT DATA PRE-FILL
-    // ==========================================
-    const urlParams = new URLSearchParams(window.location.search);
-    const recipeIdString = urlParams.get('id');
-
-    // If there is an ID in the URL, go fetch it from the database
-    if (recipeIdString && typeof recipeDatabase !== 'undefined') {
-        
-        const recipeId = parseInt(recipeIdString);
-        const recipe = recipeDatabase.find(r => r.id === recipeId);
-
-        if (recipe) {
-            // 1. Inject the Recipe Name (and automatically append "My Version")
-            let nameInput = document.getElementById('editRecipeName');
-            if (nameInput) nameInput.value = recipe.name + " (My Version)";
-
-            // 2. Inject the Recipe Image
-            let imagePreview = document.getElementById('recipeImagePreview');
-            if (imagePreview) imagePreview.src = recipe.image;
-
-            // 3. Inject the Prep Time
-            let prepInput = document.getElementById('editPrepTime');
-            if (prepInput) {
-                // The database says "15 mins", but our input is a number box. 
-                // parseInt() is a cool trick that strips the letters and just grabs the number!
-                prepInput.value = parseInt(recipe.prepTime); 
-            }
-        }
+    if(breadcrumb) {
+        breadcrumb.innerText = "NUTRITION PLANNER / CUSTOM RECIPES / CREATE NEW RECIPE";
     }
 });
+
 // Initial setup on page load
 updateStepNumbers();
 recalculateMacros(); 

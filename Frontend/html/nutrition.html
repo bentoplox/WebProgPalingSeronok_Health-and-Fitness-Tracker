@@ -23,8 +23,9 @@
                     <i class="fa-solid fa-bars fs-5"></i>
                 </button>
                 <div>
+                    <!-- Kalau nak letak letter spacing: style="letter-spacing: 1px; -->
+                    <p id="dynamic-breadcrumb" class="text-muted small fw-bold mb-1">NUTRITION PLANNER / CALORIE CALCULATOR</p>
                     <h2 class="fw-bold text-olive mb-0">Nutrition Planner</h2>
-                    <p id="dynamic-breadcrumb" class="text-muted small fw-bold mb-0" style="letter-spacing: 1px;">NUTRITION PLANNER / CALORIE CALCULATOR</p>
                 </div>
             </header>
 
@@ -209,6 +210,35 @@
                                     </div> 
                                 </div> 
                             </div> 
+
+                            <!-- Row 4: The Goal (Step 6) -->
+                            <div class="row g-4 mb-4">
+                                <div class="col-12">
+                                    <div class="card bg-white border-olive rounded-extra position-relative pt-5 pb-4 text-center shadow-sm">
+                                        <span class="position-absolute top-0 start-50 translate-middle badge rounded-circle bg-success step-badge">6</span>
+                                        <h5 class="fw-bold mb-4">What is your primary goal?</h5>
+                                        
+                                        <div class="d-flex justify-content-center gap-3 flex-wrap mt-3">
+                                            <div>
+                                                <i class="fa-solid fa-arrow-trend-down fs-2 text-olive mb-2 d-block"></i>
+                                                <input type="radio" class="btn-check" name="goal" id="lose" autocomplete="off"> 
+                                                <label class="btn btn-outline-success px-4" for="lose">Lose Weight</label>
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-scale-balanced fs-2 text-olive mb-2 d-block"></i>
+                                                <!-- Notice 'checked' is here so it defaults to maintaining! -->
+                                                <input type="radio" class="btn-check" name="goal" id="maintain" autocomplete="off" checked>
+                                                <label class="btn btn-outline-success px-4" for="maintain">Maintain Weight</label>
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-arrow-trend-up fs-2 text-olive mb-2 d-block"></i>
+                                                <input type="radio" class="btn-check" name="goal" id="gain" autocomplete="off">
+                                                <label class="btn btn-outline-success px-4" for="gain">Build Muscle</label>
+                                            </div>
+                                        </div> 
+                                    </div> 
+                                </div> 
+                            </div>
 
                         <!-- Submit Button -->
                         <div class="text-center mt-4">

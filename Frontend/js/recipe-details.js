@@ -95,6 +95,39 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// ==========================================
+// DYNAMIC RECIPE INJECTOR (API Prep)
+// ==========================================
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. Look at the web address and grab the "?id=X" part
+    const urlParams = new URLSearchParams(window.location.search);
+    const recipeIdString = urlParams.get('id');
+
+    // 2. If there is an ID, find the matching recipe in our mock database!
+    if (recipeIdString && typeof recipeDatabase !== 'undefined') {
+        
+        const recipeId = parseInt(recipeIdString);
+        
+        // Find the specific recipe inside your array in nutrition.js
+        const recipe = recipeDatabase.find(r => r.id === recipeId);
+
+        if (recipe) {
+            // 3. Inject the data into the HTML canvas!
+            document.getElementById('rd-title').innerText = recipe.name;
+            document.getElementById('rd-image').src = recipe.image;
+            document.getElementById('rd-calories').innerText = recipe.calories + " kcal";
+            // For the meta text, we use innerHTML to keep the FontAwesome clock icon
+            document.getElementById('rd-meta').innerHTML = `<i class="fa-regular fa-clock me-1"></i> ${recipe.prepTime} | 🥦 ${recipe.diet}`;
+
+            // THE NEW CODE: Update the customize button to pass the ID forward!
+            let customizeBtn = document.getElementById('customizeBtn');
+            if (customizeBtn) {
+                customizeBtn.href = "edit-recipe.html?id=" + recipe.id;
+            }
+        }
+    }
+});
 // Run the setup functions immediately when the page loads
 checkFavoriteState();
 setupBackButton();
