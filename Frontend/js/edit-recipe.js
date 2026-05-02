@@ -144,17 +144,46 @@ function updateStepNumbers() {
 let saveBtn = document.getElementById('saveCustomRecipeBtn');
 
 if(saveBtn) {
-    saveBtn.addEventListener('click', function() {
-        // Native browser confirmation popup
+    saveBtn.addEventListener('click', function () {
         let isConfirmed = confirm("Are you sure you want to save these changes to your custom recipe?");
         
-        if(isConfirmed) {
+        if (isConfirmed) {
+            // 1. Load the mini-database
+            let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
+            
+            // 2. Check the URL to see what recipe we are currently looking at
+            let urlParams = new URLSearchParams(window.location.search);
+            let editingId = parseInt(urlParams.get('id'));
+
+            // 3. Build the updated recipe object
+            let updatedRecipe = {
+                // If we are editing an existing custom recipe, keep its old ID. Otherwise, make a new one!
+                id: (editingId >= 900) ? editingId : (900 + myCustomRecipes.length),
+                name: document.getElementById('editRecipeName').value,
+                calories: parseInt(document.getElementById('totalCalsText').innerText),
+                prepTime: document.getElementById('editPrepTime').value + " mins",
+                image: document.getElementById('recipeImagePreview').src,
+                diet: "Custom"
+            };
+
+            // 4. THE SMART SAVE LOGIC
+            if (editingId >= 900) {
+                // UPDATE: We are editing an existing custom recipe. 
+                // Find its exact position in the array and replace it with the new data.
+                let index = myCustomRecipes.findIndex(r => r.id === editingId);
+                if (index !== -1) {
+                    myCustomRecipes[index] = updatedRecipe;
+                }
+            } else {
+                // CREATE: We are customizing a main recipe for the first time. Add it to the end!
+                myCustomRecipes.push(updatedRecipe);
+            }
+
+            // 5. Save the array back to memory
+            localStorage.setItem('myCustomRecipes', JSON.stringify(myCustomRecipes));
+
             alert("Recipe saved successfully!");
-            
-            // THE ESCAPE HATCH: Tell the browser it is safe to leave without a warning!
-            isSafeToLeave = true; 
-            
-            // Redirect the user back to the custom recipes page 
+            isSafeToLeave = true;
             window.location.replace("custom-recipes.html");
         }
     });
@@ -197,14 +226,65 @@ function cancelEditing(event) {
 }
 
 // ==========================================
+// 7. DELETE RECIPE LOGIC (Safety Net)
+// ==========================================
+let deleteBtn = document.getElementById('deleteRecipeBtn');
+
+if(deleteBtn) {
+    deleteBtn.addEventListener('click', function() {
+        
+        // --- UX Best Practice: Double-Confirmation Alert ---
+        // Native browser confirmation popup (Are you sure?)
+        let userWantsToDelete = confirm("WARNING: Are you sure you want to delete this recipe PERMANENTLY? This cannot be undone.");
+        
+        if(userWantsToDelete) {
+            
+            // 1. Get the current recipe ID from the URL parameter (e.g., ?id=901)
+            let urlParams = new URLSearchParams(window.location.search);
+            let recipeIdToDelete = parseInt(urlParams.get('id'));
+
+            // Safety check: Don't do anything if we can't find the ID!
+            if(!recipeIdToDelete) {
+                alert("Error: Could not identify which recipe to delete.");
+                return;
+            }
+
+            // 2. Load our "mini-database" array from localStorage
+            let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
+
+            // 3. Delete the specific recipe using .filter()
+            // We create a new array that includes EVERY recipe EXCEPT the one that matches our ID
+            let updatedRecipes = myCustomRecipes.filter(function(recipe) {
+                return recipe.id !== recipeIdToDelete; 
+            });
+
+            // 4. Save the new, smaller array back to localStorage
+            localStorage.setItem('myCustomRecipes', JSON.stringify(updatedRecipes));
+
+            alert("Recipe deleted successfully!");
+
+            // --- IMPORTANT: Safety Net Bypasses ---
+            // Tell our 'unsaved changes' alert (beforeunload) that it's safe to leave!
+            // isSafeToLeave should be defined higher up in your JS file!
+            isSafeToLeave = true; 
+
+            // Redirect the user back to the custom recipes gallery 
+            // .replace is best here so they can't click "back" to a deleted recipe!
+            window.location.replace("custom-recipes.html");
+        }
+        // If they click "Cancel" on the alert, the function ends and they stay safely on the page.
+    });
+}
+
+// ==========================================
 // DYNAMIC BREADCRUMB ROUTER
 // ==========================================
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // 1. Grab the origin (e.g., CUSTOM RECIPES)
     let origin = localStorage.getItem('recipeOrigin') || 'VIEW ALL RECIPES';
     
     // 2. Grab our new path crumb (Did they click 'create' or 'customize'?)
-    let editPath = localStorage.getItem('editPath') || 'create'; 
+    let editPath = localStorage.getItem('editPath') || 'create';
     
     let breadcrumb = document.getElementById('dynamic-breadcrumb');
     
@@ -225,16 +305,33 @@ document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const recipeIdString = urlParams.get('id');
 
-    // If there is an ID in the URL, go fetch it from the database
-    if (recipeIdString && typeof recipeDatabase !== 'undefined') {
-        
+    if (recipeIdString) {
         const recipeId = parseInt(recipeIdString);
-        const recipe = recipeDatabase.find(r => r.id === recipeId);
+        let recipe = null;
 
+        // Search Area A: Look in the Main Mock Database first
+        if (typeof recipeDatabase !== 'undefined') {
+            recipe = recipeDatabase.find(r => r.id === recipeId);
+        }
+
+        // Search Area B: If not found, look in our Custom Mini-Database!
+        if (!recipe) {
+            let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
+            recipe = myCustomRecipes.find(r => r.id === recipeId);
+        }
+
+        // If we found it in EITHER place, pre-fill the form!
         if (recipe) {
-            // 1. Inject the Recipe Name (and automatically append "My Version")
+            // 1. Inject the Recipe Name
             let nameInput = document.getElementById('editRecipeName');
-            if (nameInput) nameInput.value = recipe.name + " (My Version)";
+            if (nameInput) {
+                // Smart check: Only add "(My Version)" if it doesn't already have it!
+                if (recipe.name.includes("(My Version)")) {
+                    nameInput.value = recipe.name;
+                } else {
+                    nameInput.value = recipe.name + " (My Version)";
+                }
+            }
 
             // 2. Inject the Recipe Image
             let imagePreview = document.getElementById('recipeImagePreview');
@@ -243,13 +340,12 @@ document.addEventListener("DOMContentLoaded", function() {
             // 3. Inject the Prep Time
             let prepInput = document.getElementById('editPrepTime');
             if (prepInput) {
-                // The database says "15 mins", but our input is a number box. 
-                // parseInt() is a cool trick that strips the letters and just grabs the number!
-                prepInput.value = parseInt(recipe.prepTime); 
+                prepInput.value = parseInt(recipe.prepTime);
             }
         }
     }
 });
+
 // Initial setup on page load
 updateStepNumbers();
 recalculateMacros(); 

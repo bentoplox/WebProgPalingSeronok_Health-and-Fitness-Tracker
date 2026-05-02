@@ -153,16 +153,34 @@ let saveBtn = document.getElementById('saveCustomRecipeBtn');
 
 if(saveBtn) {
     saveBtn.addEventListener('click', function() {
-        // Native browser confirmation popup
-        let isConfirmed = confirm("Are you sure you want to save these changes to your custom recipe?");
+        let isConfirmed = confirm("Are you sure you want to save this new custom recipe?");
         
         if(isConfirmed) {
-            alert("Recipe saved successfully!");
             
-            // THE ESCAPE HATCH: Tell the browser it is safe to leave without a warning!
+            // --- SAVE TO MINI-DATABASE ---
+            let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
+
+            // Read the screen to build our new recipe object
+            let newRecipe = {
+                id: 900 + myCustomRecipes.length, 
+                name: document.getElementById('editRecipeName').value || "My Awesome New Recipe", // Fallback name if left blank!
+                calories: parseInt(document.getElementById('totalCalsText').innerText) || 0, 
+                prepTime: document.getElementById('editPrepTime').value + " mins",
+                image: document.getElementById('recipeImagePreview').src,
+                diet: "Custom" 
+            };
+
+            // Add it to the list and save it back to the browser
+            myCustomRecipes.push(newRecipe);
+            localStorage.setItem('myCustomRecipes', JSON.stringify(myCustomRecipes));
+            // -----------------------------------
+
+            alert("Recipe created successfully!");
+            
+            // Tell our safety net it's okay to leave!
             isSafeToLeave = true; 
             
-            // Redirect the user back to the custom recipes page 
+            // Redirect back to the custom recipes page
             window.location.replace("custom-recipes.html");
         }
     });

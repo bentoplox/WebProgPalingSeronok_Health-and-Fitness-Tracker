@@ -298,27 +298,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // 1. Create a function to update the recipe counts
 function updateRecipeCounts() {
-    // 2. Count the recipes
-    // In a real app, you would count the items in your database here.
-    // For now, we will simulate this by checking the length of your mock database!
     let savedRecipesTotal = savedFavorites.length; 
     
-    // Let's pretend the user has customized 2 recipes
-    let customRecipesTotal = 2; 
+    // --- THE FIX: Count the ACTUAL custom recipes array! ---
+    let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
+    let customRecipesTotal = myCustomRecipes.length; 
 
-    // 3. Grab the HTML elements using the IDs we just added
     let savedCountElement = document.getElementById("saved-recipe-count");
     let customCountElement = document.getElementById("custom-recipe-count");
 
-    // 4. Update the HTML text with our new numbers
-    // We add a safety check (if) just in case the elements don't exist on the page
-    if (savedCountElement) {
-        savedCountElement.innerText = savedRecipesTotal;
-    }
-
-    if (customCountElement) {
-        customCountElement.innerText = customRecipesTotal;
-    }
+    if (savedCountElement) savedCountElement.innerText = savedRecipesTotal;
+    if (customCountElement) customCountElement.innerText = customRecipesTotal;
 }
 
 // 5. Run the function immediately when the page loads

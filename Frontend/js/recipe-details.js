@@ -104,23 +104,30 @@ document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const recipeIdString = urlParams.get('id');
 
-    // 2. If there is an ID, find the matching recipe in our mock database!
-    if (recipeIdString && typeof recipeDatabase !== 'undefined') {
-        
+    if (recipeIdString) {
         const recipeId = parseInt(recipeIdString);
+        let recipe = null;
         
-        // Find the specific recipe inside your array in nutrition.js
-        const recipe = recipeDatabase.find(r => r.id === recipeId);
+        // 2. Search Area A: Look in the Main Mock Database first
+        if (typeof recipeDatabase !== 'undefined') {
+            recipe = recipeDatabase.find(r => r.id === recipeId);
+        }
 
+        // 3. Search Area B: If not found, look in our Custom Mini-Database!
+        if (!recipe) {
+            let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
+            recipe = myCustomRecipes.find(r => r.id === recipeId);
+        }
+
+        // 4. If we found it in EITHER place, paint the screen!
         if (recipe) {
-            // 3. Inject the data into the HTML canvas!
             document.getElementById('rd-title').innerText = recipe.name;
             document.getElementById('rd-image').src = recipe.image;
             document.getElementById('rd-calories').innerText = recipe.calories + " kcal";
-            // For the meta text, we use innerHTML to keep the FontAwesome clock icon
+            
             document.getElementById('rd-meta').innerHTML = `<i class="fa-regular fa-clock me-1"></i> ${recipe.prepTime} | 🥦 ${recipe.diet}`;
-
-            // THE NEW CODE: Update the customize button to pass the ID forward!
+            
+            // Pass the ID forward to the customize button
             let customizeBtn = document.getElementById('customizeBtn');
             if (customizeBtn) {
                 customizeBtn.href = "edit-recipe.html?id=" + recipe.id;
@@ -128,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
 // Run the setup functions immediately when the page loads
 checkFavoriteState();
 setupBackButton();

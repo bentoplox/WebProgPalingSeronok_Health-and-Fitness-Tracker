@@ -185,8 +185,17 @@
 
                 <!-- Action Buttons -->
                 <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
-                    <button type="button" onclick="cancelEditing(event)" class="btn btn-outline-secondary px-4">Cancel</button>
+                    <!-- Notice ms-auto pushes the first two buttons to the far right -->
+                    <button type="button" onclick="cancelEditing(event)" class="btn btn-outline-secondary px-4 ms-auto">Cancel</button>
                     <button id="saveCustomRecipeBtn" class="btn btn-success px-5">Save Custom Recipe</button>
+                </div>
+
+                <!-- Add the Delete Button Block Below -->
+                <div class="d-flex justify-content-start mt-4 pt-4 border-top">
+                    <!-- We use Bootstrap's danger styling (red) and me-auto for alignment -->
+                    <button type="button" id="deleteRecipeBtn" class="btn btn-outline-danger px-4 me-auto">
+                        <i class="fa-solid fa-trash me-2"></i>Delete Recipe Permanently
+                    </button>
                 </div>
 
             </div>
