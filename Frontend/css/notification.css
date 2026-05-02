@@ -124,6 +124,19 @@
 .glass-red {
     background: linear-gradient(135deg, rgba(255, 77, 77, 0.1) 0%, rgba(255, 255, 255, 0.9) 50%);
 }
+.glass-purple {
+    
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.15) 0%, rgba(255, 255, 255, 0.9) 50%);
+    border-left: 4px solid rgba(155, 89, 182, 0.5); /* Optional: adds a nice accent border */
+}
+.glass-orange {
+    background: linear-gradient(
+        135deg,
+        rgba(243, 156, 18, 0.15) 0%,   /* soft orange */
+        rgba(255, 255, 255, 0.9) 50%
+    );
+    border-left: 4px solid rgba(243, 156, 18, 0.5);
+}
 
 /* The White Icon Box (matching the screenshot) */
 .noti-icon-box {
@@ -258,4 +271,26 @@ input[type="date"], input[type="time"] {
     -webkit-appearance: none;
     color: #4a4a4a;
     font-family: inherit;
+}
+
+/* This makes the notification list scrollable while keeping the card header fixed */
+#pills-tabContent {
+    max-height: 450px; /* Adjust height as needed */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+}
+
+/* Customizing the scroller to look modern */
+#pills-tabContent::-webkit-scrollbar {
+    width: 6px;
+}
+
+#pills-tabContent::-webkit-scrollbar-thumb {
+    background: #8e9d7e; /* Olive color */
+    border-radius: 10px;
+}
+
+#pills-tabContent::-webkit-scrollbar-track {
+    background: transparent;
 }
