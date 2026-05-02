@@ -26,74 +26,50 @@
                         <i class="fa-solid fa-bars fs-5"></i>
                     </button>
                     <div>
-                        <p class="text-muted small fw-bold mb-0">OVERVIEW / ANALYTICS</p>
+                        <p class="text-muted small fw-bold mb-0">OVERVIEW</p>
                         <h1 class="fw-bold text-olive display-6 mb-0">Hi XR, Welcome back! 👋</h1>
                     </div>
                 </div>
             </header>
 
-            <!-- TOP ROW (3 Cards) -->
             <div class="row g-4 mb-5">
 
                 <div class="col-md-4">
-                    <div class="stat-card d-flex flex-column h-100" onclick="window.location.href='tracker.html';"
-                        style="cursor: pointer;" title="Go to Fitness Tracker">
+                    <div class="stat-card d-flex flex-column h-100" onclick="window.location.href='tracker.html';" style="cursor: pointer;" title="Go to Fitness Tracker">
 
-                        <!-- Header -->
                         <p class="card-label mb-2">Workouts This Week</p>
 
-                        <!-- Main Number & Badge -->
                         <div class="d-flex justify-content-between align-items-start">
                             <div>
                                 <div class="d-flex align-items-baseline lh-1 mb-2">
-                                    <span class="stat-number" style="font-size: 3.5rem;">7</span>
+                                    <span class="stat-number" style="font-size: 3.5rem;">4</span>
                                 </div>
                                 <span class="badge bg-success bg-opacity-10 text-success p-2 rounded-3 fw-bold">
-                                    <i class="fa-solid fa-arrow-trend-up me-1"></i> +5 vs last month
+                                    <i class="fa-solid fa-arrow-trend-up me-1"></i> On track for goals
                                 </span>
                             </div>
 
-                            <!-- Gamification / Streak (Fills the top right space) -->
                             <div class="text-end">
                                 <div class="bg-cream border border-sand rounded-3 p-2 text-center shadow-sm">
                                     <i class="fa-solid fa-fire text-amber fs-5 mb-1 d-block"></i>
-                                    <span class="d-block text-olive fw-bold"
-                                        style="font-size: 0.75rem; line-height: 1;">3 WK</span>
+                                    <span class="d-block text-olive fw-bold" style="font-size: 0.75rem; line-height: 1;">2 WK</span>
                                     <span class="d-block text-muted" style="font-size: 0.65rem;">STREAK</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- CSS Sparkline Chart (Fills the bottom space) -->
                         <div class="mt-auto pt-4">
-                            <div class="d-flex justify-content-between align-items-end mb-1"
-                                style="height: 45px; gap: 4px;">
-                                <!-- Mon-Sun Bars (Amber highlights the current day) -->
-                                <div class="rounded-top"
-                                    style="width: 14%; height: 30%; background-color: var(--color-sage); opacity: 0.6;">
-                                </div>
-                                <div class="rounded-top"
-                                    style="width: 14%; height: 60%; background-color: var(--color-sage); opacity: 0.6;">
-                                </div>
-                                <div class="rounded-top"
-                                    style="width: 14%; height: 40%; background-color: var(--color-sage); opacity: 0.6;">
-                                </div>
-                                <div class="rounded-top"
-                                    style="width: 14%; height: 80%; background-color: var(--color-sage); opacity: 0.6;">
-                                </div>
-                                <div class="rounded-top"
-                                    style="width: 14%; height: 20%; background-color: var(--color-sage); opacity: 0.6;">
-                                </div>
-                                <div class="rounded-top"
-                                    style="width: 14%; height: 100%; background-color: var(--color-sage); opacity: 0.6;">
-                                </div>
-                                <div class="rounded-top shadow-sm"
-                                    style="width: 14%; height: 75%; background-color: var(--color-amber);"></div>
+                            <div class="d-flex justify-content-between align-items-end mb-1" style="height: 45px; gap: 4px;">
+                                <div class="rounded-top" style="width: 14%; height: 10%; background-color: var(--color-sage); opacity: 0.3;"></div>
+                                <div class="rounded-top" style="width: 14%; height: 70%; background-color: var(--color-sage);"></div>
+                                <div class="rounded-top" style="width: 14%; height: 50%; background-color: var(--color-sage);"></div>
+                                <div class="rounded-top" style="width: 14%; height: 10%; background-color: var(--color-sage); opacity: 0.3;"></div>
+                                <div class="rounded-top" style="width: 14%; height: 60%; background-color: var(--color-sage);"></div>
+                                <div class="rounded-top" style="width: 14%; height: 50%; background-color: var(--color-sage);"></div>
+                                <div class="rounded-top shadow-sm" style="width: 14%; height: 10%; background-color: var(--color-amber);"></div>
                             </div>
-                            <div class="d-flex justify-content-between text-muted fw-bold"
-                                style="font-size: 0.6rem; letter-spacing: 0.5px;">
-                                <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span
-                                    class="text-amber">S</span>
+                            <div class="d-flex justify-content-between text-muted fw-bold" style="font-size: 0.6rem; letter-spacing: 0.5px;">
+                                <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span class="text-amber">S</span>
                             </div>
                         </div>
 
@@ -101,20 +77,18 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="stat-card d-flex flex-column h-100" onclick="window.location.href='tracker.html';"
-                        style="cursor: pointer;" title="Go to Fitness Tracker">
-                        <p class="card-label mb-3">Total Time</p>
+                    <div class="stat-card d-flex flex-column h-100" onclick="window.location.href='tracker.html';" style="cursor: pointer;" title="Go to Fitness Tracker">
+                        <p class="card-label mb-3">Total Time (May)</p>
 
                         <div class="d-flex justify-content-between align-items-center flex-grow-1">
                             <div>
                                 <div class="d-flex align-items-baseline">
-                                    <span class="stat-number">55</span>
+                                    <span class="stat-number">18</span>
                                     <span class="stat-unit ms-1">HRS</span>
                                 </div>
                                 <div class="mt-1">
-                                    <span class="badge bg-success bg-opacity-10 text-success p-1 px-2 rounded-3"
-                                        style="font-size: 0.75rem;">
-                                        <i class="fa-solid fa-arrow-up"></i> +2.5 hrs vs last month
+                                    <span class="badge bg-success bg-opacity-10 text-success p-1 px-2 rounded-3" style="font-size: 0.75rem;">
+                                        <i class="fa-solid fa-arrow-up"></i> +3.5 hrs vs last week
                                     </span>
                                 </div>
                             </div>
@@ -122,23 +96,19 @@
                             <div class="vr mx-3 text-sand" style="opacity: 0.5; width: 2px;"></div>
 
                             <div class="flex-grow-1">
-                                <small class="text-muted fw-bold d-block mb-2 text-uppercase"
-                                    style="font-size: 0.65rem; letter-spacing: 1px;">Top Activities</small>
+                                <small class="text-muted fw-bold d-block mb-2 text-uppercase" style="font-size: 0.65rem; letter-spacing: 1px;">Top Activities</small>
 
-                                <div class="d-flex justify-content-between align-items-center fw-medium text-olive mb-1"
-                                    style="font-size: 0.75rem;">
+                                <div class="d-flex justify-content-between align-items-center fw-medium text-olive mb-1" style="font-size: 0.75rem;">
                                     <span><i class="fa-solid fa-dumbbell text-sage me-2"></i>Gym</span>
-                                    <span class="text-muted">25h</span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center fw-medium text-olive mb-1"
-                                    style="font-size: 0.75rem;">
-                                    <span><i class="fa-solid fa-person-biking text-sage me-2"></i>Cycling</span>
-                                    <span class="text-muted">18h</span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center fw-medium text-olive"
-                                    style="font-size: 0.75rem;">
-                                    <span><i class="fa-solid fa-person-running text-sage me-2"></i>Running</span>
                                     <span class="text-muted">12h</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center fw-medium text-olive mb-1" style="font-size: 0.75rem;">
+                                    <span><i class="fa-solid fa-person-swimming text-sage me-2"></i>Swim</span>
+                                    <span class="text-muted">4h</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center fw-medium text-olive" style="font-size: 0.75rem;">
+                                    <span><i class="fa-solid fa-person-running text-sage me-2"></i>Run</span>
+                                    <span class="text-muted">2h</span>
                                 </div>
                             </div>
                         </div>
@@ -146,8 +116,7 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="stat-card d-flex flex-column h-100" onclick="window.location.href='progress.html';"
-                        style="cursor: pointer;" title="Go to Progress Chart">
+                    <div class="stat-card d-flex flex-column h-100" onclick="window.location.href='progress.html';" style="cursor: pointer;" title="Go to Progress Chart">
                         <div class="d-flex justify-content-between align-items-center mb-1">
                             <p class="card-label mb-0">Workout Progress</p>
                         </div>
@@ -161,27 +130,21 @@
                         </div>
 
                         <div class="d-flex gap-2 flex-wrap mb-2">
-                            <span class="text-muted small fw-bold me-1 align-self-center"
-                                style="min-width: 35px;">Done:</span>
-                            <span
-                                class="badge bg-light border border-sage text-muted rounded-pill px-2 py-1 fw-medium shadow-sm opacity-75">
+                            <span class="text-muted small fw-bold me-1 align-self-center" style="min-width: 35px;">Done:</span>
+                            <span class="badge bg-light border border-sage text-muted rounded-pill px-2 py-1 fw-medium shadow-sm opacity-75">
                                 <i class="fa-solid fa-circle-check me-1 text-success"></i> 3 Gym
                             </span>
-                            <span
-                                class="badge bg-light border border-sage text-muted rounded-pill px-2 py-1 fw-medium shadow-sm opacity-75">
+                            <span class="badge bg-light border border-sage text-muted rounded-pill px-2 py-1 fw-medium shadow-sm opacity-75">
                                 <i class="fa-solid fa-circle-check me-1 text-success"></i> 1 Swim
                             </span>
                         </div>
 
                         <div class="d-flex gap-2 flex-wrap mt-auto">
-                            <span class="text-muted small fw-bold me-1 align-self-center"
-                                style="min-width: 35px;">Left:</span>
-                            <span
-                                class="badge bg-white border border-sand text-olive rounded-pill px-2 py-1 fw-bold shadow-sm">
+                            <span class="text-muted small fw-bold me-1 align-self-center" style="min-width: 35px;">Left:</span>
+                            <span class="badge bg-white border border-sand text-olive rounded-pill px-2 py-1 fw-bold shadow-sm">
                                 <i class="fa-solid fa-dumbbell me-1 text-sage"></i> 2 Gym
                             </span>
-                            <span
-                                class="badge bg-white border border-sand text-olive rounded-pill px-2 py-1 fw-bold shadow-sm">
+                            <span class="badge bg-white border border-sand text-olive rounded-pill px-2 py-1 fw-bold shadow-sm">
                                 <i class="fa-solid fa-person-running me-1 text-sage"></i> 1 Run
                             </span>
                         </div>
@@ -190,59 +153,40 @@
 
             </div>
 
-            <!-- BOTTOM ROW (Highlights + Stacked Cards) -->
-            <!-- BOTTOM ROW (Highlights + Stacked Cards) -->
             <div class="row g-4 mb-4">
 
-                <!-- LEFT SIDE (Changed to 7 columns): This Year Highlights -->
                 <div class="col-lg-7">
                     <div class="content-card d-flex flex-column h-100">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h5 class="fw-bold text-olive mb-0">This Year Highlights</h5>
-                            <a href="progress.html"
-                                class="btn btn-sm text-sage text-decoration-none fw-bold text-uppercase">DETAILS ></a>
+                            <a href="progress.html" class="btn btn-sm text-sage text-decoration-none fw-bold text-uppercase">DETAILS ></a>
                         </div>
 
-                        <!-- The Chart -->
                         <div class="w-100 mb-4 flex-grow-1" style="min-height: 200px;">
                             <canvas id="dashboardChart"></canvas>
                         </div>
 
-                        <!-- Year Totals Detailing -->
                         <div class="mt-auto pt-2">
-                            <p class="text-muted small fw-bold mb-2 text-uppercase" style="letter-spacing: 1px;">2026
-                                Year Totals</p>
+                            <p class="text-muted small fw-bold mb-2 text-uppercase" style="letter-spacing: 1px;">2026 Year Totals</p>
                             <hr class="text-sand mt-0 mb-3" style="opacity: 0.5;">
 
                             <div class="row align-items-center g-0">
-                                <!-- Adjusted to col-5 for better fit inside the slightly narrower card -->
                                 <div class="col-5 d-flex justify-content-center align-items-center pe-4">
-                                    <h2 class="fw-bold text-olive mb-0 lh-1 text-center"
-                                        style="font-size: 2rem; letter-spacing: -1px;">Jan - Apr</h2>
+                                    <h2 class="fw-bold text-olive mb-0 lh-1 text-center" style="font-size: 2rem; letter-spacing: -1px;">Jan - May</h2>
                                 </div>
 
-                                <!-- Adjusted to col-7 -->
                                 <div class="col-7 ps-4 border-start border-sand border-opacity-50">
                                     <div class="d-flex justify-content-end align-items-center pb-2 mb-2">
-                                        <span class="text-olive me-3"><i
-                                                class="fa-regular fa-clock text-sage"></i></span>
-                                        <span class="fw-bold text-olive fs-5"
-                                            style="min-width: 90px; text-align: right;">128 <span
-                                                class="small text-muted fw-normal ms-1 fs-6">HRS</span></span>
+                                        <span class="text-olive me-3"><i class="fa-regular fa-clock text-sage"></i></span>
+                                        <span class="fw-bold text-olive fs-5" style="min-width: 90px; text-align: right;">146 <span class="small text-muted fw-normal ms-1 fs-6">HRS</span></span>
                                     </div>
                                     <div class="d-flex justify-content-end align-items-center pb-2 mb-2">
-                                        <span class="text-olive me-3"><i
-                                                class="fa-solid fa-fire-flame-curved text-sage"></i></span>
-                                        <span class="fw-bold text-olive fs-5"
-                                            style="min-width: 90px; text-align: right;">42.5k <span
-                                                class="small text-muted fw-normal ms-1 fs-6">KCAL</span></span>
+                                        <span class="text-olive me-3"><i class="fa-solid fa-fire-flame-curved text-sage"></i></span>
+                                        <span class="fw-bold text-olive fs-5" style="min-width: 90px; text-align: right;">47.5k <span class="small text-muted fw-normal ms-1 fs-6">KCAL</span></span>
                                     </div>
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <span class="text-olive me-3"><i
-                                                class="fa-solid fa-dumbbell text-sage"></i></span>
-                                        <span class="fw-bold text-olive fs-5"
-                                            style="min-width: 90px; text-align: right;">142 <span
-                                                class="small text-muted fw-normal ms-1 fs-6">SESS</span></span>
+                                        <span class="text-olive me-3"><i class="fa-solid fa-dumbbell text-sage"></i></span>
+                                        <span class="fw-bold text-olive fs-5" style="min-width: 90px; text-align: right;">156 <span class="small text-muted fw-normal ms-1 fs-6">SESS</span></span>
                                     </div>
                                 </div>
                             </div>
@@ -250,20 +194,16 @@
                     </div>
                 </div>
 
-                <!-- RIGHT SIDE (Expanded to 5 columns): Stacked vertical cards -->
                 <div class="col-lg-5 d-flex flex-column gap-4">
 
-                    <!-- Meal Suggestions -->
                     <div class="content-card">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h5 class="fw-bold text-olive mb-0">Meal Suggestions</h5>
-                            <a href="nutrition.html" class="btn btn-sm text-sand text-decoration-none fw-bold">More
-                                ></a>
+                            <a href="nutrition.html" class="btn btn-sm text-sand text-decoration-none fw-bold">More ></a>
                         </div>
 
                         <div class="dashboard-list-item d-flex align-items-center mb-3">
-                            <div
-                                class="bg-white p-2 rounded-3 me-3 text-sage shadow-sm border border-sand border-opacity-50">
+                            <div class="bg-white p-2 rounded-3 me-3 text-sage shadow-sm border border-sand border-opacity-50">
                                 <i class="fa-solid fa-bowl-rice fs-5"></i>
                             </div>
                             <div>
@@ -273,8 +213,7 @@
                         </div>
 
                         <div class="dashboard-list-item d-flex align-items-center mb-3">
-                            <div
-                                class="bg-white p-2 rounded-3 me-3 text-sage shadow-sm border border-sand border-opacity-50">
+                            <div class="bg-white p-2 rounded-3 me-3 text-sage shadow-sm border border-sand border-opacity-50">
                                 <i class="fa-solid fa-apple-whole fs-5"></i>
                             </div>
                             <div>
@@ -284,8 +223,7 @@
                         </div>
 
                         <div class="dashboard-list-item d-flex align-items-center">
-                            <div
-                                class="bg-white p-2 rounded-3 me-3 text-sage shadow-sm border border-sand border-opacity-50">
+                            <div class="bg-white p-2 rounded-3 me-3 text-sage shadow-sm border border-sand border-opacity-50">
                                 <i class="fa-solid fa-fish fs-5"></i>
                             </div>
                             <div>
@@ -295,12 +233,10 @@
                         </div>
                     </div>
 
-                    <!-- Today's Reminders -->
                     <div class="content-card bg-olive text-white border-0 h-100 position-relative overflow-hidden">
                         <div class="d-flex justify-content-between align-items-center mb-4 position-relative z-1">
                             <h5 class="fw-bold text-cream mb-0">Today's Reminders</h5>
-                            <a href="notification.html"
-                                class="btn btn-sm text-sand text-decoration-none fw-bold">Manage></a>
+                            <a href="notification.html" class="btn btn-sm text-sand text-decoration-none fw-bold">Manage></a>
                         </div>
 
                         <div class="reminder-box mb-3 position-relative z-1">
@@ -312,8 +248,7 @@
                             <small class="opacity-75 text-cream d-block">Scheduled for 5:00 PM</small>
                         </div>
 
-                        <i class="fa-solid fa-bell position-absolute"
-                            style="right: -10px; bottom: -10px; font-size: 6rem; opacity: 0.1; transform: rotate(-15deg); color: #ffffff;"></i>
+                        <i class="fa-solid fa-bell position-absolute" style="right: -10px; bottom: -10px; font-size: 6rem; opacity: 0.1; transform: rotate(-15deg); color: #ffffff;"></i>
                     </div>
 
                 </div>
@@ -324,8 +259,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/sidebar.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/dashboard_linegraph.js"></script>
+    <script src="../js/dashboard_barchart.js"></script>
 </body>
 
 </html>

@@ -42,11 +42,9 @@
 
             <div class="row g-4 mb-4">
 
-                <!-- OVERVIEW ANALYTICS (CALENDAR STYLE) -->
                 <div class="col-lg-7">
                     <div class="inspo-card p-4 h-100 d-flex flex-column bg-white border-sand rounded-extra shadow-sm">
 
-                        <!-- Dynamic Calendar Header -->
                         <div
                             class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-sand border-opacity-50">
                             <div>
@@ -67,7 +65,6 @@
 
                         <div class="calendar-wrapper mb-4 px-lg-4 flex-grow-1">
 
-                            <!-- Days of the Week Header -->
                             <div class="d-grid text-center mb-3"
                                 style="grid-template-columns: repeat(7, 1fr); gap: 10px;">
                                 <div class="text-muted fw-bold small text-uppercase" style="letter-spacing: 1px;">M
@@ -86,48 +83,74 @@
                                 </div>
                             </div>
 
-                            <!-- ========================================== -->
-                            <!-- MAY 2026 GRID (Active) -->
-                            <!-- ========================================== -->
                             <div id="grid-may" class="d-grid text-center calendar-month-grid"
                                 style="grid-template-columns: repeat(7, 1fr); gap: 10px; row-gap: 15px;">
-                                <!-- Row 1 -->
+
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
                                     style="width: 45px; height: 45px;">27</div>
-                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm hover-elevate"
-                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">28</span><i
-                                        class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
+
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm hover-elevate activity-node opacity-75"
+                                    style="width: 45px; height: 45px; cursor: pointer;" data-date="April 28, 2026"
+                                    data-name="End of Month Lift" data-sport="Gym" data-duration="50"
+                                    data-calories="395" data-intensity="High" data-icon="fa-dumbbell">
+                                    <span class="fw-bold lh-1">28</span><i class="fa-solid fa-dumbbell"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i>
                                 </div>
-                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm hover-elevate"
-                                    style="width: 45px; height: 45px;"><span class="fw-bold lh-1">29</span><i
-                                        class="fa-solid fa-person-running"
-                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
+
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
+                                    style="width: 45px; height: 45px;">29</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
                                     style="width: 45px; height: 45px;">30</div>
-                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-pastel-blue text-olive border border-2 border-amber shadow-sm hover-elevate"
-                                    style="width: 45px; height: 45px; position: relative;"><span
-                                        class="fw-bold lh-1">1</span><i class="fa-solid fa-water"
-                                        style="font-size: 0.45rem; margin-top: 3px;"></i></div>
-                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle text-olive hover-elevate"
-                                    style="width: 45px; height: 45px; border: 1px dashed var(--color-sand);">2</div>
-                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle text-olive hover-elevate"
-                                    style="width: 45px; height: 45px; border: 1px dashed var(--color-sand);">3</div>
-                                <!-- Row 2 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
-                                    style="width: 45px; height: 45px;">4</div>
+                                    style="width: 45px; height: 45px;">1</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
-                                    style="width: 45px; height: 45px;">5</div>
+                                    style="width: 45px; height: 45px;">2</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
-                                    style="width: 45px; height: 45px;">6</div>
+                                    style="width: 45px; height: 45px;">3</div>F
+
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm hover-elevate activity-node"
+                                    style="width: 45px; height: 45px; cursor: pointer;" data-date="May 4, 2026"
+                                    data-name="Upper Body Strength" data-sport="Gym" data-duration="60"
+                                    data-calories="450" data-intensity="High" data-icon="fa-dumbbell">
+                                    <span class="fw-bold lh-1">4</span><i class="fa-solid fa-dumbbell"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-pastel-blue text-olive border border-2 border-amber shadow-sm hover-elevate activity-node"
+                                    style="width: 45px; height: 45px; cursor: pointer;" data-date="May 5, 2026"
+                                    data-name="Morning Pool Laps" data-sport="Swim" data-duration="30"
+                                    data-calories="210" data-intensity="Med" data-icon="fa-water">
+                                    <span class="fw-bold lh-1">5</span><i class="fa-solid fa-water"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
-                                    style="width: 45px; height: 45px;">7</div>
+                                    style="width: 45px; height: 45px; border: 1px dashed var(--color-sand); border-radius: 50%;">
+                                    6</div>
+
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm hover-elevate activity-node"
+                                    style="width: 45px; height: 45px; cursor: pointer;" data-date="May 7, 2026"
+                                    data-name="Lower Body Strength" data-sport="Gym" data-duration="55"
+                                    data-calories="410" data-intensity="High" data-icon="fa-dumbbell">
+                                    <span class="fw-bold lh-1">7</span><i class="fa-solid fa-dumbbell"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+
+                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm hover-elevate activity-node"
+                                    style="width: 45px; height: 45px; cursor: pointer;" data-date="May 8, 2026"
+                                    data-name="Core & Mobility" data-sport="Gym" data-duration="40" data-calories="280"
+                                    data-intensity="Med" data-icon="fa-dumbbell">
+                                    <span class="fw-bold lh-1">8</span><i class="fa-solid fa-dumbbell"
+                                        style="font-size: 0.45rem; margin-top: 3px;"></i>
+                                </div>
+
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
-                                    style="width: 45px; height: 45px;">8</div>
+                                    style="width: 45px; height: 45px; border: 1px dashed var(--color-sand); border-radius: 50%;">
+                                    9</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
-                                    style="width: 45px; height: 45px;">9</div>
-                                <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
-                                    style="width: 45px; height: 45px;">10</div>
-                                <!-- Row 3 -->
+                                    style="width: 45px; height: 45px; border: 1px dashed var(--color-sand); border-radius: 50%;">
+                                    10</div>
+
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">11</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
@@ -142,7 +165,6 @@
                                     style="width: 45px; height: 45px;">16</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">17</div>
-                                <!-- Row 4 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">18</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
@@ -157,7 +179,6 @@
                                     style="width: 45px; height: 45px;">23</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">24</div>
-                                <!-- Row 5 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">25</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
@@ -174,12 +195,8 @@
                                     style="width: 45px; height: 45px;">31</div>
                             </div>
 
-                            <!-- ========================================== -->
-                            <!-- APRIL 2026 GRID (Hidden by default) -->
-                            <!-- ========================================== -->
                             <div id="grid-apr" class="d-grid text-center calendar-month-grid d-none"
                                 style="grid-template-columns: repeat(7, 1fr); gap: 10px; row-gap: 15px;">
-                                <!-- Row 1 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
                                     style="width: 45px; height: 45px;">30</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
@@ -198,7 +215,6 @@
                                     style="width: 45px; height: 45px;">4</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">5</div>
-                                <!-- Row 2 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
                                     style="width: 45px; height: 45px;"><span class="fw-bold lh-1">6</span><i
                                         class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
@@ -219,7 +235,6 @@
                                 </div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">12</div>
-                                <!-- Row 3 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">13</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
@@ -238,7 +253,6 @@
                                     style="width: 45px; height: 45px;">18</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">19</div>
-                                <!-- Row 4 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
                                     style="width: 45px; height: 45px;"><span class="fw-bold lh-1">20</span><i
                                         class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
@@ -259,7 +273,6 @@
                                 </div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">26</div>
-                                <!-- Row 5 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">27</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
@@ -278,12 +291,8 @@
                                     style="width: 45px; height: 45px;">3</div>
                             </div>
 
-                            <!-- ========================================== -->
-                            <!-- MARCH 2026 GRID (Hidden by default) -->
-                            <!-- ========================================== -->
                             <div id="grid-mar" class="d-grid text-center calendar-month-grid d-none"
                                 style="grid-template-columns: repeat(7, 1fr); gap: 10px; row-gap: 15px;">
-                                <!-- Row 1 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
                                     style="width: 45px; height: 45px;">23</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-muted opacity-50"
@@ -300,7 +309,6 @@
                                     style="width: 45px; height: 45px;"><span class="fw-bold lh-1">1</span><i
                                         class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
                                 </div>
-                                <!-- Row 2 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">2</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
@@ -321,7 +329,6 @@
                                     style="width: 45px; height: 45px;"><span class="fw-bold lh-1">8</span><i
                                         class="fa-solid fa-water" style="font-size: 0.45rem; margin-top: 3px;"></i>
                                 </div>
-                                <!-- Row 3 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">9</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
@@ -340,7 +347,6 @@
                                     style="width: 45px; height: 45px;">14</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">15</div>
-                                <!-- Row 4 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
                                     style="width: 45px; height: 45px;"><span class="fw-bold lh-1">16</span><i
                                         class="fa-solid fa-dumbbell" style="font-size: 0.45rem; margin-top: 3px;"></i>
@@ -359,7 +365,6 @@
                                     style="width: 45px; height: 45px;">21</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">22</div>
-                                <!-- Row 5 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">23</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto rounded-circle bg-sage text-white shadow-sm"
@@ -378,7 +383,6 @@
                                     style="width: 45px; height: 45px;">28</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">29</div>
-                                <!-- Row 6 -->
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
                                     style="width: 45px; height: 45px;">30</div>
                                 <div class="d-flex flex-column justify-content-center align-items-center mx-auto text-olive"
@@ -396,7 +400,6 @@
                             </div>
                         </div>
 
-                        <!-- DYNAMIC KPI FOOTER -->
                         <div class="row text-center mt-auto pt-4 border-top border-sand border-opacity-50">
                             <div class="col">
                                 <small class="text-muted fw-bold d-block text-uppercase"
@@ -408,7 +411,7 @@
                             <div class="col border-start border-end border-sand border-opacity-50">
                                 <small class="text-muted fw-bold d-block text-uppercase"
                                     style="font-size: 0.7rem;">Active Streak</small>
-                                <h5 id="kpi-streak" class="fw-bold text-amber mb-0 display-6">3 <span
+                                <h5 id="kpi-streak" class="fw-bold text-amber mb-0 display-6">2 <span
                                         class="fs-6 fw-normal text-muted">Weeks</span></h5>
                             </div>
 
@@ -466,7 +469,7 @@
             <div class="d-flex justify-content-between align-items-end mb-3 mt-5">
                 <div>
                     <h4 class="fw-bold text-olive mb-1">Weekly Goals Breakdown</h4>
-                    <p class="text-muted small fw-bold mb-0 text-uppercase">Tracking your dashboard targets</p>
+                    <p class="text-muted small fw-bold mb-0 text-uppercase">May 4 - May 10 Snapshot</p>
                 </div>
                 <span class="badge bg-olive text-cream rounded-pill px-3 py-2 fs-6 shadow-sm">67% Overall</span>
             </div>
@@ -556,67 +559,61 @@
         </main>
     </div>
 
+    <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content border-sand shadow-lg"
+                style="background-color: var(--color-cream); border-radius: 1.5rem;">
+
+                <div class="modal-header border-sand border-opacity-50 pb-2">
+                    <h6 class="modal-title fw-bold text-olive d-flex align-items-center" id="activityModalLabel">
+                        <div class="bg-sage bg-opacity-25 p-2 rounded-circle me-2 d-flex align-items-center justify-content-center"
+                            style="width: 32px; height: 32px;">
+                            <i id="modalIcon" class="fa-solid fa-person-running text-olive"
+                                style="font-size: 0.9rem;"></i>
+                        </div>
+                        <span id="modalDate">May 29, 2026</span>
+                    </h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body pt-4 pb-4">
+                    <h4 id="modalName" class="fw-bold text-olive mb-1 text-center">Morning KLCC Run</h4>
+                    <p id="modalSport" class="text-muted text-uppercase fw-bold mb-4 text-center"
+                        style="font-size: 0.75rem; letter-spacing: 1px;">Run</p>
+
+                    <div class="row g-2 text-center">
+                        <div class="col-4">
+                            <small class="text-muted fw-bold d-block text-uppercase mb-1"
+                                style="font-size: 0.65rem; letter-spacing: 0.5px;">Duration</small>
+                            <span id="modalDuration" class="fs-5 fw-bold text-amber">45<small
+                                    class="fs-6 text-muted fw-normal ms-1">m</small></span>
+                        </div>
+                        <div class="col-4 border-start border-end border-sand border-opacity-50">
+                            <small class="text-muted fw-bold d-block text-uppercase mb-1"
+                                style="font-size: 0.65rem; letter-spacing: 0.5px;">Calories</small>
+                            <span id="modalCalories" class="fs-5 fw-bold text-amber">359<small
+                                    class="fs-6 text-muted fw-normal ms-1">kcal</small></span>
+                        </div>
+                        <div class="col-4">
+                            <small class="text-muted fw-bold d-block text-uppercase mb-1"
+                                style="font-size: 0.65rem; letter-spacing: 0.5px;">Intensity</small>
+                            <span id="modalIntensity"
+                                class="fs-6 fw-bold text-olive bg-pastel-blue px-2 py-1 rounded-pill">Med</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-0 justify-content-center pt-0 pb-3">
+                    <button type="button" class="btn btn-sm bg-olive text-cream rounded-pill px-4 hover-elevate"
+                        data-bs-dismiss="modal">Close Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/sidebar.js"></script>
-    <script src="../js/main.js"></script>
-
-    <!-- NEW INTERACTIVE CALENDAR SCRIPT -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Data logic for the 3 months
-            const monthData = [
-                { id: 'grid-mar', title: 'March 2026', active: 18, total: 31, streak: 2, hit: 78 },
-                { id: 'grid-apr', title: 'April 2026', active: 22, total: 30, streak: 4, hit: 92 },
-                { id: 'grid-may', title: 'May 2026', active: 14, total: 31, streak: 3, hit: 85 }
-            ];
-
-            let currentIndex = 2; // Starts on May 2026
-
-            const titleEl = document.getElementById('calendar-title');
-            const btnPrev = document.getElementById('prevMonthBtn');
-            const btnNext = document.getElementById('nextMonthBtn');
-
-            const kpiActive = document.getElementById('kpi-active');
-            const kpiStreak = document.getElementById('kpi-streak');
-            const kpiHitRate = document.getElementById('kpi-hitrate');
-
-            function updateCalendar() {
-                const currentMonth = monthData[currentIndex];
-
-                // 1. Update Title
-                titleEl.innerText = currentMonth.title;
-
-                // 2. Hide all grids, show active grid
-                document.querySelectorAll('.calendar-month-grid').forEach(grid => grid.classList.add('d-none'));
-                document.getElementById(currentMonth.id).classList.remove('d-none');
-
-                // 3. Update the KPI numbers
-                kpiActive.innerHTML = `${currentMonth.active} <span class="fs-6 fw-normal text-muted">/ ${currentMonth.total}</span>`;
-                kpiStreak.innerHTML = `${currentMonth.streak} <span class="fs-6 fw-normal text-muted">Weeks</span>`;
-                kpiHitRate.innerHTML = `${currentMonth.hit} <span class="fs-6 fw-normal text-muted">%</span>`;
-
-                // Disable buttons if at edges
-                btnPrev.disabled = currentIndex === 0;
-                btnNext.disabled = currentIndex === monthData.length - 1;
-
-                // Adjust button styles dynamically
-                btnPrev.style.opacity = currentIndex === 0 ? "0.3" : "1";
-                btnNext.style.opacity = currentIndex === monthData.length - 1 ? "0.3" : "1";
-            }
-
-            // Click Events
-            btnPrev.addEventListener('click', () => {
-                if (currentIndex > 0) { currentIndex--; updateCalendar(); }
-            });
-
-            btnNext.addEventListener('click', () => {
-                if (currentIndex < monthData.length - 1) { currentIndex++; updateCalendar(); }
-            });
-
-            // Initialize default state
-            updateCalendar();
-        });
-    </script>
+    <script src="../js/progress.js"></script>
 </body>
 
 </html>

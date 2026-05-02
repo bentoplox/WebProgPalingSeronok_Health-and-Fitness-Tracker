@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | FlowState</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+
+<body>
+<div class="dashboard-wrapper">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+        <!-- Header consistent with Dashboard -->
+        <header class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex align-items-center">
+                <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
+                    <i class="fa-solid fa-bars fs-5"></i>
+                </button>
+                <div>
+                    <p class="text-muted small fw-bold mb-0">ACCOUNT / SETTINGS</p>
+                    <h1 class="fw-bold text-olive display-6 mb-0">Your Profile</h1>
+                </div>
+            </div>
+            <button class="btn btn-success rounded-pill px-4 fw-bold shadow-sm">
+                <i class="fa-solid fa-floppy-disk me-2"></i>Save Changes
+            </button>
+        </header>
+
+        <!-- Profile Hero Card -->
+        <div class="profile-header-card text-white mb-4 shadow-sm">
+            <div class="row align-items-center position-relative z-1">
+                <div class="col-auto">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Hazim" class="profile-avatar shadow-lg">
+                </div>
+                <div class="col">
+                    <h2 class="fw-bold mb-1">Hazim</h2>
+                    <p class="opacity-75 mb-3">Software Engineering Student @ UM</p>
+                    <div class="d-flex gap-2">
+                        <div class="stat-badge-item">
+                            <small class="d-block opacity-75">Member Since</small>
+                            <span class="fw-bold">Feb 2026</span>
+                        </div>
+                        <div class="stat-badge-item">
+                            <small class="d-block opacity-75">Workouts</small>
+                            <span class="fw-bold">142</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <i class="fa-solid fa-leaf position-absolute" style="right: -20px; bottom: -20px; font-size: 12rem; opacity: 0.1; transform: rotate(-15deg);"></i>
+        </div>
+
+        <div class="row g-4">
+            <!-- Left Column: Basic Info -->
+            <div class="row g-4">
+                <!-- Left Column: Basic Info -->
+                <div class="col-lg-7">
+                    <!-- Using style="height: auto !important;" to override your .content-card CSS -->
+                    <div class="content-card shadow-sm" style="height: auto !important;">
+                        <h5 class="fw-bold text-olive mb-4">Basic Information</h5>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="info-label">Full Name</label>
+                                <div class="profile-input-group bg-cream border border-sand rounded-3 p-3">
+                                    <span class="text-olive fw-bold">Muhammad Hazim bin Nidzam</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="info-label">Username</label>
+                                <div class="profile-input-group bg-cream border border-sand rounded-3 p-3">
+                                    <span class="text-olive fw-bold">hzmnzm</span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label class="info-label">Bio</label>
+                                <textarea class="form-control border-sand bg-cream rounded-4 p-3 text-olive" rows="4">Software Engineering student at Universiti Malaya. Passionate about IoT, Parallel Programming, and maintaining a consistent Flow State in and out of the gym.</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Credentials & Social -->
+                <div class="col-lg-5">
+                    <!-- 1. Removed flex utilities from the parent div -->
+                    <!-- 2. Added inline style to force height and allow overflow -->
+                    <div class="content-card mb-4 shadow-sm" style="height: auto !important; overflow: visible !important;">
+                        <h5 class="fw-bold text-olive mb-4">Login Credentials</h5>
+                        <div class="mb-3">
+                            <label class="info-label">Email Address</label>
+                            <div class="d-flex align-items-center justify-content-between bg-cream border border-sand rounded-3 p-3">
+                                <span class="text-olive fw-bold">hazim@gmail.com</span>
+                                <i class="fa-solid fa-envelope text-sage opacity-50"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="info-label">Password</label>
+                            <!-- Added min-height style to ensure dots aren't cut off vertically -->
+                            <div class="d-flex align-items-center justify-content-between bg-cream border border-sand rounded-3 p-3" style="min-height: 60px;">
+                                <span class="text-olive fw-bold" style="letter-spacing: 2px;">••••••••••••</span>
+                                <button class="btn btn-sm text-sage p-0"><i class="fa-solid fa-pen-to-square"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Card -->
+                    <div class="content-card bg-pastel-blue border-0 shadow-sm" style="height: auto !important;">
+                        <h5 class="fw-bold text-olive mb-3">Social Integration</h5>
+                        <div class="d-flex gap-3">
+                            <div class="bg-white p-3 rounded-4 border border-sand flex-fill text-center">
+                                <i class="fa-brands fa-instagram fs-3 text-sage mb-2"></i>
+                                <small class="d-block text-muted fw-bold">Connected</small>
+                            </div>
+                            <div class="bg-white p-3 rounded-4 border border-sand flex-fill text-center">
+                                <i class="fa-brands fa-tiktok fs-3 text-sage mb-2"></i>
+                                <small class="d-block text-muted fw-bold">Connect</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/sidebar.js"></script>
+
+</body>
+</html>
