@@ -7,13 +7,15 @@ const sidebarContent = `
             <span class="fs-4 fw-bold text-olive">Flow State</span>
         </a>
 
-        <div class="d-flex align-items-center mb-4 p-3 bg-light rounded-4 border border-sand">
-            <img src="../images/running.jpg" alt="XR" width="40" height="40" class="rounded-circle me-3 object-fit-cover" onerror="this.src='https://via.placeholder.com/40'">
-            <div>
-                <h6 class="mb-0 text-olive fw-bold">XR</h6>
-                <small class="text-muted">Pro Member</small>
+        <a href="../html/profile.html" class="profile-link-card">
+            <div class="d-flex align-items-center mb-4 p-3 bg-light rounded-4 border border-sand shadow-sm" style="transition: all 0.3s ease;">
+                <img src="../images/running.jpg" alt="XR" width="40" height="40" class="rounded-circle me-3 object-fit-cover" onerror="this.src='https://via.placeholder.com/40'">
+                <div>
+                    <h6 class="mb-0 text-olive fw-bold">XR</h6>
+                    <small class="text-muted">Pro Member</small>
+                </div>
             </div>
-        </div>
+        </a>
 
         <ul class="nav nav-pills flex-column mb-auto gap-2" id="sidebar-nav">
             <li><a href="dashboard.html" id="dashboardNav" class="nav-link sidebar-link"><i class="fa-solid fa-house me-2"></i> Overview</a></li>
@@ -81,3 +83,15 @@ setTimeout(() => {
         }
     }
 }, 100); // 100ms delay ensures the sidebar has finished loading into the DOM
+
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Sidebar Toggle Logic
+    const toggleBtn = document.getElementById("sidebarToggle");
+    const wrapper = document.querySelector(".dashboard-wrapper");
+
+    if (toggleBtn && wrapper) {
+        toggleBtn.addEventListener("click", function() {
+            wrapper.classList.toggle("sidebar-hidden");
+        });
+    }
+});

@@ -198,6 +198,29 @@ body {
     color: #ffffff;
 }
 
+/* Target the profile link specifically */
+.profile-link-card {
+    text-decoration: none !important;
+    display: block;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.profile-link-card:hover {
+    transform: translateY(-4px); /* Subtle lift */
+}
+
+.profile-link-card:hover .d-flex {
+    background-color: #ffffff !important; /* Brighter on hover */
+    border-color: var(--color-sage) !important; /* Border turns sage */
+    box-shadow: 0 10px 20px rgba(84, 107, 65, 0.1) !important; /* Earthy shadow */
+}
+
+/* Optional: Slight zoom on the image when hovering */
+.profile-link-card:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
 /* Sidebar Toggle Logic */
 .dashboard-wrapper.sidebar-hidden .sidebar {
     transform: translateX(-100%);
