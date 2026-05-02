@@ -24,7 +24,7 @@
                     <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3 ">
                         <i class="fa-solid fa-bars fs-5"></i>
                     </button>
-                    
+
                     <div>
                         <h2 class="fw-bold text-olive mb-0 ">Notifications & Reminder</h2>
                         <p class="text-muted small fw-bold mb-1 text-uppercase">Stay Updated</p>
@@ -32,6 +32,7 @@
                 </div>
             </header>
 
+            <!-- Mobile View Toggle -->
             <div class="d-lg-none mb-4 text-center">
                 <ul class="nav nav-pills bg-light rounded-pill p-1 shadow-sm d-inline-flex" id="mobileTabs">
                     <li class="nav-item">
@@ -46,13 +47,18 @@
             </div>
 
             <div class="row g-4">
+                <!-- NOTIFICATION CENTER SECTION -->
                 <div id="noti-section" class="col-lg-7 col-12">
                     <div class="card notification-center-card p-4 rounded-5 border-0 shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-4">
+                            
                             <h5 class="fw-bold text-olive mb-0">Notification Center</h5>
-                            <button class="btn btn-sm btn-light rounded-3 btn-see-all text-muted px-3">See All</button>
+                            <!-- Add onclick="showAllNotifications()" to the button -->
+                            <button class="btn btn-sm btn-light rounded-3 btn-see-all text-muted px-3"
+                                onclick="showAllNotifications()">See All</button>
                         </div>
 
+                        <!-- Tab Navigation -->
                         <div class="nav nav-pills bg-light rounded-3 p-1 mb-4 d-inline-flex shadow-sm gap-2"
                             id="pills-tab">
                             <button class="nav-link active rounded-3 px-4 py-1 small" data-bs-toggle="pill"
@@ -61,9 +67,12 @@
                                 data-bs-target="#week">This Week</button>
                         </div>
 
+                        <!-- Tab Content -->
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="today">
 
+                            <!-- TODAY TAB -->
+                            <div class="tab-pane fade show active" id="today">
+                                <!-- Info Alert -->
                                 <div
                                     class="noti-item-minimal d-flex align-items-start p-3 mb-3 rounded-4 shadow-sm border-0 glass-blue unread">
                                     <div class="noti-icon-box me-3">
@@ -74,10 +83,10 @@
                                             <div>
                                                 <div class="d-flex align-items-center mb-1">
                                                     <span class="unread-dot me-2"></span>
-                                                    <h6 class="mb-0 fw-bold text-dark small">Health Insight</h6>
+                                                    <h6 class="mb-0 fw-bold text-dark small">Information</h6>
                                                 </div>
-                                                <p class="mb-0 noti-description text-muted extra-small">Fetching latest
-                                                    health tip...</p>
+                                                <p class="mb-0 noti-description text-muted extra-small">You've burned
+                                                    18% more calories than last week.</p>
                                             </div>
                                             <div class="d-flex flex-column align-items-end ps-2">
                                                 <span class="extra-small text-muted mb-1">1h ago</span>
@@ -92,6 +101,7 @@
                                     </div>
                                 </div>
 
+                                <!-- Meal Alert -->
                                 <div
                                     class="noti-item-minimal d-flex align-items-start p-3 mb-3 rounded-4 shadow-sm border-0 glass-yellow">
                                     <div class="noti-icon-box me-3">
@@ -100,11 +110,9 @@
                                     <div class="flex-grow-1">
                                         <div class="d-flex justify-content-between align-items-start">
                                             <div>
-                                                <div class="d-flex align-items-center mb-1">
-                                                    <h6 class="mb-0 fw-bold text-dark small">Meal</h6>
-                                                </div>
-                                                <p class="mb-0 noti-description text-muted extra-small">Meal suggestion
-                                                    yummy yumyum.</p>
+                                                <h6 class="mb-0 fw-bold text-dark small">Meal</h6>
+                                                <p class="mb-0 noti-description text-muted extra-small">Prep new recipe:
+                                                    Hummus Avocado Toast.</p>
                                             </div>
                                             <div class="d-flex flex-column align-items-end ps-2">
                                                 <span class="extra-small text-muted mb-1">5h ago</span>
@@ -115,6 +123,7 @@
                                     </div>
                                 </div>
 
+                                <!-- Log Reminder (Bukit Saujana) -->
                                 <div
                                     class="noti-item-minimal d-flex align-items-start p-3 mb-3 rounded-4 shadow-sm border-0 glass-red">
                                     <div class="noti-icon-box me-3">
@@ -123,11 +132,10 @@
                                     <div class="flex-grow-1">
                                         <div class="d-flex justify-content-between align-items-start">
                                             <div>
-                                                <div class="d-flex align-items-center mb-1">
-                                                    <h6 class="mb-0 fw-bold text-dark small">Log</h6>
-                                                </div>
-                                                <p class="mb-0 noti-description text-muted extra-small">Failed to sync
-                                                    with your fitness wearable.</p>
+                                                <h6 class="mb-0 fw-bold text-dark small">Log Reminder</h6>
+                                                <p class="mb-0 noti-description text-muted extra-small">Don't forget to
+                                                    log your Bukit Saujana hiking photos! You've procrastinated enough.
+                                                </p>
                                             </div>
                                             <div class="d-flex flex-column align-items-end ps-2">
                                                 <span class="text-muted extra-small mb-1">8h ago</span>
@@ -137,36 +145,128 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
+                            <!-- THIS WEEK TAB -->
+                            <div class="tab-pane fade" id="week">
+                                <!-- Goal Notification -->
+                                <div
+                                    class="noti-item-minimal d-flex align-items-start p-3 mb-3 rounded-4 shadow-sm border-0 glass-green">
+                                    <div class="noti-icon-box me-3">
+                                        <i class="fa-solid fa-trophy"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold text-dark small">Goal</h6>
+                                                <p class="mb-0 noti-description text-muted extra-small">Don't forget to
+                                                    finish your unfinished Strength Training (5 sessions / week).</p>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-end ps-2">
+                                                <span class="extra-small text-muted mb-1">2d ago</span>
+                                                <button type="button" class="btn-action-small" title="Dismiss"><i
+                                                        class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div
+                                    class="noti-item-minimal d-flex align-items-start p-3 mb-3 rounded-4 shadow-sm border-0 glass-orange">
+                                    <div class="noti-icon-box me-3">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold text-dark small">Progress Report</h6>
+                                                <p class="mb-0 noti-description text-muted extra-small">Check your
+                                                    dashboard for your workout progress summary from the last 7 days.
+                                                </p>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-end ps-2">
+                                                <span class="extra-small text-muted mb-1">3d ago</span>
+                                                <button type="button" class="btn-action-small" title="Dismiss"><i
+                                                        class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone Notification -->
+                                <div
+                                    class="noti-item-minimal d-flex align-items-start p-3 mb-3 rounded-4 shadow-sm border-0 glass-purple">
+                                    <div class="noti-icon-box me-3" style="color: #8e44ad;"> <!-- Purple icon color -->
+                                        <i class="fa-solid fa-fire"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <div class="d-flex align-items-center mb-1">
+                                                    <span class="unread-dot me-2"
+                                                        style="background-color: #8e44ad;"></span>
+                                                    <h6 class="mb-0 fw-bold text-dark small">Achievement</h6>
+                                                </div>
+                                                <p class="mb-0 noti-description text-muted extra-small">3-Day Streak!
+                                                    You've logged your water intake consistently this week. Keep it up!
+                                                </p>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-end ps-2">
+                                                <span class="extra-small text-muted mb-1">5d ago</span>
+                                                <button type="button" class="btn-action-small" title="Dismiss"><i
+                                                        class="fa-solid fa-xmark"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SEE ALL TAB (Combines everything) -->
+                            <div class="tab-pane fade" id="all">
+                                <p class="text-muted extra-small fw-bold text-uppercase mb-3">All Notifications History
+                                </p>
+                                <div id="all-notifications-container">
+                                    <!-- JavaScript will clone Today and Week items here -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- SET REMINDER FORM SECTION -->
                 <div id="remind-section" class="col-lg-5 col-12 d-lg-block">
                     <div class="card feature-card p-4 border-0 rounded-5 h-100 shadow-sm">
                         <h5 class="fw-bold text-olive mb-4">Set Reminder</h5>
+
                         <div class="mb-3">
                             <label class="form-label small text-muted fw-bold">Title</label>
                             <input type="text" class="form-control rounded-3 border-sand px-3 py-2"
-                                placeholder="e.g. Morning Yoga">
+                                placeholder="e.g. Hydration Break">
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label small text-muted fw-bold">Description</label>
                             <textarea class="form-control rounded-3 border-sand px-3" rows="3"
                                 placeholder="Add duration or details..."></textarea>
                         </div>
+
                         <label class="form-label small text-muted fw-bold mb-3">Choose Category</label>
                         <div class="d-flex gap-2 mb-4 flex-wrap">
-                            <button class="btn category-btn border-red active" onclick="setCategory('red')"><i
-                                    class="fa-solid fa-bell"></i> <span>Log</span></button>
-                            <button class="btn category-btn border-yellow" onclick="setCategory('yellow')"><i
-                                    class="fa-solid fa-utensils"></i> <span>Meal</span></button>
-                            <button class="btn category-btn border-blue" onclick="setCategory('blue')"><i
-                                    class="fa-solid fa-circle-info"></i> <span>Info</span></button>
-                            <button class="btn category-btn border-green" onclick="setCategory('green')"><i
-                                    class="fa-solid fa-trophy"></i> <span>Goal</span></button>
+                            <button class="btn category-btn border-red active" onclick="setCategory('red')">
+                                <i class="fa-solid fa-bell"></i> <span>Log</span>
+                            </button>
+                            <button class="btn category-btn border-yellow" onclick="setCategory('yellow')">
+                                <i class="fa-solid fa-utensils"></i> <span>Meal</span>
+                            </button>
+                            <button class="btn category-btn border-blue" onclick="setCategory('blue')">
+                                <i class="fa-solid fa-circle-info"></i> <span>Info</span>
+                            </button>
+                            <button class="btn category-btn border-green" onclick="setCategory('green')">
+                                <i class="fa-solid fa-trophy"></i> <span>Goal</span>
+                            </button>
                         </div>
+
                         <div class="row g-2 mb-4">
                             <div class="col-6">
                                 <label class="form-label small text-muted fw-bold">Date</label>
@@ -177,8 +277,10 @@
                                 <input type="time" class="form-control rounded-3 border-sand py-2">
                             </div>
                         </div>
-                        <button class="btn btn-flow w-100 py-3 rounded-4 text-white fw-bold shadow-sm mt-auto">Create
-                            Reminder</button>
+
+                        <button class="btn btn-flow w-100 py-3 rounded-4 text-white fw-bold shadow-sm mt-auto">
+                            Create Reminder
+                        </button>
                     </div>
                 </div>
             </div>
