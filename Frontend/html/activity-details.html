@@ -19,19 +19,30 @@
     <main class="main-content">
         <header class="d-flex justify-content-between align-items-center mb-5">
             <div class="d-flex align-items-center">
+                <!-- Sidebar Toggle -->
                 <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
                     <i class="fa-solid fa-bars fs-5"></i>
                 </button>
+
                 <div>
+                    <p class="text-sage small fw-bold mb-0 text-uppercase" style="letter-spacing: 1px;">
+                        Fitness Tracker / <span class="text-muted">Activity</span>
+                    </p>
+
                     <div id="nameViewContainer">
-                        <h2 class="fw-bold text-olive mb-0" id="viewName">Activity Details</h2>
+                        <h1 class="fw-bold text-olive mb-0 display-6" id="viewName">Activity Details</h1>
                     </div>
+
                     <div id="nameEditContainer" class="d-none">
-                        <input type="text" id="editName" class="form-control border-sand fw-bold text-olive fs-4 py-1">
+                        <input type="text" id="editName" class="form-control border-sand fw-bold text-olive fs-4 py-1 mt-2">
                     </div>
-                    <p class="text-muted small fw-bold mb-1 text-uppercase" id="viewCategory">Visualizing your session</p>
+
+                    <p class="text-muted small fw-medium mb-0" id="viewCategory">Visualizing your session</p>
+
                 </div>
             </div>
+
+            <!-- Action Buttons (Edit/Delete/Save) -->
             <div id="actionButtons"></div>
         </header>
 

@@ -191,9 +191,9 @@ function addGoal() {
         return;
     }
 
-    const newGoal = newGoal(Date.now(), catSelect.value, targetInput.value);
+    const goal = newGoal(Date.now(), catSelect.value, targetInput.value);
 
-    goals.push(newGoal);
+    goals.push(goal);
 
     // Reset and Close Modal
     catSelect.selectedIndex = 0;
@@ -258,21 +258,6 @@ function resetForm() {
     selectedFiles = [];
     document.getElementById('imageGalleryPreview').innerHTML = "";
     document.getElementById('clearPhotosBtn').classList.add('d-none');
-}
-
-function selectType(type, iconClass) {
-    // 1. Get references to the UI elements
-    const btn = document.getElementById('typeDropdown');
-    const hiddenInput = document.getElementById('selectedActivityType');
-
-    // 2. Update the button's look so the user sees their choice
-    // We use innerHTML to include the Bootstrap Icon
-    btn.innerHTML = `<i class="bi ${iconClass} me-2"></i> ${type}`;
-
-    // 3. Store the actual value in the hidden input for the form submission
-    hiddenInput.value = type;
-
-    console.log("Selected Activity:", type); // Check your console to see this!
 }
 
 // Utils
