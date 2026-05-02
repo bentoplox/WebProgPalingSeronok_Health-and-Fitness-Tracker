@@ -64,7 +64,6 @@
 .stat-number {
     font-size: 3.5rem;
     font-weight: 800;
-    color: var(--color-amber-gold);
     /* Amber pop! */
     line-height: 1;
 }
