@@ -18,7 +18,10 @@
                 <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
                     <i class="fa-solid fa-bars fs-5"></i>
                 </button>
-                <h2 class="fw-bold text-olive mb-0">Recipe Details</h2>
+                <div>
+                    <h2 class="fw-bold text-olive mb-0">Recipe Details</h2>
+                    <p id="dynamic-breadcrumb" class="text-muted small fw-bold mb-1" style="letter-spacing: 1px;">NUTRITION PLANNER / RECIPE DETAILS</p>
+                </div>
             </header>
 
             <!-- THE DYNAMIC BACK BUTTON -->
@@ -86,7 +89,7 @@
                                 <i id="detailsFavIcon" class="fa-regular fa-heart"></i> <span id="detailsFavText">Save to Favorites</span>
                             </button>
                             <!-- Edit/Customize Button -->
-                            <a href="edit-recipe.html" class="btn btn-success">
+                            <a href="edit-recipe.html" class="btn btn-success" onclick="localStorage.setItem('editPath', 'customize')">
                                 <i class="fa-solid fa-pen me-2"></i>Customize Recipe
                             </a>
                         </div>

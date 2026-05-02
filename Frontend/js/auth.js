@@ -28,7 +28,7 @@ if (setupForm) {
         //localStorage.setItem('flowState_userGoal', userGoal);
 
         console.log("Setup complete! Redirecting to login...")
-        window.location.href = 'login.html';
+        window.location.href = 'dashboard.html';
     });
 }
 
