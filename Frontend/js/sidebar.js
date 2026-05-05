@@ -7,9 +7,9 @@ const sidebarContent = `
 
         <a href="../html/profile.html" class="profile-link-card">
             <div class="d-flex align-items-center mb-4 p-3 bg-light rounded-4 border border-sand shadow-sm" style="transition: all 0.3s ease;">
-                <img src="../images/running.jpg" alt="XR" width="40" height="40" class="rounded-circle me-3 object-fit-cover" onerror="this.src='https://via.placeholder.com/40'">
+                <img id="sidebarProfilePicture" src="../images/running.jpg" alt="XR" width="40" height="40" class="rounded-circle me-3 object-fit-cover" onerror="this.src='https://via.placeholder.com/40'">
                 <div>
-                    <h6 class="mb-0 text-olive fw-bold">XR</h6>
+                    <h6 id="sidebarUsername" class="mb-0 text-olive fw-bold">XR</h6>
                     <small class="text-muted">Pro Member</small>
                 </div>
             </div>

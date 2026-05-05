@@ -88,6 +88,7 @@ function setupEditAndSaveButton(){
                 console.log("Is Edit Mode = " + isEditMode);
                 updateUser().then(()=>{
                     fillProfile()
+                    updateSidebar()
                     editBtn.innerHTML = '<i class="fa-solid fa-pen-to-square me-2"></i>Edit Profile';
                     editBtn.classList.replace('btn-primary', 'btn-success');
 
@@ -144,9 +145,6 @@ async function updateUser(){
     user.profilePictureURl = document.getElementById("profilePicture").src
     user.bio = bioEdit.value;
 }
-function getMockUser(){
-    return createUser("Hazim Nidzam", "hzmnzn1234", "hzmnzm@gmail.com", "I am 22 years old", "Um Student", "hazim1234", "../images/mock/ProfilePicture.jpg")
-}
 
 function createUser(name, username, email, bio,  tag, password, profilePictureUrl){
     return {
@@ -193,4 +191,14 @@ function fillEditFields(){
 
                     <input id="file-upload" type="file" style="display: none;" accept="image/*" onchange="updateProfilePicture(event)">`
 }
+
+function updateSidebar(){
+    document.getElementById("sidebarUsername").innerText = user.username;
+    document.getElementById("sidebarProfilePicture").src = user.profilePictureURl
+}
+
+function getMockUser(){
+    return createUser("Xayne Raphael", "XR", "hzmnzm@gmail.com", "I am 22 years old", "Um Student", "xayne1234", "../images/running.jpg")
+}
+
 
