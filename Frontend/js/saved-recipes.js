@@ -37,7 +37,7 @@ function displaySavedRecipes() {
 
         cardsHTML += `
             <div class="col-md-3">
-                <a href="recipe-details.html" class="text-decoration-none text-dark d-block h-100 position-relative">
+                <a href="recipe-details.html?id=${meal.id}" class="text-decoration-none text-dark d-block h-100">
                     <div class="card h-100 shadow-sm border-0 rounded-extra hover-elevate">
                         
                         <!-- THE HEART BUTTON -->

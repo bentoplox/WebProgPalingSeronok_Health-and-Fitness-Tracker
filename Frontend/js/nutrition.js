@@ -51,25 +51,43 @@ function calculateCalories() {
         bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161
     }
 
-    //4. Calculate Total Daily Energy Expenditure (TDEE) = BMR * activity level
+    // 4. Calculate Total Daily Energy Expenditure (TDEE)
     let tdee = 0;
     switch (activityLevel) {
-        case "light":
-            tdee = bmr * 1.375;
-            break;
-        case "moderate":
-            tdee = bmr * 1.55;
-            break;
-        case "active":
-            tdee = bmr * 1.725;
-            break;
-        case "very-active":
-            tdee = bmr * 1.9;
-            break;
+        case "light": tdee = bmr * 1.375; break;
+        case "moderate": tdee = bmr * 1.55; break;
+        case "active": tdee = bmr * 1.725; break;
+        case "very-active": tdee = bmr * 1.9; break;
     }
 
-    // 5. Display the result to user  
-        document.getElementById("resultContainer").innerHTML = '<div class="alert alert-success">Your daily goal: <strong>' + Math.round(tdee) + ' calories</strong></div>';
+    // --- THE NEW GOAL LOGIC ---
+    // 5. Grab the selected goal from Step 6
+    let goalElement = document.querySelector('input[name="goal"]:checked');
+    let goal = goalElement ? goalElement.id : "maintain"; // Default to maintain if empty
+    
+    let finalCalories = Math.round(tdee);
+    let personalizedMessage = "";
+
+    // 6. Adjust the math and write the custom text Xayne suggested!
+    if (goal === "lose") {
+        finalCalories -= 500; // Create a calorie deficit
+        personalizedMessage = `For you to lose weight steadily, your daily intake should be around <strong>${finalCalories} calories</strong>.`;
+    } 
+    else if (goal === "gain") {
+        finalCalories += 500; // Create a calorie surplus
+        personalizedMessage = `To build muscle and gain weight safely, your daily intake should be around <strong>${finalCalories} calories</strong>.`;
+    } 
+    else {
+        // Maintain
+        personalizedMessage = `To maintain your current ideal weight, your daily intake should stay around <strong>${finalCalories} calories</strong>.`;
+    }
+
+    // 7. Display the dynamic result to the user
+    document.getElementById("resultContainer").innerHTML = `
+        <div class="alert alert-success mt-4 shadow-sm" style="font-size: 1.1rem;">
+            ${personalizedMessage}
+        </div>
+    `;
 }
 
 //FUNCTION FOR MEAL GENERATOR
@@ -143,7 +161,7 @@ function generateMeals() {
         // This lets us write multi-line HTML and inject variables using ${}
         rowHTML += `
             <div class="col-md-3">
-                <a href="recipe-details.html" class="text-decoration-none text-dark d-block h-100">
+                <a href="recipe-details.html?id=${meal.id}" class="text-decoration-none text-dark d-block h-100">
                     <div class="card h-100 shadow-sm border-0 rounded-extra hover-elevate">
                         <div class="position-absolute top-0 end-0 m-3" style="z-index: 10;">
                             <button class="btn btn-light rounded-circle shadow p-2 lh-1" onclick="toggleFavorite(event, ${meal.id})">
@@ -219,7 +237,7 @@ function displayAllRecipes() {
         let heartIconClass = isSaved ? "fa-solid text-danger" : "fa-regular text-muted";
         cardsHTML += `
             <div class="col-md-3">
-            <a href="recipe-details.html" class="text-decoration-none text-dark d-block h-100">
+            <a href="recipe-details.html?id=${meal.id}" class="text-decoration-none text-dark d-block h-100">
                 <div class="card h-100 shadow-sm border-0 rounded-extra hover-elevate">
                     <div class="position-absolute top-0 end-0 m-3" style="z-index: 10;">
                         <button class="btn btn-light rounded-circle shadow p-2 lh-1" onclick="toggleFavorite(event, ${meal.id})">
@@ -280,27 +298,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // 1. Create a function to update the recipe counts
 function updateRecipeCounts() {
-    // 2. Count the recipes
-    // In a real app, you would count the items in your database here.
-    // For now, we will simulate this by checking the length of your mock database!
     let savedRecipesTotal = savedFavorites.length; 
     
-    // Let's pretend the user has customized 2 recipes
-    let customRecipesTotal = 2; 
+    // --- THE FIX: Count the ACTUAL custom recipes array! ---
+    let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
+    let customRecipesTotal = myCustomRecipes.length; 
 
-    // 3. Grab the HTML elements using the IDs we just added
     let savedCountElement = document.getElementById("saved-recipe-count");
     let customCountElement = document.getElementById("custom-recipe-count");
 
-    // 4. Update the HTML text with our new numbers
-    // We add a safety check (if) just in case the elements don't exist on the page
-    if (savedCountElement) {
-        savedCountElement.innerText = savedRecipesTotal;
-    }
-
-    if (customCountElement) {
-        customCountElement.innerText = customRecipesTotal;
-    }
+    if (savedCountElement) savedCountElement.innerText = savedRecipesTotal;
+    if (customCountElement) customCountElement.innerText = customRecipesTotal;
 }
 
 // 5. Run the function immediately when the page loads

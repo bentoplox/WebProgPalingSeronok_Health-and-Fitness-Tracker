@@ -1,0 +1,91 @@
+.about-header {
+    margin: 5vh 0 8vh;
+}
+
+.team-fan-container {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10vh;
+}
+
+.team-card {
+    position: absolute;
+    width: 240px;
+    height: 350px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transform-origin: bottom center;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateX(var(--tx)) translateY(var(--ty)) rotate(var(--rot));
+    z-index: var(--z);
+}
+
+.team-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card-info-overlay {
+    position: absolute;
+    bottom: -85px;
+    left: 0;
+    width: 100%;
+    padding: 40px 20px 20px;
+    background: linear-gradient(to top, #0e1c0e 0%, rgba(14, 28, 14, 0.7) 60%, transparent 100%);
+    color: var(--color-cream);
+    text-align: center;
+    transition: bottom 0.4s ease;
+}
+
+.card-info-overlay h5 {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.card-info-overlay p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-sand);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-card:hover {
+    transform: translateX(var(--tx)) translateY(calc(var(--ty) - 50px)) rotate(0deg) scale(1.08);
+    z-index: 100 !important;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.team-card:hover .card-info-overlay {
+    bottom: 0;
+}
+
+.team-card:hover img {
+    transform: scale(1.05);
+}
+
+.card-1 { --tx: -340px; --ty: 90px; --rot: -22deg; --z: 1; }
+.card-2 { --tx: -200px; --ty: 40px; --rot: -12deg; --z: 2; }
+.card-3 { --tx: -65px;  --ty: 10px; --rot: -4deg;  --z: 3; }
+.card-4 { --tx: 65px;   --ty: 10px; --rot: 4deg;   --z: 3; }
+.card-5 { --tx: 200px;  --ty: 40px; --rot: 12deg;  --z: 2; }
+.card-6 { --tx: 340px;  --ty: 90px; --rot: 22deg;  --z: 1; }
+
+@media (max-width: 992px) {
+    .team-fan-container { transform: scale(0.8); }
+}
+
+@media (max-width: 768px) {
+    .team-fan-container { 
+        transform: scale(0.5); 
+        height: 300px; 
+    }
+}

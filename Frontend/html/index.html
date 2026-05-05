@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowState | Your Journey Starts Here</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/landingpage.css">
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 </head>
-
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" style="background-color: var(--color-cream);">
         <div class="container">
-            <img src="../images/favicon.ico" alt="Flow State Logo" height="40"
-                class="d-inline-block align-text-top me-2">
+            <img src="../images/favicon.ico" alt="Flow State Logo" height="40" class="d-inline-block align-text-top me-2">
             <a class="navbar-brand fw-bold text-olive" href="#"> Flow State</a>
             <div class="ms-auto">
                 <a href="#features" class="nav-link d-inline-block me-4">Features</a>
@@ -23,7 +22,7 @@
         </div>
     </nav>
 
-    <header class="container-fluid p-0 overflow-hidden">
+    <header class="container-fluid p-0 overflow-hidden hero-texture">
         <div class="row g-0 vh-100 align-items-center">
             <div class="col-md-7 ps-lg-5 px-4">
                 <div class="ps-lg-5">
@@ -36,64 +35,74 @@
                     <a href="signup.html" class="btn btn-premium">START YOUR JOURNEY</a>
                 </div>
             </div>
-
             <div class="col-md-5 h-100 d-none d-md-block">
                 <div class="hero-image-container" style="background-image: url('../images/running.jpg');"></div>
             </div>
         </div>
     </header>
 
-    <section id="features" class="container my-5 py-5">
-
-        <div class="text-center mb-5">
-            <p class="section-label">Our Capabilities</p>
-            <h2 class="display-5 fw-bold text-olive">Engineered for Discipline</h2>
-        </div>
-
-        <div class="row g-4 align-items-start">
-            <div class="col-md-6">
-                <div class="card feature-card mb-4">
-                    <img src="../images/Landing_Tracker.png" class="card-img-top" alt="Fitness Tracker Preview">
-                    <div class="card-body">
-                        <h5 class="card-title">Fitness Tracker</h5>
-                        <p class="card-text text-muted">Log workouts and activities with precision. Monitor steps,
-                            duration, and intensity seamlessly.</p>
-                    </div>
-                </div>
-
-                <div class="card feature-card mb-4">
-                    <img src="../images/Landing_Nutrition.png" class="card-img-top" alt="Nutrition Planner Preview">
-                    <div class="card-body">
-                        <h5 class="card-title">Nutrition Planner</h5>
-                        <p class="card-text text-muted">Personalized meal suggestions with calorie calculations to keep
-                            your diet on track.</p>
-                    </div>
-                </div>
+    <section id="features" class="texture-partition pb-5">
+        <div class="container pt-5">
+            <div class="text-center mb-5">
+                <p class="section-label">Our Capabilities</p>
+                <h2 class="display-5 fw-bold text-olive">Engineered for Discipline</h2>
             </div>
 
-            <div class="col-md-6 stagger-down">
-                <div class="card feature-card mb-4">
-                    <img src="../images/Landing_Progress.png" class="card-img-top" alt="Progress Charts Preview">
-                    <div class="card-body">
-                        <h5 class="card-title">Progress Charts</h5>
-                        <p class="card-text text-muted">Visual representations of your data. Watch your journey unfold
-                            through interactive charts.</p>
+            <div class="row g-4 align-items-start">
+                <div class="col-md-6">
+                    <div class="card feature-card mb-4 shadow-sm border-0">
+                        <img src="../images/Landing_Dashboard.png" class="card-img-top" alt="Dashboard Command Center Preview">
+                        <div class="card-body">
+                            <h5 class="card-title">Your Performance Command Center</h5>
+                            <p class="card-text text-muted">Consolidate your fitness life into a single, minimalist interface designed for total control. Flow State provides the visual proof of your discipline. With automated reminders and macro-balanced meal suggestions, the dashboard feature ensures you spend less time scrolling and more time in the zone.</p>
+                        </div>
+                    </div>
+
+                    <div class="card feature-card mb-4 shadow-sm border-0">
+                        <img src="../images/Landing_Tracker.png" class="card-img-top" alt="Fitness Tracker Preview">
+                        <div class="card-body">
+                            <h5 class="card-title">Fitness Tracker</h5>
+                            <p class="card-text text-muted">Bridge the gap between your intentions and your results. Define custom weekly session targets for any discipline and maintain a high-precision record of your activity history.</p>
+                        </div>
+                    </div>
+
+                    <div class="card feature-card mb-4 shadow-sm border-0">
+                        <img src="../images/Landing_Notification.png" class="card-img-top" alt="Smart Notifications Preview">
+                        <div class="card-body">
+                            <h5 class="card-title">Smart Notifications</h5>
+                            <p class="card-text text-muted">Timely reminders and habit-building alerts to ensure you never miss a milestone. Keep your routine rock-solid with proactive health insights and sync updates.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card feature-card mb-4">
-                    <img src="../images/Landing_Notification.png" class="card-img-top" alt="Smart Notifications Preview">
-                    <div class="card-body">
-                        <h5 class="card-title">Smart Notifications</h5>
-                        <p class="card-text text-muted">Timely reminders and habit-building alerts to ensure you never
-                            miss a milestone.</p>
+                <div class="col-md-6 stagger-down">
+                    <div class="card feature-card mb-4 shadow-sm border-0">
+                        <img src="../images/Landing_Recipes.png" class="card-img-top" alt="Dashboard Action Plan Preview">
+                        <div class="card-body">
+                            <h5 class="card-title">Precision on Your Plate</h5>
+                            <p class="card-text text-muted">Nutrition is the foundation of the Flow State. Explore a diverse library of chef-curated recipes tailored to your unique dietary needs—whether you are Vegan, Keto, or Paleo. Save your favorites and build a personalized menu that powers your daily discipline.</p>
+                        </div>
+                    </div>
+
+                    <div class="card feature-card mb-4 shadow-sm border-0">
+                        <img src="../images/Landing_Progress.png" class="card-img-top" alt="Progress Charts Preview">
+                        <div class="card-body">
+                            <h5 class="card-title">Master Your Momentum</h5>
+                            <p class="card-text text-muted">Track your discipline through a full monthly snapshot, celebrate your active streaks, and aim for an elite goal hit rate. Your journey is turned into a powerful visual story of growth.</p>
+                        </div>
+                    </div>
+
+                    <div class="card feature-card mb-4 shadow-sm border-0">
+                        <img src="../images/Landing_NutriCalc.png" class="card-img-top" alt="Nutrition Planner Preview">
+                        <div class="card-body">
+                            <h5 class="card-title">Built for Clarity and Execution</h5>
+                            <p class="card-text text-muted">Every body is unique, and your nutrition should be too. Receive a personalized daily goal through a clean, intuitive interface that converts your physical stats and activity habits into a clear daily target.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <footer class="custom-footer">
         <div class="container">
@@ -113,15 +122,12 @@
                     <p class="mb-1 text-olive">📧 wppsfitness@gmail.com</p>
                 </div>
             </div>
-  
             <div class="text-center mt-4 pb-2">
                 <p class="mb-0 text-olive opacity-50">&copy; 2026 | Web Programming Project</p>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-
-
 </html>

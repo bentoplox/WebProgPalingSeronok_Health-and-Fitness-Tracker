@@ -25,7 +25,7 @@ function setCategory(color) {
 }
 
 // 3. Combined Health Insight API Call
-window.onload = function() {
+window.onload = function () {
     const insightDisplay = document.getElementById('health-insight-text');
     if (!insightDisplay) return;
 
@@ -41,12 +41,12 @@ window.onload = function() {
         .then(data => {
             // Correct path for the MyHealthFinder API v4
             const items = data.Result.Items.Item;
-            
+
             if (items && items.length > 0) {
                 // Pick a random health topic
                 const randomIndex = Math.floor(Math.random() * items.length);
                 const randomTopic = items[randomIndex].Title;
-                
+
                 insightDisplay.innerText = `Recommended: ${randomTopic}`;
             } else {
                 insightDisplay.innerText = "Stay active and hydrated today!";
@@ -60,3 +60,162 @@ window.onload = function() {
 };
 
 
+function showAllNotifications() {
+    const todayPane = document.getElementById('today');
+    const weekPane = document.getElementById('week');
+    const tabNav = document.getElementById('pills-tab');
+    const seeAllBtn = document.querySelector('.btn-see-all');
+    const allContainer = document.getElementById('all-notifications-container');
+    const title = document.getElementById('notification-title');
+
+    // Combine content
+    if (allContainer) {
+        allContainer.innerHTML = todayPane.innerHTML + weekPane.innerHTML;
+    }
+
+    // Switch tab
+    document.getElementById('all').classList.add('show', 'active');
+    todayPane.classList.remove('show', 'active');
+    weekPane.classList.remove('show', 'active');
+
+    // Hide nav + button
+    tabNav.style.setProperty('display', 'none', 'important');
+    seeAllBtn.style.display = 'none';
+
+    // CHANGE title (instead of hiding)
+    if (title) {
+        title.innerText = "All Notifications";
+    }
+
+    // Create / show back button
+    let backBtn = document.getElementById('btn-back-nav');
+
+    if (!backBtn) {
+        const header = document.querySelector('.notification-center-card h5');
+
+        header.insertAdjacentHTML('beforebegin', `
+        <button id="btn-back-nav"
+            class="d-none btn btn-outline-secondary rounded-pill px-3 py-1 me-2 d-flex align-items-center gap-2 shadow-sm"
+            onclick="goBackToTabs()">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back</span>
+        </button>
+    `);
+
+        backBtn = document.getElementById('btn-back-nav');
+    }
+
+    // SHOW it
+    backBtn.classList.remove('d-none');
+    initAllTabClicks();
+}
+
+function goBackToTabs() {
+    const tabNav = document.getElementById('pills-tab');
+    const seeAllBtn = document.querySelector('.btn-see-all');
+    const todayPane = document.getElementById('today');
+    const weekPane = document.getElementById('week');
+    const allPane = document.getElementById('all');
+    const title = document.getElementById('notification-title');
+
+    // Restore nav + button
+    tabNav.style.setProperty('display', 'inline-flex', 'important');
+    seeAllBtn.style.display = 'block';
+
+    // Restore title
+    if (title) {
+        title.innerText = "Notification Center";
+    }
+
+    // Hide back button
+    const backBtn = document.getElementById('btn-back-nav');
+    if (backBtn) {
+        backBtn.classList.add('d-none');
+    }
+
+    // Reset tabs
+    allPane.classList.remove('show', 'active');
+    weekPane.classList.remove('show', 'active');
+    todayPane.classList.add('show', 'active');
+}
+/* =========================
+   MAKE NOTIFICATIONS CLICKABLE
+========================= */
+/* =========================
+   SAFE CLICK HANDLER
+========================= */
+function attachClick(selector, url) {
+    document.querySelectorAll(selector).forEach(el => {
+        if (!el) return;
+
+        el.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevents button inside from interfering
+            window.location.href = url;
+        });
+    });
+}
+
+/* =========================
+   INIT ALL STATIC TABS
+   (TODAY + WEEK)
+========================= */
+function initStaticClicks() {
+
+    // TODAY
+    attachClick('#today .glass-blue', 'progress.html');
+    attachClick('#today .glass-yellow', 'nutrition.html');
+    attachClick('#today .glass-red', 'tracker.html');
+
+    // WEEK
+    attachClick('#week .glass-green', 'progress.html');
+    attachClick('#week .glass-orange', 'dashboard.html');
+    attachClick('#week .glass-purple', 'progress.html');
+}
+
+/* =========================
+   SEE ALL TAB (dynamic)
+========================= */
+function initAllTabClicks() {
+
+    attachClick('#all .glass-blue', 'progress.html');
+    attachClick('#all .glass-yellow', 'nutrition.html');
+    attachClick('#all .glass-red', 'tracker.html');
+    attachClick('#all .glass-green', 'progress.html');
+    attachClick('#all .glass-orange', 'dashboard.html');
+    attachClick('#all .glass-purple', 'progress.html');
+}
+
+/* =========================
+   RUN ON PAGE LOAD
+========================= */
+document.addEventListener('DOMContentLoaded', () => {
+    initStaticClicks();
+});
+
+
+/* =========================
+   PREVENT BUTTON CLICK FROM REDIRECTING
+========================= */
+document.querySelectorAll('.btn-action-small').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+});
+
+
+/* =========================
+   OPTIONAL: HOVER EFFECT (feel clickable)
+========================= */
+document.querySelectorAll('.noti-item-minimal').forEach(item => {
+    item.style.cursor = 'pointer';
+
+    item.addEventListener('mouseenter', () => {
+        item.style.transform = 'translateY(-2px)';
+        item.style.boxShadow = '0 8px 20px rgba(0,0,0,0.08)';
+    });
+
+    item.addEventListener('mouseleave', () => {
+        item.style.transform = '';
+        item.style.boxShadow = '';
+    });
+});

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hummus Avocado Toast - Flow State</title>
+    <title>Recipe Details - Flow State</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -19,8 +19,8 @@
                     <i class="fa-solid fa-bars fs-5"></i>
                 </button>
                 <div>
+                    <p id="dynamic-breadcrumb" class="text-muted small fw-bold mb-1">NUTRITION PLANNER / RECIPE DETAILS</p>
                     <h2 class="fw-bold text-olive mb-0">Recipe Details</h2>
-                    <p id="dynamic-breadcrumb" class="text-muted small fw-bold mb-1" style="letter-spacing: 1px;">NUTRITION PLANNER / RECIPE DETAILS</p>
                 </div>
             </header>
 
@@ -34,16 +34,17 @@
                 <div class="row">
                     
                     <div class="col-md-4 text-center mb-4">
-                        <img src="../images/recipes/hummus-avocado-toast.png" class="img-fluid rounded-3 mb-3" alt="Recipe Image">
-                        <h3 class="fw-bold text-olive">Hummus Avocado Toast</h3>
-                        <p class="text-muted"><i class="fa-regular fa-clock me-1"></i> 5 mins | 🌱 Vegan</p>
+                        <!-- need to give id tags to the specific pieces of text and images that will change so our JavaScript knows where to inject the new data -->
+                        <img id="rd-image" src="../images/recipes/hummus-avocado-toast.png" class="img-fluid rounded-3 mb-3 w-100" style="height: 300px; object-fit: cover;" alt="Recipe Image">
+                        <h3 id="rd-title" class="fw-bold text-olive">Hummus Avocado Toast</h3>
+                        <p id="rd-meta" class="text-muted"><i class="fa-regular fa-clock me-1"></i> 5 mins | 🌱 Vegan</p>
                         
                         <!-- NUTRITION OVERVIEW CARD -->
                         <div class="card border-0 shadow-sm mb-3">
                             <div class="card-body text-center p-4">
                                 
                                 <!-- The Main Calorie Count -->
-                                <h3 class="fw-bold text-success mb-4">527 kcal</h3>
+                                <h3 id="rd-calories" class="fw-bold text-success mb-4">527 kcal</h3>
                                 
                                 <!-- The Macro Progress Bars -->
                                 <div class="px-2 text-start">
@@ -89,7 +90,7 @@
                                 <i id="detailsFavIcon" class="fa-regular fa-heart"></i> <span id="detailsFavText">Save to Favorites</span>
                             </button>
                             <!-- Edit/Customize Button -->
-                            <a href="edit-recipe.html" class="btn btn-success" onclick="localStorage.setItem('editPath', 'customize')">
+                            <a href="edit-recipe.html" id="customizeBtn" class="btn btn-success" onclick="localStorage.setItem('editPath', 'customize')">
                                 <i class="fa-solid fa-pen me-2"></i>Customize Recipe
                             </a>
                         </div>
@@ -119,6 +120,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/nutrition.js"></script>
     <script src="../js/recipe-details.js"></script>
     <script src="../js/sidebar.js"></script>
 </body>

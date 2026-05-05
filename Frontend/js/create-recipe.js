@@ -1,24 +1,32 @@
+// Inside create-recipe.js
+
 // ==========================================
 // 1. IMAGE UPLOAD LOGIC
 // ==========================================
-let uploadBtn = document.getElementById('uploadImageBtn');
+let uploadSlot = document.getElementById('imageUploadSlot'); // We now target the whole slot
 let hiddenInput = document.getElementById('imageInput');
 let imagePreview = document.getElementById('recipeImagePreview');
 
-// When user clicks the button, pretend they clicked the hidden file input
-if(uploadBtn) {
-    uploadBtn.addEventListener('click', function() {
+// When user clicks the blank slot, pretend they clicked the hidden file input
+if(uploadSlot) {
+    uploadSlot.addEventListener('click', function() {
         hiddenInput.click();
     });
 }
 
-// When a file is chosen, swap the image preview
+// When a file is chosen, update the UI
 if(hiddenInput) {
     hiddenInput.addEventListener('change', function(event) {
         let file = event.target.files[0];
         if (file) {
             // URL.createObjectURL creates a temporary link to the file on the user's computer!
             imagePreview.src = URL.createObjectURL(file);
+            
+            // THE NEW DYNAMIC PART:
+            // Remove 'd-none' from the image so it shows up
+            imagePreview.classList.remove('d-none');
+            // Add 'd-none' to the blank slot to hide it
+            uploadSlot.classList.add('d-none');
         }
     });
 }
@@ -144,46 +152,35 @@ function updateStepNumbers() {
 let saveBtn = document.getElementById('saveCustomRecipeBtn');
 
 if(saveBtn) {
-    saveBtn.addEventListener('click', function () {
-        let isConfirmed = confirm("Are you sure you want to save these changes to your custom recipe?");
+    saveBtn.addEventListener('click', function() {
+        let isConfirmed = confirm("Are you sure you want to save this new custom recipe?");
         
-        if (isConfirmed) {
-            // 1. Load the mini-database
-            let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
+        if(isConfirmed) {
             
-            // 2. Check the URL to see what recipe we are currently looking at
-            let urlParams = new URLSearchParams(window.location.search);
-            let editingId = parseInt(urlParams.get('id'));
+            // --- SAVE TO MINI-DATABASE ---
+            let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
 
-            // 3. Build the updated recipe object
-            let updatedRecipe = {
-                // If we are editing an existing custom recipe, keep its old ID. Otherwise, make a new one!
-                id: (editingId >= 900) ? editingId : (900 + myCustomRecipes.length),
-                name: document.getElementById('editRecipeName').value,
-                calories: parseInt(document.getElementById('totalCalsText').innerText),
+            // Read the screen to build our new recipe object
+            let newRecipe = {
+                id: 900 + myCustomRecipes.length, 
+                name: document.getElementById('editRecipeName').value || "My Awesome New Recipe", // Fallback name if left blank!
+                calories: parseInt(document.getElementById('totalCalsText').innerText) || 0, 
                 prepTime: document.getElementById('editPrepTime').value + " mins",
                 image: document.getElementById('recipeImagePreview').src,
-                diet: "Custom"
+                diet: "Custom" 
             };
 
-            // 4. THE SMART SAVE LOGIC
-            if (editingId >= 900) {
-                // UPDATE: We are editing an existing custom recipe. 
-                // Find its exact position in the array and replace it with the new data.
-                let index = myCustomRecipes.findIndex(r => r.id === editingId);
-                if (index !== -1) {
-                    myCustomRecipes[index] = updatedRecipe;
-                }
-            } else {
-                // CREATE: We are customizing a main recipe for the first time. Add it to the end!
-                myCustomRecipes.push(updatedRecipe);
-            }
-
-            // 5. Save the array back to memory
+            // Add it to the list and save it back to the browser
+            myCustomRecipes.push(newRecipe);
             localStorage.setItem('myCustomRecipes', JSON.stringify(myCustomRecipes));
+            // -----------------------------------
 
-            alert("Recipe saved successfully!");
-            isSafeToLeave = true;
+            alert("Recipe created successfully!");
+            
+            // Tell our safety net it's okay to leave!
+            isSafeToLeave = true; 
+            
+            // Redirect back to the custom recipes page
             window.location.replace("custom-recipes.html");
         }
     });
@@ -226,123 +223,15 @@ function cancelEditing(event) {
 }
 
 // ==========================================
-// 7. DELETE RECIPE LOGIC (Safety Net)
-// ==========================================
-let deleteBtn = document.getElementById('deleteRecipeBtn');
-
-if(deleteBtn) {
-    deleteBtn.addEventListener('click', function() {
-        
-        // --- UX Best Practice: Double-Confirmation Alert ---
-        // Native browser confirmation popup (Are you sure?)
-        let userWantsToDelete = confirm("WARNING: Are you sure you want to delete this recipe PERMANENTLY? This cannot be undone.");
-        
-        if(userWantsToDelete) {
-            
-            // 1. Get the current recipe ID from the URL parameter (e.g., ?id=901)
-            let urlParams = new URLSearchParams(window.location.search);
-            let recipeIdToDelete = parseInt(urlParams.get('id'));
-
-            // Safety check: Don't do anything if we can't find the ID!
-            if(!recipeIdToDelete) {
-                alert("Error: Could not identify which recipe to delete.");
-                return;
-            }
-
-            // 2. Load our "mini-database" array from localStorage
-            let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
-
-            // 3. Delete the specific recipe using .filter()
-            // We create a new array that includes EVERY recipe EXCEPT the one that matches our ID
-            let updatedRecipes = myCustomRecipes.filter(function(recipe) {
-                return recipe.id !== recipeIdToDelete; 
-            });
-
-            // 4. Save the new, smaller array back to localStorage
-            localStorage.setItem('myCustomRecipes', JSON.stringify(updatedRecipes));
-
-            alert("Recipe deleted successfully!");
-
-            // --- IMPORTANT: Safety Net Bypasses ---
-            // Tell our 'unsaved changes' alert (beforeunload) that it's safe to leave!
-            // isSafeToLeave should be defined higher up in your JS file!
-            isSafeToLeave = true; 
-
-            // Redirect the user back to the custom recipes gallery 
-            // .replace is best here so they can't click "back" to a deleted recipe!
-            window.location.replace("custom-recipes.html");
-        }
-        // If they click "Cancel" on the alert, the function ends and they stay safely on the page.
-    });
-}
-
-// ==========================================
 // DYNAMIC BREADCRUMB ROUTER
 // ==========================================
-document.addEventListener("DOMContentLoaded", function () {
-    // 1. Grab the origin (e.g., CUSTOM RECIPES)
-    let origin = localStorage.getItem('recipeOrigin') || 'VIEW ALL RECIPES';
-    
-    // 2. Grab our new path crumb (Did they click 'create' or 'customize'?)
-    let editPath = localStorage.getItem('editPath') || 'create';
-    
+// Inside create-recipe.js
+
+document.addEventListener("DOMContentLoaded", function() {
+    // A simple, static breadcrumb for a dedicated page.
     let breadcrumb = document.getElementById('dynamic-breadcrumb');
-    
-    // 3. Build the accurate trail based on the path!
-    if (breadcrumb) {
-        if (editPath === 'customize') {
-            // If they came from an existing recipe:
-            breadcrumb.innerText = "NUTRITION PLANNER / " + origin + " / RECIPE DETAILS / EDIT RECIPE";
-        } else {
-            // If they clicked the blank Create New card:
-            breadcrumb.innerText = "NUTRITION PLANNER / " + origin + " / CREATE NEW RECIPE";
-        }
-    }
-    
-    // ==========================================
-    // DYNAMIC EDIT DATA PRE-FILL
-    // ==========================================
-    const urlParams = new URLSearchParams(window.location.search);
-    const recipeIdString = urlParams.get('id');
-
-    if (recipeIdString) {
-        const recipeId = parseInt(recipeIdString);
-        let recipe = null;
-
-        // Search Area A: Look in the Main Mock Database first
-        if (typeof recipeDatabase !== 'undefined') {
-            recipe = recipeDatabase.find(r => r.id === recipeId);
-        }
-
-        // Search Area B: If not found, look in our Custom Mini-Database!
-        if (!recipe) {
-            let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
-            recipe = myCustomRecipes.find(r => r.id === recipeId);
-        }
-
-        // If we found it in EITHER place, pre-fill the form!
-        if (recipe) {
-            // 1. Inject the Recipe Name
-            let nameInput = document.getElementById('editRecipeName');
-            if (nameInput) {
-                // Smart check: Only add "(My Version)" if it doesn't already have it!
-                if (recipe.name.includes("(My Version)")) {
-                    nameInput.value = recipe.name;
-                } else {
-                    nameInput.value = recipe.name + " (My Version)";
-                }
-            }
-
-            // 2. Inject the Recipe Image
-            let imagePreview = document.getElementById('recipeImagePreview');
-            if (imagePreview) imagePreview.src = recipe.image;
-
-            // 3. Inject the Prep Time
-            let prepInput = document.getElementById('editPrepTime');
-            if (prepInput) {
-                prepInput.value = parseInt(recipe.prepTime);
-            }
-        }
+    if(breadcrumb) {
+        breadcrumb.innerText = "NUTRITION PLANNER / CUSTOM RECIPES / CREATE NEW RECIPE";
     }
 });
 
