@@ -24,7 +24,6 @@ const sidebarContent = `
             
             <hr class="border-secondary opacity-25 my-2">
             
-            <li><a href="#" class="nav-link sidebar-link"><i class="fa-solid fa-gear me-2"></i> Settings</a></li>
             <li><a href="aboutus.html" class="nav-link sidebar-link"><i class="fa-solid fa-circle-info me-2"></i> About Us</a></li>
         </ul>
     </aside>
