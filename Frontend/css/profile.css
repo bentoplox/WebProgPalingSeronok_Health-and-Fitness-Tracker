@@ -38,29 +38,25 @@
     border-radius: 15px;
     padding: 15px 20px;
 }
-/*********************
-/* Feedback when the input is active for editing */
+
 .content-card input.form-control:focus,
 .content-card textarea:not([readonly]) {
     background-color: #ffffff !important;
     border-color: var(--color-sage) !important;
-    border-style: dashed !important; /* Visual cue that it's a draft */
+    border-style: dashed !important;
     transition: all 0.2s ease;
 }
 
-/* Specific style for the tag input in the hero card */
 #editTag:focus {
     background-color: rgba(255, 255, 255, 0.1) !important;
     border-color: white !important;
     box-shadow: none !important;
 }
 
-/* The 'Obvious' Editable Look */
 .editable-field {
     transition: all 0.3s ease;
 }
 
-/* This only triggers when the JS adds the .is-editing class */
 .is-editing {
     background-color: #ffffff !important;
     border: 1.5px dashed var(--color-sage) !important;
@@ -69,13 +65,11 @@
     cursor: text;
 }
 
-/* Specific styling for the Bio textarea when editing */
 textarea.is-editing {
     background-image: linear-gradient(rgba(153, 173, 122, 0.05) 1px, transparent 1px);
-    background-size: 100% 1.5rem; /* Gives a subtle 'lined paper' feel */
+    background-size: 100% 1.5rem;
 }
 
-/* Hero Tag specific obvious style */
 #editTag.is-editing {
     background-color: rgba(255, 255, 255, 0.2) !important;
     border-color: rgba(255, 255, 255, 0.6) !important;
@@ -84,12 +78,12 @@ textarea.is-editing {
 }
 
 #hideButton {
-    transition: all 0.3s ease; /* Makes the transition smooth */
-    cursor: pointer;           /* Shows the hand icon so users know it's clickable */
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 #hideButton:hover {
-    opacity: 1 !important;    /* Overrides the opacity-50 class */
-    color: #2ecc71;           /* Changes the color on hover */
-    transform: scale(1.2);    /* Makes the icon slightly larger */
+    opacity: 1 !important;
+    color: #2ecc71;
+    transform: scale(1.2);
 }

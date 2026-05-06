@@ -16,7 +16,6 @@
     <div id="sidebar-container"></div>
 
     <main class="main-content">
-        <!-- Header consistent with Dashboard -->
         <header class="d-flex justify-content-between align-items-center mb-4">
             <div class="d-flex align-items-center">
                 <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
@@ -27,13 +26,11 @@
                     <h1 class="fw-bold text-olive display-6 mb-0">Your Profile</h1>
                 </div>
             </div>
-            <!-- Button toggles between Edit and Save -->
             <button id="editProfileBtn" class="btn btn-success rounded-pill px-4 fw-bold shadow-sm">
                 <i class="fa-solid fa-pen-to-square me-2"></i>Edit Profile
             </button>
         </header>
 
-        <!-- Profile Hero Card -->
         <div class="profile-header-card text-white mb-4 shadow-sm">
             <div class="row align-items-center position-relative z-1">
                 <div id="profilePictureContainer" class="col-auto">
@@ -44,7 +41,6 @@
                 <div class="col">
                     <h2 class="fw-bold mb-1" id="heroName">Hazim</h2>
 
-                    <!-- Professional Tag Toggle -->
                     <div id="tagViewContainer">
                         <p class="opacity-75 mb-3" id="viewTag">Software Engineering Student @ UM</p>
                     </div>
@@ -68,11 +64,8 @@
         </div>
 
         <div class="row g-4">
-            <!-- Left Column: Basic Info -->
             <div class="row g-4">
-                <!-- Left Column: Basic Info -->
                 <div class="col-lg-7">
-                    <!-- Using style="height: auto !important;" to override your .content-card CSS -->
                     <div class="content-card shadow-sm" style="height: auto !important;">
                         <h5 class="fw-bold text-olive mb-4">Basic Information</h5>
 
@@ -86,7 +79,6 @@
                                     <input type="text" id="editFullName" class="form-control border-sand bg-cream p-3 fw-bold text-olive" value="Muhammad Hazim bin Nidzam">
                                 </div>
                             </div>
-                            <!-- Username -->
                             <div class="col-md-6">
                                 <label class="info-label">Username</label>
                                 <div id="usernameViewContainer" class="profile-input-group bg-cream border border-sand rounded-3 p-3">
@@ -96,23 +88,17 @@
                                     <input type="text" id="editUsername" class="form-control border-sand bg-cream p-3 fw-bold text-olive" value="hzmnzm">
                                 </div>
                             </div>
-                            <!-- Bio -->
                             <div class="col-12">
                                 <label class="info-label">Bio</label>
-                                <!-- Textarea is already an input, but we'll toggle its disabled state or visibility -->
                                 <textarea id="editBio" class="form-control border-sand bg-cream rounded-4 p-3 text-olive" rows="4" readonly>Software Engineering student at Universiti Malaya. Passionate about IoT, Parallel Programming, and maintaining a consistent Flow State in and out of the gym.</textarea>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column: Credentials & Social -->
                 <div class="col-lg-5">
-                    <!-- 1. Removed flex utilities from the parent div -->
-                    <!-- 2. Added inline style to force height and allow overflow -->
                     <div class="content-card mb-4 shadow-sm" style="height: auto !important; overflow: visible !important;">
                         <h5 class="fw-bold text-olive mb-4">Login Credentials</h5>
-                        <!-- Email -->
                         <div class="mb-3">
                             <label class="info-label">Email Address</label>
                             <div id="emailViewContainer" class="d-flex align-items-center justify-content-between bg-cream border border-sand rounded-3 p-3">
@@ -125,7 +111,6 @@
                                 <i class="fa-solid fa-envelope text-sage opacity-50 ms-2"></i>
                             </div>
                         </div>
-                        <!-- Password -->
                         <div>
                             <label class="info-label">Password</label>
                             <div id="passwordViewContainer" class="d-flex align-items-center justify-content-between bg-cream border border-sand rounded-3 p-3" style="min-height: 60px;">
@@ -143,7 +128,6 @@
                         </div>
                     </div>
 
-                    <!-- Social Card -->
                     <div class="content-card bg-pastel-blue border-0 shadow-sm" style="height: auto !important;">
                         <h5 class="fw-bold text-olive mb-3">Social Integration</h5>
                         <div class="d-flex gap-3">

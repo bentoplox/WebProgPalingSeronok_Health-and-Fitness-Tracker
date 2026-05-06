@@ -20,7 +20,6 @@
     border-bottom: 1px solid rgba(212, 204, 172, 0.3);
 }
 
-/* Form input styling */
 .form-control, .form-select {
     border-radius: 8px;
     padding: 12px;
@@ -36,7 +35,7 @@
     background-color: #ffffff;
     border: 1px solid var(--color-sand);
     border-radius: 24px;
-    /* Soft modern corners */
+
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     height: 100%;
     overflow: hidden;
@@ -68,7 +67,6 @@
     cursor: pointer;
 }
 
-/* Goal Card Styling */
 .goal-card-item {
     background: #fff;
     border: 1px solid #e9e4de;
@@ -81,7 +79,7 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
-/* Add Goal Placeholder Styling */
+
 .add-goal-placeholder {
     border: 2px dashed #e9e4de;
     border-radius: 10px;

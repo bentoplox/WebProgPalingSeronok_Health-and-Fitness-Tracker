@@ -23,7 +23,7 @@ async function initializePage(){
     const lockIcon = document.getElementById('hideButton');
 
     lockIcon.addEventListener('click', function() {
-        // Toggle between a lock and an unlock icon
+
         if(!isEditMode){
             return
         }
@@ -47,7 +47,6 @@ function setupEditAndSaveButton(){
         const editBtn = document.getElementById('editProfileBtn');
         isEditMode = false;
 
-        // Define all pairs of View Containers vs Actual Input IDs
         const fieldMap = [
             { viewId: 'nameViewContainer', editId: 'editFullName' },
             { viewId: 'usernameViewContainer', editId: 'editUsername' },
@@ -71,14 +70,12 @@ function setupEditAndSaveButton(){
                     viewEl.classList.add('d-none');
                     editEl.parentElement.classList.remove('d-none');
 
-                    // Apply the 'Obvious' style immediately
                     editEl.classList.add('is-editing');
                 });
 
                 emailView.classList.add('d-flex');
                 passwordView.classList.add('d-flex');
 
-                // Special handling for Bio
                 bioTextarea.removeAttribute('readonly');
                 bioTextarea.classList.add('is-editing');
 
@@ -96,11 +93,9 @@ function setupEditAndSaveButton(){
                         const viewEl = document.getElementById(field.viewId);
                         const editEl = document.getElementById(field.editId);
 
-                        // Toggle visibility back
                         viewEl.classList.remove('d-none');
                         editEl.parentElement.classList.add('d-none');
 
-                        // Remove the 'Obvious' style
                         editEl.classList.remove('is-editing');
                     });
 
@@ -130,7 +125,6 @@ function fillProfile() {
                         <img id = "profilePicture" src="${user.profilePictureURl}"
                             class="profile-avatar shadow-lg"
                             alt="Upload Profile Picture">`
-    // Update the Hero Name at the top
 
 
     console.log("Changes reflected in UI.");

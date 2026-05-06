@@ -9,7 +9,6 @@ fillHistoryTable()
 initializeFormSubmission()
 renderGoals();
 
-//Data Related Functions
 async function fillHistoryTable(){
     historyTable.innerHTML = ""
     for(let activity of activityList){
@@ -42,13 +41,11 @@ function newHistoryTableElement(activity) {
             </tr>`;
 }
 
-// Navigation Helpers
 function viewActivity(id) {
     window.location.href = `../html/activity-details.html?id=${id}&isEdit=0`;
 }
 
 function editActivity(id) {
-    // You can use the same logic for your edit page
     window.location.href = `../html/activity-details.html?id=${id}&isEdit=1`;
 }
 function newActivity(id, name, type, date, duration,intensity, images, notes){
@@ -73,7 +70,6 @@ function previewMultipleImages(event) {
 
     selectedFiles = [...selectedFiles, ...newFiles];
 
-    // Show the clear button if we have files
     if (selectedFiles.length > 0) {
         clearBtn.classList.remove('d-none');
     }
@@ -83,18 +79,15 @@ function previewMultipleImages(event) {
     renderGallery()
 }
 
-// 4. Function to remove just one specific photo
 function removeSinglePhoto(index) {
-    selectedFiles.splice(index, 1); // Remove from array
+    selectedFiles.splice(index, 1);
 
-    // Manually trigger a UI refresh by faking an "empty" event
     const gallery = document.getElementById('imageGalleryPreview');
     if (selectedFiles.length === 0) {
         document.getElementById('clearPhotosBtn').classList.add('d-none');
         document.getElementById('workoutPhotos').value = "";
     }
 
-    // Re-render the gallery
     renderGallery();
 }
 
@@ -129,28 +122,25 @@ function clearAllPhotos() {
 
 function initializeFormSubmission(){
     document.getElementById('activityForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // Stop page from refreshing
+        e.preventDefault();
 
         let name = document.getElementById('activityName').value
         let type = document.getElementById('selectedActivityType').value
         let intensity = getIntensityByIndex(document.querySelector('input[name="intensity"]:checked').value)
-        let duration = document.querySelector('input[placeholder="0"]').value // Better to add an ID to this input
+        let duration = document.querySelector('input[placeholder="0"]').value
         let date = document.getElementById('activityDate').value
         let notes = document.querySelector('textarea').value
-        // 2. Attach your global files array
         let photos = selectedFiles
 
         let activityData = newActivity(activityList.size, name, type, date, duration, intensity, photos, notes)
 
         console.log("Form Data Collected:", activityData);
 
-        // 3. Validation Check
         if (!activityData.type) {
             alert("Please select an activity type!");
             return;
         }
 
-        // 4. Send to your Save Function
         saveActivity(activityData);
     });
 }
@@ -171,8 +161,6 @@ function removeActivity(id){
     activityList.splice(index, 1);
     fillHistoryTable()
 }
-
-//dslkfjas;lkfjawdkl;fjwae;lfj
 
 function newGoal(id, category, target){
     return {
@@ -195,7 +183,6 @@ function addGoal() {
 
     goals.push(goal);
 
-    // Reset and Close Modal
     catSelect.selectedIndex = 0;
     targetInput.value = '';
     const modalElement = document.getElementById('goalModal');
@@ -214,7 +201,6 @@ function renderGoals() {
     const container = document.getElementById('goalsContainer');
     container.innerHTML = '';
 
-    // First, render existing goals
     goals.forEach(goal => {
         container.innerHTML += `
         <div class="col-md-4">
@@ -231,7 +217,6 @@ function renderGoals() {
         </div>`;
     });
 
-    // Then, always append the "Add New Goal" button card at the end
     container.innerHTML += `
       <div class="col-md-4">
         <div class="add-goal-placeholder" data-bs-toggle="modal" data-bs-target="#goalModal">
@@ -248,19 +233,16 @@ function selectType(type, icon) {
 
 
 
-//UI functions//
 function resetForm() {
-    document.getElementById('activityForm').reset(); // Clears text inputs
+    document.getElementById('activityForm').reset();
     document.getElementById('typeDropdown').innerHTML = '<i class="bi bi-tag me-2"></i> Select Type';
     document.getElementById('selectedActivityType').value = "";
 
-    // Clear our photo logic
     selectedFiles = [];
     document.getElementById('imageGalleryPreview').innerHTML = "";
     document.getElementById('clearPhotosBtn').classList.add('d-none');
 }
 
-// Utils
 function getIntensityByIndex(index){
     switch (index) {
         case "1":
@@ -278,7 +260,6 @@ function getCaloriesBurned(activityType , intensity, duration){
     return Math.floor(Math.random() * (1000 - 300 + 1)) + 300;
 }
 
-//mock Data Functions
 function getMockActivity(){
     function newActivity(id, name, type, date, duration,intensity, images, notes){
         return {
@@ -295,24 +276,24 @@ function getMockActivity(){
     }
     return [
         newActivity(
-            0,                // Unique ID using timestamp
-            "Morning KLCC Run",         // Name
-            "Running",                  // Type
-            "2026-04-28",               // Date
-            45,                         // Duration
-            "High",                     // Intensity
-            ["../images/mock/KlccRunMock1.jpg", "../images/mock/KlccRunMock2.jpg" ], // Image Array
-            "Great weather today at the park! Managed to beat my personal best." // Notes
+            0,
+            "Morning KLCC Run",
+            "Running",
+            "2026-04-28",
+            45,
+            "High",
+            ["../images/mock/KlccRunMock1.jpg", "../images/mock/KlccRunMock2.jpg" ],
+            "Great weather today at the park! Managed to beat my personal best."
         ),
         newActivity(
-            1,             // Unique ID (offset to ensure uniqueness)
-            "Sunset Yoga Session",      // Name
-            "Yoga",                     // Type
-            "2026-04-29",               // Date
-            60,                         // Duration
-            "Low",                      // Intensity
-            ["../images/mock/yoga1.jpg"], // Image Array
-            "Focused on flexibility and breathing. Felt very relaxed afterward." // Notes
+            1,
+            "Sunset Yoga Session",
+            "Yoga",
+            "2026-04-29",
+            60,
+            "Low",
+            ["../images/mock/yoga1.jpg"],
+            "Focused on flexibility and breathing. Felt very relaxed afterward."
         )
     ]
 }

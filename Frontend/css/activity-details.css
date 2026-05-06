@@ -52,9 +52,9 @@
 select.edit-input-transparent option { color: #546B41; }
 
 .delete-overlay {
-    pointer-events: none; /* Makes it unclickable by default */
+    pointer-events: none;
 }
 
 .delete-overlay.active {
-    pointer-events: auto; /* Re-enables clicking when active class is present */
+    pointer-events: auto;
 }

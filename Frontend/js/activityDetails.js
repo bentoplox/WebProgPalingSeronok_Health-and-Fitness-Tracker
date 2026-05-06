@@ -64,27 +64,27 @@ function toggleEditMode() {
             <button onclick="location.reload()" class="btn btn-light btn-sm rounded-pill px-3">Cancel</button>
         `;
     }
-    renderGallery(currentActivity.images); // Re-render to show/hide delete buttons
+    renderGallery(currentActivity.images);
 }
 
 function handleFileUpload(input) {
     if (input.files && input.files.length > 0) {
         if (!currentActivity.images) currentActivity.images = [];
 
-        // Convert FileList to an Array and loop through each file
+
         Array.from(input.files).forEach(file => {
             const reader = new FileReader();
 
             reader.onload = function(e) {
                 currentActivity.images.push(e.target.result);
-                // Re-render the gallery after each image is loaded
+
                 renderGallery(currentActivity.images);
             };
 
             reader.readAsDataURL(file);
         });
 
-        input.value = ''; // Clear input so the same files can be re-selected if needed
+        input.value = '';
     }
 }
 
@@ -100,47 +100,38 @@ function saveChanges() {
     const index = activityList.findIndex(a => String(a.id) === String(currentActivity.id));
 
     if (index !== -1) {
-        // Update the currentActivity object in memory
+
         currentActivity.name = document.getElementById('editName').value;
         currentActivity.duration = document.getElementById('editDuration').value;
         currentActivity.notes = document.getElementById('editNotes').value;
         currentActivity.intensity = document.getElementById('editIntensity').value;
-        // currentActivity.images is already updated by handleFileUpload/deleteImage
 
-        // Update the main list and save to LocalStorage
         activityList[index] = { ...currentActivity };
         localStorage.setItem('activities', JSON.stringify(activityList));
-
-        // Close edit mode and refresh UI labels
         closeEditMode();
     }
 }
 
 function closeEditMode() {
-    // 1. Reset the state variable
     isEditMode = false;
 
-    // 2. Update the View Mode labels with the NEW data from currentActivity
     document.getElementById('viewName').innerText = currentActivity.name;
     document.getElementById('viewDuration').innerHTML = `${currentActivity.duration} <span class="fs-6 fw-normal">min</span>`;
     document.getElementById('viewIntensity').innerText = currentActivity.intensity;
     document.getElementById('viewNotes').innerText = currentActivity.notes || "No notes.";
 
-    // 3. Swap the containers (Hide Edit, Show View)
     const viewIds = ['nameViewContainer', 'durationViewContainer', 'intensityViewContainer', 'viewNotes'];
     const editIds = ['nameEditContainer', 'durationEditContainer', 'intensityEditContainer', 'notesEditContainer', 'imageEditContainer'];
 
     viewIds.forEach(id => document.getElementById(id).classList.remove('d-none'));
     editIds.forEach(id => document.getElementById(id).classList.add('d-none'));
 
-    // 4. Reset the Action Buttons back to "Edit Details"
     document.getElementById('actionButtons').innerHTML = `
         <button onclick="toggleEditMode()" class="btn btn-outline-secondary border-sand text-olive btn-sm rounded-pill px-3">
             <i class="fa-solid fa-pencil me-1"></i> Edit Details
         </button>
     `;
 
-    // 5. Re-render gallery to hide the delete trash icons
     renderGallery(currentActivity.images);
 }
 
@@ -184,24 +175,24 @@ function getMockActivity(){
     }
     return [
         newActivity(
-            0,                // Unique ID using timestamp
-            "Morning KLCC Run",         // Name
-            "Running",                  // Type
-            "2026-04-28",               // Date
-            45,                         // Duration
-            "High",                     // Intensity
-            ["../images/mock/KlccRunMock1.jpg", "../images/mock/KlccRunMock2.jpg" ], // Image Array
-            "Great weather today at the park! Managed to beat my personal best." // Notes
+            0,
+            "Morning KLCC Run",
+            "Running",
+            "2026-04-28",
+            45,
+            "High",
+            ["../images/mock/KlccRunMock1.jpg", "../images/mock/KlccRunMock2.jpg" ],
+            "Great weather today at the park! Managed to beat my personal best."
         ),
         newActivity(
-            1,             // Unique ID (offset to ensure uniqueness)
-            "Sunset Yoga Session",      // Name
-            "Yoga",                     // Type
-            "2026-04-29",               // Date
-            60,                         // Duration
-            "Low",                      // Intensity
-            ["../images/mock/yoga1.jpg"], // Image Array
-            "Focused on flexibility and breathing. Felt very relaxed afterward." // Notes
+            1,
+            "Sunset Yoga Session",
+            "Yoga",
+            "2026-04-29",
+            60,
+            "Low",
+            ["../images/mock/yoga1.jpg"],
+            "Focused on flexibility and breathing. Felt very relaxed afterward."
         )
     ]
 }
