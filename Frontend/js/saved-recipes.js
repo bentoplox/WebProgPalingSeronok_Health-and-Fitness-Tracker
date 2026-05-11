@@ -1,10 +1,10 @@
 
-// FUNCTION TO DISPLAY SAVED RECIPES (For saved-recipes.html)
+// FUNCTION TO DISPLAY SAVED RECIPES
 function displaySavedRecipes() {
     // 1. Grab the container on the saved recipes page
     let container = document.getElementById("savedRecipesContainer");
 
-    // 2. SAFETY CHECK: If we are NOT on the saved recipes page, this container won't exist. Stop the function so it doesn't crash!
+    // 2. If we are NOT on the saved recipes page, this container won't exist. Stop the function so it doesn't crash
     if (!container) {
         return; 
     }
@@ -12,7 +12,7 @@ function displaySavedRecipes() {
     // 3. Grab the saved IDs from memory
     let savedFavorites = JSON.parse(localStorage.getItem('userFavorites')) || [];
 
-    // 4. EMPTY STATE UI (Good UX practice!)
+    // 4. UI untuk empty state
     if (savedFavorites.length === 0) {
         container.innerHTML = `
             <div class="col-12 text-center mt-5">
@@ -24,7 +24,7 @@ function displaySavedRecipes() {
         return;
     }
 
-    // 5. FILTER: Search the main database and ONLY keep the meals whose IDs are in our saved memory
+    // 5. FILTER: Search the main database and ONLY keep the meals whose IDs are in saved memory
     let favoriteMeals = recipeDatabase.filter(function(meal) {
         return savedFavorites.includes(meal.id);
     });
@@ -32,7 +32,6 @@ function displaySavedRecipes() {
     // 6. Build the HTML
     let cardsHTML = "";
     favoriteMeals.forEach(function(meal) {
-        // Since they are on the saved page, the heart is definitely solid red!
         let heartIconClass = "fa-solid text-danger";
 
         cardsHTML += `
@@ -60,10 +59,9 @@ function displaySavedRecipes() {
             </div>
         `;
     });
-
     // 7. Inject the cards into the page
     container.innerHTML = cardsHTML;
 }
 
-// 8. Run the function immediately when the file loads!
+// 8. Run the function immediately when the file loads
 displaySavedRecipes();

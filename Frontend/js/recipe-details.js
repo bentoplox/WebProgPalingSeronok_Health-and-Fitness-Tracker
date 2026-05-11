@@ -1,17 +1,15 @@
-// Hardcoded to 1 for this specific prototype page (Hummus Avocado Toast)
 const currentRecipeId = 1; 
 
 // 1. Function to check memory and paint the UI on page load
 function checkFavoriteState() {
-    // Grab the shared memory we created in nutrition.js
+    // Grab the shared memory created in nutrition.js
     let savedFavorites = JSON.parse(localStorage.getItem('userFavorites')) || [];
     
-    // Grab our HTML elements
+    // Grab HTML elements
     let favBtn = document.getElementById('detailsFavBtn');
     let favIcon = document.getElementById('detailsFavIcon');
     let favText = document.getElementById('detailsFavText');
 
-    // Safety check in case the elements aren't on the page
     if (!favBtn) return;
 
     if (savedFavorites.includes(currentRecipeId)) {
@@ -43,7 +41,7 @@ function toggleRecipeDetailsFavorite() {
     // Save back to memory
     localStorage.setItem('userFavorites', JSON.stringify(savedFavorites));
     
-    // Immediately re-run the UI check to change the colors!
+    // Immediately re-run the UI check to change the colors
     checkFavoriteState(); 
 }
 
@@ -52,19 +50,17 @@ function setupBackButton() {
     let backBtn = document.getElementById('dynamicBackBtn');
     let backText = document.getElementById('backBtnText');
 
-    // Safety check
     if (!backBtn) return;
 
     // document.referrer holds the URL of the page the user just came from
     let previousPage = document.referrer;
 
-    // THE NEW TAB TRAP: If a user copied and pasted the link, or opened it in a new tab, 
+    // If a user copied and pasted the link, or opened it in a new tab, 
     // the referrer will be empty. We must provide a fallback!
     if (previousPage) {
         // Set the link to point exactly where they came from
         backBtn.href = previousPage;
-
-        // Make the UI text feel smart and contextual
+        // Adjust the back button according to where user was
         if (previousPage.includes("saved-recipes")) {
             backText.innerText = "Back to Saved Recipes";
         } else if (previousPage.includes("custom-recipes")) {
@@ -73,15 +69,13 @@ function setupBackButton() {
             backText.innerText = "Back to Planner";
         }
     } else {
-        // FALLBACK: Route them safely to the main hub if there is no history
+        // FALLBACK: Route to the main hub if there is no history
         backBtn.href = "nutrition.html";
         backText.innerText = "Back to Planner";
     }
 }
 
-// ==========================================
 // DYNAMIC BREADCRUMB ROUTER
-// ==========================================
 document.addEventListener("DOMContentLoaded", function() {
     // 1. Grab the origin crumb we left behind (Default to 'VIEW ALL RECIPES' just in case)
     let origin = localStorage.getItem('recipeOrigin') || 'VIEW ALL RECIPES';
@@ -95,9 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// ==========================================
 // DYNAMIC RECIPE INJECTOR (API Prep)
-// ==========================================
 document.addEventListener("DOMContentLoaded", function() {
     
     // 1. Look at the web address and grab the "?id=X" part
@@ -113,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
             recipe = recipeDatabase.find(r => r.id === recipeId);
         }
 
-        // 3. Search Area B: If not found, look in our Custom Mini-Database!
+        // 3. Search Area B: If not found, look in Custom Mini-Database
         if (!recipe) {
             let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
             recipe = myCustomRecipes.find(r => r.id === recipeId);

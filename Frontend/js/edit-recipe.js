@@ -1,6 +1,4 @@
-// ==========================================
 // 1. IMAGE UPLOAD LOGIC
-// ==========================================
 let uploadBtn = document.getElementById('uploadImageBtn');
 let hiddenInput = document.getElementById('imageInput');
 let imagePreview = document.getElementById('recipeImagePreview');
@@ -23,9 +21,7 @@ if(hiddenInput) {
     });
 }
 
-// ==========================================
 // 2. DYNAMIC INGREDIENTS & MACROS
-// ==========================================
 let addIngredientBtn = document.getElementById('addIngredientBtn');
 let ingredientsContainer = document.getElementById('ingredientsContainer');
 
@@ -57,9 +53,9 @@ if(addIngredientBtn) {
     });
 }
 
-// Reusable function to delete a row (Works for Ingredients AND Directions)
+// Reusable function to delete a row (for Ingredients and insructions)
 function removeRow(buttonElement) {
-    // .closest() finds the nearest parent with that class, then we delete it!
+    // .closest() finds the nearest parent with that class, then we delete it
     let card = buttonElement.closest('.card, .d-flex'); 
     card.remove();
     
@@ -67,7 +63,6 @@ function removeRow(buttonElement) {
     updateStepNumbers();
 }
 
-// Simulated Macro Calculator
 // Simulated Macro Calculator
 function recalculateMacros() {
     let allQtyInputs = document.querySelectorAll('.ingredient-qty');
@@ -110,9 +105,8 @@ function recalculateMacros() {
     if(fatBar) fatBar.style.width = fatPct + "%";
     if(proteinBar) proteinBar.style.width = proteinPct + "%";
 }
-// ==========================================
+
 // 3. DYNAMIC DIRECTIONS
-// ==========================================
 let addStepBtn = document.getElementById('addStepBtn');
 let directionsContainer = document.getElementById('directionsContainer');
 
@@ -130,7 +124,7 @@ if(addStepBtn) {
     });
 }
 
-// Function to recount the step numbers so they always stay in order (1, 2, 3...)
+// Function to recount the step numbers so they always stay in order
 function updateStepNumbers() {
     let stepCircles = document.querySelectorAll('.step-number');
     stepCircles.forEach((circle, index) => {
@@ -138,9 +132,7 @@ function updateStepNumbers() {
     });
 }
 
-// ==========================================
 // 4. SAVE BUTTON & ALERT
-// ==========================================
 let saveBtn = document.getElementById('saveCustomRecipeBtn');
 
 if(saveBtn) {
@@ -157,7 +149,7 @@ if(saveBtn) {
 
             // 3. Build the updated recipe object
             let updatedRecipe = {
-                // If we are editing an existing custom recipe, keep its old ID. Otherwise, make a new one!
+                // If we are editing an existing custom recipe, keep its old ID. Otherwise, make a new one
                 id: (editingId >= 900) ? editingId : (900 + myCustomRecipes.length),
                 name: document.getElementById('editRecipeName').value,
                 calories: parseInt(document.getElementById('totalCalsText').innerText),
@@ -168,14 +160,12 @@ if(saveBtn) {
 
             // 4. THE SMART SAVE LOGIC
             if (editingId >= 900) {
-                // UPDATE: We are editing an existing custom recipe. 
-                // Find its exact position in the array and replace it with the new data.
                 let index = myCustomRecipes.findIndex(r => r.id === editingId);
                 if (index !== -1) {
                     myCustomRecipes[index] = updatedRecipe;
                 }
             } else {
-                // CREATE: We are customizing a main recipe for the first time. Add it to the end!
+                // CREATE: We are customizing a main recipe for the first time. Add it to the end
                 myCustomRecipes.push(updatedRecipe);
             }
 
@@ -189,23 +179,19 @@ if(saveBtn) {
     });
 }
 
-// ==========================================
-// 5. UNSAVED CHANGES WARNING (Safety Net)
-// ==========================================
+// 5. UNSAVED CHANGES WARNING 
 let isSafeToLeave = false; // By default, it is dangerous to leave
 
 // Watch for ANY attempt to leave the page (refresh, close tab, back button, clicking a link)
 window.addEventListener('beforeunload', function (event) {
     if (!isSafeToLeave) {
-        // This standard code triggers the browser's native warning popup
+        //trigger the browser's native warning popup
         event.preventDefault();
         event.returnValue = ''; 
     }
 });
 
-// ==========================================
 // 6. CANCEL BUTTON LOGIC
-// ==========================================
 function cancelEditing(event) {
     // Prevent the <a> tag from trying to jump to the top of the page
     if (event) {
@@ -216,25 +202,19 @@ function cancelEditing(event) {
     let userWantsToLeave = confirm("Are you sure you want to leave? Changes won't be saved.");
 
     if (userWantsToLeave) {
-        // 1. Tell our safety net from earlier that it's okay to leave
         isSafeToLeave = true; 
         
         // 2. Execute the back navigation
         history.back();
     }
-    // If they click "Cancel" on the popup, the function just ends and they stay on the page!
 }
 
-// ==========================================
-// 7. DELETE RECIPE LOGIC (Safety Net)
-// ==========================================
+// 7. DELETE RECIPE LOGIC
 let deleteBtn = document.getElementById('deleteRecipeBtn');
 
 if(deleteBtn) {
     deleteBtn.addEventListener('click', function() {
-        
-        // --- UX Best Practice: Double-Confirmation Alert ---
-        // Native browser confirmation popup (Are you sure?)
+    
         let userWantsToDelete = confirm("WARNING: Are you sure you want to delete this recipe PERMANENTLY? This cannot be undone.");
         
         if(userWantsToDelete) {
@@ -243,65 +223,56 @@ if(deleteBtn) {
             let urlParams = new URLSearchParams(window.location.search);
             let recipeIdToDelete = parseInt(urlParams.get('id'));
 
-            // Safety check: Don't do anything if we can't find the ID!
+            // Safety check: Don't do anything if can't find the ID
             if(!recipeIdToDelete) {
                 alert("Error: Could not identify which recipe to delete.");
                 return;
             }
 
-            // 2. Load our "mini-database" array from localStorage
+            // 2. Load mini-database array from localStorage
             let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
 
             // 3. Delete the specific recipe using .filter()
-            // We create a new array that includes EVERY recipe EXCEPT the one that matches our ID
             let updatedRecipes = myCustomRecipes.filter(function(recipe) {
                 return recipe.id !== recipeIdToDelete; 
             });
 
-            // 4. Save the new, smaller array back to localStorage
+            // 4. Save new smaller array back to localStorage
             localStorage.setItem('myCustomRecipes', JSON.stringify(updatedRecipes));
 
             alert("Recipe deleted successfully!");
 
-            // --- IMPORTANT: Safety Net Bypasses ---
-            // Tell our 'unsaved changes' alert (beforeunload) that it's safe to leave!
-            // isSafeToLeave should be defined higher up in your JS file!
             isSafeToLeave = true; 
 
-            // Redirect the user back to the custom recipes gallery 
-            // .replace is best here so they can't click "back" to a deleted recipe!
+            // Redirect the user back to the custom recipes 
+            // .replace - can't click back to a deleted recipe
             window.location.replace("custom-recipes.html");
         }
-        // If they click "Cancel" on the alert, the function ends and they stay safely on the page.
     });
 }
 
-// ==========================================
 // DYNAMIC BREADCRUMB ROUTER
-// ==========================================
 document.addEventListener("DOMContentLoaded", function () {
-    // 1. Grab the origin (e.g., CUSTOM RECIPES)
+    // 1. Grab the origin 
     let origin = localStorage.getItem('recipeOrigin') || 'VIEW ALL RECIPES';
     
-    // 2. Grab our new path crumb (Did they click 'create' or 'customize'?)
+    // 2. Grab new path crumb 
     let editPath = localStorage.getItem('editPath') || 'create';
     
     let breadcrumb = document.getElementById('dynamic-breadcrumb');
     
-    // 3. Build the accurate trail based on the path!
+    // 3. Build the accurate trail based on the path
     if (breadcrumb) {
         if (editPath === 'customize') {
-            // If they came from an existing recipe:
+            // If came from an existing recipe:
             breadcrumb.innerText = "NUTRITION PLANNER / " + origin + " / RECIPE DETAILS / EDIT RECIPE";
         } else {
-            // If they clicked the blank Create New card:
+            // If clicked the blank Create New card:
             breadcrumb.innerText = "NUTRITION PLANNER / " + origin + " / CREATE NEW RECIPE";
         }
     }
     
-    // ==========================================
     // DYNAMIC EDIT DATA PRE-FILL
-    // ==========================================
     const urlParams = new URLSearchParams(window.location.search);
     const recipeIdString = urlParams.get('id');
 
@@ -314,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
             recipe = recipeDatabase.find(r => r.id === recipeId);
         }
 
-        // Search Area B: If not found, look in our Custom Mini-Database!
+        // Search Area B: If not found, look in our Custom Mini-Database
         if (!recipe) {
             let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
             recipe = myCustomRecipes.find(r => r.id === recipeId);

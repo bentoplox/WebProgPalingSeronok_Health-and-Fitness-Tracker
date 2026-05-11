@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Grab our saved custom recipes from memory
     let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
     
-    // Find the "Create New" card on the page
+    // Find the Create New card on the page
     let createNewCard = document.getElementById('createNewCard');
 
     // Safety check: Only try to draw cards if we actually found the "Create New" card!

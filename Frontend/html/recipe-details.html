@@ -11,9 +11,7 @@
 <body>
     <div class="dashboard-wrapper d-flex min-vh-100">
         <div id="sidebar-container"></div>
-
         <main class="main-content flex-grow-1 p-4">
-            
             <header class="d-flex align-items-center mb-5">
                 <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
                     <i class="fa-solid fa-bars fs-5"></i>
@@ -23,16 +21,13 @@
                     <h2 class="fw-bold text-olive mb-0">Recipe Details</h2>
                 </div>
             </header>
-
-            <!-- THE DYNAMIC BACK BUTTON -->
-            <!-- We use href="#" as a temporary placeholder until JS takes over -->
+            <!-- Back -->
             <a href="#" id="dynamicBackBtn" class="text-decoration-none text-muted d-inline-block mb-4">
                 <i class="fa-solid fa-arrow-left me-2"></i> <span id="backBtnText">Back</span>
             </a>
 
             <div class="p-5 rounded-4" style="background-color: #fcefdc;">
                 <div class="row">
-                    
                     <div class="col-md-4 text-center mb-4">
                         <!-- need to give id tags to the specific pieces of text and images that will change so our JavaScript knows where to inject the new data -->
                         <img id="rd-image" src="../images/recipes/hummus-avocado-toast.png" class="img-fluid rounded-3 mb-3 w-100" style="height: 300px; object-fit: cover;" alt="Recipe Image">
@@ -42,25 +37,18 @@
                         <!-- NUTRITION OVERVIEW CARD -->
                         <div class="card border-0 shadow-sm mb-3">
                             <div class="card-body text-center p-4">
-                                
                                 <!-- The Main Calorie Count -->
                                 <h3 id="rd-calories" class="fw-bold text-success mb-4">527 kcal</h3>
-                                
                                 <!-- The Macro Progress Bars -->
                                 <div class="px-2 text-start">
-                                    
-                                    <!-- Carbs -->
                                     <div class="mb-3">
                                         <div class="d-flex justify-content-between small fw-bold mb-1 text-muted">
                                             <span>Carbs (45g)</span> <span>48%</span>
                                         </div>
-                                        <!-- Note: height is set to 6px for a sleek, modern look! -->
                                         <div class="progress" style="height: 6px;">
                                             <div class="progress-bar bg-warning" style="width: 48%"></div>
                                         </div>
                                     </div>
-                                    
-                                    <!-- Fat -->
                                     <div class="mb-3">
                                         <div class="d-flex justify-content-between small fw-bold mb-1 text-muted">
                                             <span>Fat (30g)</span> <span>32%</span>
@@ -69,8 +57,6 @@
                                             <div class="progress-bar bg-info" style="width: 32%"></div>
                                         </div>
                                     </div>
-
-                                    <!-- Protein -->
                                     <div class="mb-2">
                                         <div class="d-flex justify-content-between small fw-bold mb-1 text-muted">
                                             <span>Protein (19g)</span> <span>20%</span>
@@ -79,23 +65,23 @@
                                             <div class="progress-bar" style="width: 20%; background-color: #6f42c1;"></div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
 
                         <div class="d-grid gap-2 mt-4">
-                            <!-- Save Button -->
+                            <!-- Save to Fav Button -->
                             <button id="detailsFavBtn" class="btn btn-outline-pink w-100 mb-2" onclick="toggleRecipeDetailsFavorite()">
                                 <i id="detailsFavIcon" class="fa-regular fa-heart"></i> <span id="detailsFavText">Save to Favorites</span>
                             </button>
-                            <!-- Edit/Customize Button -->
+                            <!-- Customize Button -->
                             <a href="edit-recipe.html" id="customizeBtn" class="btn btn-success" onclick="localStorage.setItem('editPath', 'customize')">
                                 <i class="fa-solid fa-pen me-2"></i>Customize Recipe
                             </a>
                         </div>
                     </div>
 
+                    <!-- Ingredients hardcode dulu-->
                     <div class="col-md-8">
                         <h4 class="fw-bold mb-3">Ingredients</h4>
                         <ul class="mb-4">

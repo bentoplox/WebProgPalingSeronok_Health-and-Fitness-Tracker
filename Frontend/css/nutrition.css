@@ -3,10 +3,9 @@ body {
     background-color: #fff8ec; /* Your base cream color */
 
     background-image:
-        /* 1. The Mask: Transparent in the top right, solid cream everywhere else */
         radial-gradient(circle at 100% 0%, transparent 0%, #fff8ec 70%),
 
-        /* 2. The Uiverse Pattern Layers (Using your theme's Rosy Salmon Pink: 224, 122, 130 at 20% opacity) */
+        /* 2. The Uiverse Pattern Layers - corak dekat background */
         repeating-linear-gradient(45deg, transparent calc(-650% / 13) calc(50% / 13), rgba(224, 122, 130, 0.2) 0 calc(100% / 13), transparent 0 calc(150% / 13), rgba(224, 122, 130, 0.2) 0 calc(200% / 13), transparent 0 calc(250% / 13), rgba(224, 122, 130, 0.2) 0 calc(300% / 13)),
         repeating-linear-gradient(45deg, transparent calc(-650% / 13) calc(50% / 13), rgba(224, 122, 130, 0.2) 0 calc(100% / 13), transparent 0 calc(150% / 13), rgba(224, 122, 130, 0.2) 0 calc(200% / 13), transparent 0 calc(250% / 13), rgba(224, 122, 130, 0.2) 0 calc(300% / 13)),
         repeating-linear-gradient(-45deg, transparent calc(-650% / 13) calc(50% / 13), rgba(224, 122, 130, 0.2) 0 calc(100% / 13), transparent 0 calc(150% / 13), rgba(224, 122, 130, 0.2) 0 calc(200% / 13), transparent 0 calc(250% / 13), rgba(224, 122, 130, 0.2) 0 calc(300% / 13)),
@@ -35,43 +34,35 @@ body {
 }
 
 .card {
-    /* Pure white, or a very faint green */
     background-color: #f8decd; 
     border: none; 
     box-shadow: 0 4px 5px rgba(116, 107, 99, 0.05); /* Soft drop shadow */
 }
 
-/* ==========================================
-   MODERN PILL NAVIGATION TABS
-   ========================================== */
-
+/* Tab Styles */
 /* 1. The base inactive tab */
 .nav-tabs .nav-link {
-    /* FIX: Changed from light sage to your deep olive for high contrast! */
     color: #5C715E; 
-    font-weight: 600; /* Makes the text slightly thicker to stand out */
+    font-weight: 600; 
     border: none; 
-    border-radius: 50px; /* UPGRADE: Makes them modern, rounded pills instead of square tabs */
-    padding: 10px 24px; /* Gives the text more breathing room */
-    margin: 0 5px; /* Spaces the pills apart slightly */
+    border-radius: 50px; 
+    padding: 10px 24px;
+    margin: 0 5px;
     transition: all 0.3s ease;
 }
 
 /* 2. When the user hovers over an inactive tab */
 .nav-tabs .nav-link:hover {
-    /* Adds a semi-transparent white backdrop on hover to block out the busy pattern */
     background-color: rgba(255, 255, 255, 0.6); 
-    color: #3d6c34; /* Drops to a slightly darker green */
+    color: #3d6c34; 
 }
 
 /* 3. The Active Tab */
 .nav-tabs .nav-link.active {
     border: none;
-    /* FIX: Uses your deep olive background instead of the light sage */
     background-color: #4d7448; 
-    color: #fff8ec; /* Uses your base cream color for the text */
-    border-radius: 50px; /* Matches the pill shape */
-    /* UPGRADE: Adds a soft drop shadow so the active tab "floats" above the pattern */
+    color: #fff8ec; 
+    border-radius: 50px; 
     box-shadow: 0 4px 10px rgba(92, 113, 94, 0.3); 
 }
 
@@ -92,7 +83,7 @@ body {
 
 .btn-success:focus, .btn-success:active {
     box-shadow: none;
-    background-color: #395e32; /* Keep it dark when clicked, no green glowing outline */
+    background-color: #395e32;
 }
 
 /* Diet selector base outline */
@@ -108,8 +99,6 @@ body {
     color: #fbf0e3;
 }
 
-/* Specific selector targeting the label when the hidden radio button is checked */
-/* The + symbol is standard CSS for targeting the label immediately after checking radio button */
 .btn-check:checked + .btn-outline-success, .btn-check:active + .btn-outline-success {
     background-color: #77a86e;
     color: #fbf0e3;
@@ -131,7 +120,6 @@ body {
     border: none;
 }
 
-/* Kills the weird Bootstrap focus glow when clicked */
 .btn-recipe:focus, .btn-recipe:active {
     box-shadow: none;
     border: none;
@@ -145,7 +133,7 @@ body {
 
 /* Custom utility class for smooth hover elevation */
 .hover-elevate {
-    /* The transition makes the animation smooth instead of instant */
+    /* transition to make the animation smooth instead of instant */
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
@@ -156,13 +144,12 @@ body {
     /* Creates a soft, widespread shadow to make it look like it's floating */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important; 
     
-    /* Optional: changes the cursor to a pointer so it feels clickable */
+    /*changes the cursor to a pointer so it feels clickable */
     cursor: pointer; 
 }
 
 /* 1. Custom Theme Border for Saved and Custom Recipes cards */
 .border-olive {
-    /* Adjust this hex code to exactly match the green from your dashboard! */
     border: 2px solid #5C715E !important; 
 }
 
@@ -171,7 +158,7 @@ body {
     border-radius: 20px !important; 
 }
 
-/* Creates a perfect circle for the step numbers */
+/* perfect circle for the step numbers */
 .step-badge {
     width: 35px;
     height: 35px;
@@ -181,7 +168,6 @@ body {
     font-size: 1.1rem;
 }
 
-/* Strips the box away from inputs to leave a clean underline */
 .input-underlined {
     border: none;
     border-bottom: 2px solid #ccc;
@@ -192,36 +178,35 @@ body {
 
 /* Changes the underline color to green when clicking on it */
 .input-underlined:focus {
-    border-bottom-color: #198754; /* Bootstrap success green */
+    border-bottom-color: #198754; 
 }
 
 /* Custom Pink Button Styles */
 /* 1. INACTIVE STATE (Not Saved) */
 .btn-outline-pink {
-    color: #e07a82; /* Rosy salmon text */
-    border-color: #e07a82; /* Matching border */
+    color: #e07a82; 
+    border-color: #e07a82; 
     background-color: transparent; 
 }
 
 .btn-outline-pink:hover {
-    background-color: #e07a82; /* Fills in with salmon on hover */
+    background-color: #e07a82; 
     color: white;
 }
 
 /* 2. ACTIVE STATE (Saved to Favorites) */
 .btn-pink {
-    background-color: #e07a82; /* Solid rosy salmon background */
+    background-color: #e07a82; 
     color: white;
     border: 1px solid #e07a82;
 }
 
 .btn-pink:hover {
-    background-color: #cf666e; /* A slightly darker, richer salmon for the hover effect */
+    background-color: #cf666e; 
     color: white;
     border-color: #cf666e;
 }
 
-/* Custom cursor for interactive elements */
 .cursor-pointer { 
     cursor: pointer; 
 }

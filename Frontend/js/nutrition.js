@@ -60,15 +60,14 @@ function calculateCalories() {
         case "very-active": tdee = bmr * 1.9; break;
     }
 
-    // --- THE NEW GOAL LOGIC ---
-    // 5. Grab the selected goal from Step 6
+    // 5. Grab the selected goal 
     let goalElement = document.querySelector('input[name="goal"]:checked');
     let goal = goalElement ? goalElement.id : "maintain"; // Default to maintain if empty
     
     let finalCalories = Math.round(tdee);
     let personalizedMessage = "";
 
-    // 6. Adjust the math and write the custom text Xayne suggested!
+    // 6. Adjust the math and write custom text 
     if (goal === "lose") {
         finalCalories -= 500; // Create a calorie deficit
         personalizedMessage = `For you to lose weight steadily, your daily intake should be around <strong>${finalCalories} calories</strong>.`;
@@ -104,7 +103,7 @@ function generateMeals() {
     if (!mealCount || !targetCalories || !dietElement) {
         // If anything is missing, tell the user and stop the function
         document.getElementById("resultContainer").innerHTML = `<div class="alert alert-danger">Please fill out all fields!</div>`;
-        return; // This stops the rest of the code from running
+        return;
     }
 
      // If we pass validation, extract the IDs
@@ -112,7 +111,7 @@ function generateMeals() {
 
     // 3. Search through your array and isolate only the matching recipes
     let filteredRecipes = recipeDatabase.filter(function(recipe) {
-    // If the user selected "anything", we want to keep all recipes!
+    // If the user selected "anything", keep all recipe
     if (diet === "anything") {
         return true; 
     }
@@ -153,12 +152,9 @@ function generateMeals() {
 
     // Loop through our final meals array to spawn the UI cards
     finalMealPlan.forEach(function (meal) {
-        // Check our memory: Is this specific meal's ID inside our saved list?
+        // Check this specific meal's ID inside saved list in memory
         let isSaved = savedFavorites.includes(meal.id);
-        // If it is saved, use a solid red heart. If not, use a gray outline heart.
         let heartIconClass = isSaved ? "fa-solid text-danger" : "fa-regular text-muted";
-        // We use backticks ( ` ) here to create a Template Literal. 
-        // This lets us write multi-line HTML and inject variables using ${}
         rowHTML += `
             <div class="col-md-3">
                 <a href="recipe-details.html?id=${meal.id}" class="text-decoration-none text-dark d-block h-100">
@@ -182,7 +178,7 @@ function generateMeals() {
         `;
     });
 
-    rowHTML += '</div>'; // Close the row
+    rowHTML += '</div>'; 
 
     // Inject the fully built HTML string into the container
     container.innerHTML = rowHTML;
@@ -193,7 +189,7 @@ function generateMeals() {
 // 1. Grab the calorie input box
 let calorieInput = document.getElementById("targetCalories");
 
-// 2. Add the Event Listener for any 'input' (keystrokes, arrows, deleting) - the math updates instantly on every single keystroke so xyah tekan button
+// 2. Add the Event Listener for any input - the math updates instantly on every single keystroke so xyah tekan button
 calorieInput.addEventListener("input", function() {
     
     // Grab the current number typed in the box
@@ -219,21 +215,19 @@ calorieInput.addEventListener("input", function() {
 function displayAllRecipes() {
     let container = document.getElementById("allRecipesContainer");
     
-    // ADD THIS SAFETY CHECK:
     if (!container) {
         return; 
     }
 
-    // Create an empty string to hold our HTML
+    // Create an empty string to hold HTML
     let cardsHTML = "";
 
     // Loop through the entire mock database
     // Buttons are usually for submitting forms or triggering JavaScript functions 
-    // To navigate to another page,, use <a> disguised as a button
+    // To navigate to another page, use <a> disguised as a button
     recipeDatabase.forEach(function (meal) {
-        // Check our memory: Is this specific meal's ID inside our saved list?
+        // Check memory this specific meal's ID inside saved list
         let isSaved = savedFavorites.includes(meal.id);
-        // If it is saved, use a solid red heart. If not, use a gray outline heart.
         let heartIconClass = isSaved ? "fa-solid text-danger" : "fa-regular text-muted";
         cardsHTML += `
             <div class="col-md-3">
@@ -258,11 +252,10 @@ function displayAllRecipes() {
         `;
     });
 
-    // Inject all the built cards into the container at once
     container.innerHTML = cardsHTML;
 }
 
-// CRITICAL STEP: Call the function immediately so it runs as soon as the page loads!
+// call the function immediately so it runs as soon as the page loads
 displayAllRecipes();
 
 // HELPER FUNCTION: Generate badges based on recipe data
@@ -279,7 +272,7 @@ function getRecipeBadges(recipe) {
         badgesHTML += `<span class="badge bg-danger me-1 mb-2">High Energy</span>`;
     }
 
-    // Insight 3: Quick Prep (We check if the string contains 5 or 10)
+    // Insight 3: Quick Prep (check if the string contains 5 or 10)
     if (recipe.prepTime.includes("5") || recipe.prepTime.includes("10")) {
         badgesHTML += `<span class="badge bg-warning text-dark me-1 mb-2">Quick Prep</span>`;
     }
@@ -288,7 +281,7 @@ function getRecipeBadges(recipe) {
 }
 
 // ACTIVATE BOOTSTRAP TOOLTIPS
-// This code waits for the page to load, then turns on all hover tooltips
+// waits for the page to load, then turns on all hover tooltips
 document.addEventListener("DOMContentLoaded", function() {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -300,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function updateRecipeCounts() {
     let savedRecipesTotal = savedFavorites.length; 
     
-    // --- THE FIX: Count the ACTUAL custom recipes array! ---
+    // --- Count the ACTUAL custom recipes array ---
     let myCustomRecipes = JSON.parse(localStorage.getItem('myCustomRecipes')) || [];
     let customRecipesTotal = myCustomRecipes.length; 
 
@@ -316,7 +309,6 @@ updateRecipeCounts();
 
 // FAVORITES LOGIC
 function toggleFavorite(event, recipeId) {
-    // 1. The Trap Fix: Stop the <a> tag from redirecting us!
     event.preventDefault();
     event.stopPropagation();
 
@@ -327,51 +319,47 @@ function toggleFavorite(event, recipeId) {
     let index = savedFavorites.indexOf(recipeId);
 
     if (index === -1) {
-        // NOT IN LIST: It means the user wants to save it.
+        // NOT IN LIST: means the user wants to save it.
         savedFavorites.push(recipeId); // Add to array
         
-        // Change the heart visually to solid red
+        // Change heart to solid red
         icon.className = "fa-solid fa-heart fs-5 text-danger"; 
     } else {
         // ALREADY IN LIST: It means the user wants to un-save it.
         savedFavorites.splice(index, 1); // Remove from array
         
-        // Change the heart visually back to a gray outline
+        // Change heart back to a gray outline
         icon.className = "fa-regular fa-heart fs-5 text-muted";
     }
 
-    // 4. Save the updated list back to the browser's memory!
+    // 4. Save the updated list back to the browser's memory
     localStorage.setItem('userFavorites', JSON.stringify(savedFavorites));
 
-    // 5. Bonus: Instantly update the giant "Saved Recipes" number on the dashboard!
+    // 5. Instantly update the giant "Saved Recipes" number on the dashboard
     updateRecipeCounts();
 
-    // 6. Bonus: If the user is on the Saved Recipes page, immediately refresh the grid!
+    // 6. If the user is on the Saved Recipes page, immediately refresh the grid
     if (document.getElementById("savedRecipesContainer")) {
         displaySavedRecipes();
     }
 }
 
-// ==========================================
-// TAB MEMORY (Persistence)
-// ==========================================
 document.addEventListener("DOMContentLoaded", function() {
     // 1. Grab all the tab buttons on the page
     let tabButtons = document.querySelectorAll('button[data-bs-toggle="tab"]');
     
-    // Safety check: if there are no tabs on this page, stop running the script!
+    // Safety check: if there are no tabs on this page, stop running the script
     if (tabButtons.length === 0) return;
 
-    // 2. CHECK MEMORY ON LOAD: Did we save a tab previously?
+    // 2. CHECK MEMORY ON LOAD: save a tab previously?
     let savedTab = localStorage.getItem('lastActiveNutritionTab');
     if (savedTab) {
         // Find the specific button that matches our saved memory
         let targetButton = document.querySelector(`button[data-bs-target="${savedTab}"]`);
         if (targetButton) {
-            // Simulate a click on it to activate it immediately!
+            // Simulate a click on it to activate it immediately
             targetButton.click(); 
 
-            // --- THE NEW FAILSAFE FIX ---
             // Force the breadcrumb to update instantly on page load
             let breadcrumb = document.getElementById('dynamic-breadcrumb');
             if (breadcrumb) {
@@ -389,13 +377,13 @@ document.addEventListener("DOMContentLoaded", function() {
             let activeTabId = event.target.getAttribute('data-bs-target');
             localStorage.setItem('lastActiveNutritionTab', activeTabId);
             
-            // 2. Create the tabName variable FIRST (e.g., "MEAL GENERATOR")
+            // 2. Create the tabName variable  
             let tabName = event.target.innerText.toUpperCase(); 
 
-            // 3. Now we can safely save it as our Origin Crumb!
+            // 3. save it as Origin Crumb
             localStorage.setItem('recipeOrigin', tabName);
 
-            // 4. Finally, update the text on the screen
+            // 4. update the text on the screen
             let breadcrumb = document.getElementById('dynamic-breadcrumb');
             if (breadcrumb) {
                 breadcrumb.innerText = "NUTRITION PLANNER / " + tabName;
@@ -404,9 +392,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// ==========================================
-// RECIPE SEARCH ENGINE (DOM Filtering)
-// ==========================================
+// RECIPE SEARCH ENGINE 
 document.addEventListener("DOMContentLoaded", function() {
     let searchInput = document.getElementById('recipeSearchInput');
 
@@ -416,12 +402,12 @@ document.addEventListener("DOMContentLoaded", function() {
             let container = document.getElementById('allRecipesContainer');
             let cardColumns = container.querySelectorAll('[class*="col-"]'); 
             
-            // 1. Set up our tracker and grab the empty state message
+            // 1. Set up tracker and grab the empty state message
             let visibleCount = 0;
             let noResultsMessage = document.getElementById('noResultsMessage');
 
             cardColumns.forEach(column => {
-                // Safety check: Don't accidentally hide/show the empty state message during the card loop!
+                //hide/show the empty state message during the card loop
                 if (column.id === 'noResultsMessage') return; 
 
                 let titleElement = column.querySelector('.fw-bold, h5, h6'); 
@@ -439,13 +425,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
 
-            // 3. The Final Check: Did we find any cards?
             if (noResultsMessage) {
                 if (visibleCount === 0) {
-                    // No matches found, reveal the friendly message
+                    // No matches found, reveal message
                     noResultsMessage.style.display = "block";
                 } else {
-                    // Matches were found, keep the message hidden
+                    // Matches were found, keep message hidden
                     noResultsMessage.style.display = "none";
                 }
             }

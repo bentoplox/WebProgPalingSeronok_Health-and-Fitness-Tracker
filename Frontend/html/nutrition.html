@@ -23,6 +23,7 @@
                     <i class="fa-solid fa-bars fs-5"></i>
                 </button>
                 <div>
+                    <!-- HEADER -->
                     <!-- Kalau nak letak letter spacing: style="letter-spacing: 1px; -->
                     <p id="dynamic-breadcrumb" class="text-muted small fw-bold mb-1">NUTRITION PLANNER / CALORIE CALCULATOR</p>
                     <h2 class="fw-bold text-olive mb-0">Nutrition Planner</h2>
@@ -31,23 +32,21 @@
 
             <div class="container-fluid">
                 <!-- <h5 style="color: grey;" class="mb-4">Plan your meals and track your nutrition</h5> -->
-                <!-- Quick Access Cards -->
+                <!-- CARDS -->
                 <div class="row mb-5">
                     <!-- Card One: Saved Recipes -->
-                    <div class="col-md-6 col-lg-4 mb-3"> <!-- Use col-lg-4 so they don't stretch too wide on huge screens --> 
+                    <div class="col-md-6 col-lg-4 mb-3"> <!-- col-lg-4 - make sure they dont stretch too wide on huge screens --> 
                         <a href="saved-recipes.html" class="text-decoration-none text-dark d-block h-100">
                             <div class="card h-100 bg-white border-0 rounded-extra shadow-sm hover-elevate p-3 position-relative overflow-hidden">
-                                <!-- opacity is set to 0.05 so it's very faint, and rotate(-15deg) tilts it -->
+                                <!-- icon dekat dalam card section-->
                                 <i class="fa-solid fa-bookmark text-secondary" style="position: absolute; bottom: -20px; right: -0px; font-size: 8rem; opacity: 0.1; transform: rotate(-15deg); z-index: 0;"></i>
                                 <div class="card-body position-relative z-1">
                                     <h4 class="card-title text-muted fw-bold mb-3">Saved Recipes</h4> 
-                                    <!-- Large number -->
                                     <div class="d-flex align-items-baseline gap-2 mb-3">
                                         <h1 id="saved-recipe-count" class="fw-bold text-olive mb-0" style="font-size: 2.5rem;">12</h1>
                                         <span class="text-muted">recipes</span>
                                     </div>
                                     <p class="card-text">View all your saved recipes</p>
-                                    <!-- subtle link indicator -->
                                     <div class="text-success small fw-bold mt-auto">
                                         View gallery <i class="fa-solid fa-arrow-right ms-1"></i>
                                     </div>
@@ -56,19 +55,17 @@
                         </a>
                     </div>
                     <!-- Card Two: Custom Recipes -->
-                    <div class="col-md-6 col-lg-4 mb-3"> <!-- Use col-lg-4 so they don't stretch too wide on huge screens -->
+                    <div class="col-md-6 col-lg-4 mb-3">
                         <a href="custom-recipes.html" class="text-decoration-none text-dark d-block h-100">
                             <div class="card h-100 bg-white border-0 rounded-extra shadow-sm hover-elevate p-3 position-relative overflow-hidden">
                                 <i class="fa-solid fa-utensils text-secondary" style="position: absolute; bottom: -20px; right: -0px; font-size: 8rem; opacity: 0.1; transform: rotate(-15deg); z-index: 0;"></i>
                                 <div class="card-body position-relative z-1">
                                     <h4 class="card-title text-muted fw-bold mb-3">Custom Recipes</h4>
-                                    <!-- Large number -->
                                     <div class="d-flex align-items-baseline gap-2 mb-3">
                                         <h1 id="custom-recipe-count" class="fw-bold text-olive mb-0" style="font-size: 2.5rem;">12</h1>
                                         <span class="text-muted">created</span>
                                     </div>
                                     <p class="card-text">View all your customized recipes</p>
-                                    <!-- subtle link indicator -->
                                     <div class="text-success small fw-bold mt-auto">
                                         Manage recipes <i class="fa-solid fa-arrow-right ms-1"></i>
                                     </div>
@@ -78,6 +75,7 @@
                     </div>
                 </div>
 
+                <!-- Tab Buttons -->
                 <ul class="nav nav-tabs justify-content-center my-4">
                     <li class="nav-item">
                         <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#calculator" type="button">Calorie Calculator</button>
@@ -93,36 +91,25 @@
                 <div class="tab-content">
                     
                     <div class="tab-pane fade show active" id="calculator">
-                    
-                        <!-- ------------------ -->
                         <!-- CALORIE CALCULATOR -->
-                        <!-- ------------------ -->
                         <div class="mt-4 p-5 rounded-4" style="background-color: #fcefdc;">
                             
                             <div class="text-center mb-5">
-                                <!-- <span class="badge bg-success mb-2 px-3 py-2">KCAL</span> -->
                                 <h2 class="fw-bold">Daily Calorie Intake Calculator</h2>
                                 <p class="text-muted">Feel free to enter your information below to receive your personal current daily calorie intake!</p>
                             </div>
                             
                             <!-- Row 1: Gender and Age -->
-                            <!-- 'g-4' adds a nice even gap between the grid columns -->
+                            <!-- 'g-4'- adds a nice even gap between the grid columns -->
                             <div class="row g-4 mb-4">
-                                
                                 <!-- Question 1: Gender -->
                                 <div class="col-md-6">
-                                    <!-- Notice position-relative! This acts as the anchor for the absolute badge -->
                                     <div class="card bg-white border-olive rounded-extra position-relative pt-5 pb-4 text-center h-100 shadow-sm">
-                                        
-                                        <!-- The Overlapping Step Badge -->
                                         <span class="position-absolute top-0 start-50 translate-middle badge rounded-circle bg-success step-badge">1</span>
-                                        
                                         <h5 class="fw-bold mb-4">What is your gender?</h5>
-                                        
                                         <div class="d-flex justify-content-center gap-4">
                                             <div>
-                                                <!-- FontAwesome Icon -->
-                                                <i class="fa-solid fa-person fs-2 text-olive mb-2 d-block"></i>
+                                                <i class="fa-solid fa-person fs-2 text-olive mb-2 d-block"></i> <!--icon font awersome-->
                                                 <input type="radio" class="btn-check" name="gender" id="male" autocomplete="off"> 
                                                 <label class="btn btn-outline-success px-4" for="male">Male</label>
                                             </div>
@@ -140,9 +127,7 @@
                                     <div class="card bg-white border-olive rounded-extra position-relative pt-5 pb-4 text-center h-100 shadow-sm">
                                         <span class="position-absolute top-0 start-50 translate-middle badge rounded-circle bg-success step-badge">2</span>
                                         <h5 class="fw-bold mb-4">How old are you?</h5>
-                                        
                                         <div class="d-flex justify-content-center align-items-baseline gap-2 mt-3">
-                                            <!-- Notice our new input-underlined class here -->
                                             <input type="number" id="ageInput" class="form-control input-underlined w-25 text-center fs-4 fw-bold" placeholder="0">
                                             <span class="text-muted fw-bold">Years</span>
                                         </div>
@@ -184,7 +169,6 @@
                                     <div class="card bg-white border-olive rounded-extra position-relative pt-5 pb-4 text-center shadow-sm">
                                         <span class="position-absolute top-0 start-50 translate-middle badge rounded-circle bg-success step-badge">5</span>
                                         <h5 class="fw-bold mb-4">How active are you on a daily basis?</h5>
-                                        
                                         <div class="d-flex justify-content-center gap-3 flex-wrap mt-3">
                                             <div>
                                                 <i class="fa-solid fa-couch fs-2 text-olive mb-2 d-block"></i>
@@ -211,13 +195,12 @@
                                 </div> 
                             </div> 
 
-                            <!-- Row 4: The Goal (Step 6) -->
+                            <!-- Row 4: The Goal -->
                             <div class="row g-4 mb-4">
                                 <div class="col-12">
                                     <div class="card bg-white border-olive rounded-extra position-relative pt-5 pb-4 text-center shadow-sm">
                                         <span class="position-absolute top-0 start-50 translate-middle badge rounded-circle bg-success step-badge">6</span>
                                         <h5 class="fw-bold mb-4">What is your primary goal?</h5>
-                                        
                                         <div class="d-flex justify-content-center gap-3 flex-wrap mt-3">
                                             <div>
                                                 <i class="fa-solid fa-arrow-trend-down fs-2 text-olive mb-2 d-block"></i>
@@ -260,18 +243,13 @@
                                 <div class="col-12">
                                     <div class="text-center">
                                     <h5 class="mb-3">Preferred Diet</h5>
-                                    <!-- A 'justify-content-center' flex container with wrapping is perfect for this -->
-                                     <!-- 4 rem is roughly 64px -->
                                     <div class="d-flex justify-content-center flex-wrap" style="gap: 4rem;">
                                         <div class="text-center">
-                                            <!-- Icon wrapper to place icons above text, using consistent styles (fs-3, text-olive, mb-1, d-block) -->
-                                            <!-- <i class="fa-duotone fa-solid fa-burger-cheese fs-3 text-olive mb-1 d-block"></i> -->
-
                                             <!--  Untuk letak image instead of fontawesome icon
                                             1. src: Point this to where you saved your image
                                             2. mx-auto: Centers the image perfectly
                                             3. mb-2: Adds a little margin below the image so it doesn't touch the text
-                                            4. style: Locks the width and height so huge images don't break your layout!
+                                            4. style: Locks the width and height so huge images don't break  layout
                                             -->
                                             <img src="../images/anything-icon.png" alt="Anything Diet" class="mx-auto mb-4 d-block" style="width: 80px; height: 80px; object-fit: contain;">
                                             <input type="radio" class="btn-check" name="diet" id="anything" autocomplete="off"> 
@@ -304,9 +282,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                    
+                                    <!-- I want to eat berapa colories in berapa meals -->
                                     <hr class="my-5"> 
-                                    
                                     <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap fs-5 mb-4">
                                         <span>I want to eat</span>
                                         <input type="number" id="targetCalories" class="form-control text-center" style="width: 100px;" value="1800">
@@ -320,13 +297,13 @@
                                         </select>
                                         <span>meals.</span>
                                     </div>
-
+                                    <!-- Direct user to calorie calculator kalau not sure -->
                                     <div class="text-center mb-4">
                                         <small class="text-muted">Not sure? 
                                             <a href="#" onclick="document.querySelector('[data-bs-target=\'#calculator\']').click(); return false;">Try our Calorie Calculator</a>
                                         </small>
                                     </div>
-
+                                    <!-- Macronutrient Targets -->
                                     <div class="text-center mb-4">
                                         <div class="d-flex flex-column align-items-center">
                                             <span style="color: #f0bd57;">● <span class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Carbohydrates are your body's main source of energy.">At least <strong id="carbTarget">225g</strong> Carbs</span></span>
@@ -334,7 +311,7 @@
                                             <span style="color: #c0e785;">● <span class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Protein is crucial for muscle repair and growth.">At least <strong id="proteinTarget">90g</strong> Protein</span></span>
                                         </div>
                                     </div>
-
+                                    <!-- Generate Button -->
                                     <div class="text-center">
                                         <button class="btn btn-success btn-lg px-5" onclick="generateMeals()">Generate</button>
                                     </div>
@@ -345,33 +322,31 @@
                         </div>
                     </div>
 
+                    <!-- View All Recipes -->
                     <div class="tab-pane fade" id="recipe">
                         <div class="mt-4 p-5 rounded-4" style="background-color: #fcefdc;">
-                            
                             <div class="text-center mb-4">
                                 <h2 class="fw-bold">All Recipes</h2>
                                 <p class="text-muted">Browse through all the recipes and save your favourites to your profile!</p>
                             </div>
                             
-                            <!-- THE NEW SEARCH BAR -->
+                            <!-- Search Bar-->
                             <div class="row justify-content-center mb-5">
                                 <div class="col-md-8 col-lg-6">
-                                    <!-- A rounded-pill input group makes it look like a modern native app -->
                                     <div class="input-group shadow-sm rounded-pill overflow-hidden border border-white bg-white">
                                         <span class="input-group-text bg-transparent border-0 text-muted ps-4">
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                         </span>
-                                        <!-- Notice the ID here! -->
                                         <input type="text" id="recipeSearchInput" class="form-control border-0 py-2 shadow-none" placeholder="Search for meals (e.g., Avocado, Salmon...)">
                                     </div>
                                 </div>
                             </div>
                             
                             <div id="allRecipesContainer" class="row justify-content-center g-4">
-                                <!-- Cards live here -->
+                                <!-- dalamni letak recipe card -->
                             </div>
                             
-                            <!-- THE NEW EMPTY STATE MESSAGE (Hidden by default) -->
+                            <!-- Display for No results -->
                             <div id="noResultsMessage" class="col-12 text-center py-5" style="display: none;">
                                 <i class="fa-solid fa-plate-wheat fs-1 text-muted mb-3 opacity-50"></i>
                                 <h5 class="fw-bold text-muted">No recipes found</h5>
@@ -384,7 +359,6 @@
             </div>
         </main>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="../js/saved-recipes.js"></script>
     <script src="../js/nutrition.js"></script>

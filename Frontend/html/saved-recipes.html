@@ -14,7 +14,6 @@
         <div id="sidebar-container"></div>
 
         <main class="main-content flex-grow-1 p-4">
-            <!-- 1. Keep the Sidebar Toggle up top -->
             <header class="d-flex align-items-center mb-4">
                 <button id="sidebarToggle" class="btn btn-outline-secondary border-sand text-olive me-3 rounded-3">
                     <i class="fa-solid fa-bars fs-5"></i>
@@ -25,8 +24,8 @@
                 </div>
             </header>
             <div class="mt-4 p-5 rounded-4" style="background-color: #fcefdc;">
-                <!-- THE BACK BUTTON -->
-                <!-- d-inline-block lets us add margin to the bottom. text-decoration-none removes the ugly blue underline! -->
+                <!-- back button -->
+                <!-- d-inline-block - add margin to the bottom. text-decoration-none - removes the blue underline inside link -->
                 <a href="nutrition.html" class="text-decoration-none text-muted d-inline-block mb-4">
                     <i class="fa-solid fa-arrow-left me-2"></i> Back to Nutrition Planner
                 </a>
@@ -35,9 +34,8 @@
                     <p class="text-muted">Your curated collection of favorite meals.</p>
                 </div>
                 
-                <!-- THIS IS THE CRITICAL DIV -->
                 <div id="savedRecipesContainer" class="row justify-content-center g-4">
-                    <!-- JavaScript will inject cards here -->
+                    <!-- container akan adjust saved recipe contents dekat js -->
                 </div>
             </div>
 
