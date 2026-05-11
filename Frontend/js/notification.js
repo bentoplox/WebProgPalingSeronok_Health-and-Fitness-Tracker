@@ -29,7 +29,7 @@ window.onload = function () {
     const insightDisplay = document.getElementById('health-insight-text');
     if (!insightDisplay) return;
 
-    // We use a CORS proxy to bypass the browser's security block on local files
+    
     const proxy = "https://corsproxy.io/?";
     const apiUrl = "https://odphp.health.gov/myhealthfinder/api/v4/itemlist.json?Type=topic";
 
@@ -39,11 +39,11 @@ window.onload = function () {
             return res.json();
         })
         .then(data => {
-            // Correct path for the MyHealthFinder API v4
+            
             const items = data.Result.Items.Item;
 
             if (items && items.length > 0) {
-                // Pick a random health topic
+                
                 const randomIndex = Math.floor(Math.random() * items.length);
                 const randomTopic = items[randomIndex].Title;
 
@@ -138,27 +138,21 @@ function goBackToTabs() {
     weekPane.classList.remove('show', 'active');
     todayPane.classList.add('show', 'active');
 }
-/* =========================
-   MAKE NOTIFICATIONS CLICKABLE
-========================= */
-/* =========================
-   SAFE CLICK HANDLER
-========================= */
+
 function attachClick(selector, url) {
     document.querySelectorAll(selector).forEach(el => {
         if (!el) return;
 
         el.addEventListener('click', (e) => {
-            e.stopPropagation(); // prevents button inside from interfering
+            e.stopPropagation(); 
             window.location.href = url;
         });
     });
 }
 
-/* =========================
-   INIT ALL STATIC TABS
+/* 
    (TODAY + WEEK)
-========================= */
+ */
 function initStaticClicks() {
 
     // TODAY
@@ -172,9 +166,9 @@ function initStaticClicks() {
     attachClick('#week .glass-purple', 'progress.html');
 }
 
-/* =========================
-   SEE ALL TAB (dynamic)
-========================= */
+/* 
+   SEE ALL TAB 
+ */
 function initAllTabClicks() {
 
     attachClick('#all .glass-blue', 'progress.html');
@@ -185,17 +179,17 @@ function initAllTabClicks() {
     attachClick('#all .glass-purple', 'progress.html');
 }
 
-/* =========================
-   RUN ON PAGE LOAD
-========================= */
+/* 
+   RUN  PAGE LOAD
+ */
 document.addEventListener('DOMContentLoaded', () => {
     initStaticClicks();
 });
 
 
-/* =========================
+/* 
    PREVENT BUTTON CLICK FROM REDIRECTING
-========================= */
+ */
 document.querySelectorAll('.btn-action-small').forEach(btn => {
     btn.addEventListener('click', function(e) {
         e.stopPropagation();
@@ -203,9 +197,9 @@ document.querySelectorAll('.btn-action-small').forEach(btn => {
 });
 
 
-/* =========================
+/* 
    OPTIONAL: HOVER EFFECT (feel clickable)
-========================= */
+ */
 document.querySelectorAll('.noti-item-minimal').forEach(item => {
     item.style.cursor = 'pointer';
 

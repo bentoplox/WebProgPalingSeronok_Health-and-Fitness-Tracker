@@ -2,53 +2,49 @@
 .category-btn {
     background: white;
     transition: all 0.3s ease;
-    border: 2px solid #dee2e6; /* Default gray border */
+    border: 2px solid #dee2e6; 
 }
 
-/* When the "Log" button has the .active class */
+
 .category-btn.border-red.active {
     border-color: #ff4d4d !important;
-    background-color: #fff5f5; /* Light red tint */
+    background-color: #fff5f5; 
     
 }
 
-/* When the "Meal" button has the .active class */
+
 .category-btn.border-yellow.active {
     border-color: #ffcc00 !important;
     background-color: #fffdf0;
     
 }
 
-/* When the "Info" button has the .active class */
+
 .category-btn.border-blue.active {
     border-color: #007bff !important;
     background-color: #f0f7ff;
     
 }
 
-/* When the "Goal" button has the .active class */
+
 .category-btn.border-green.active {
     border-color: #28a745 !important;
     background-color: #f0fff4;
     
 }
 
-/* 1. Reset all category buttons to have the same hover behavior */
+
 .category-btn:hover {
-    background-color: #C4DBC7 !important; /* Your signature mint green */
+    background-color: #C4DBC7 !important; 
     border-color: #C4DBC7 !important;
-    color: var(--color-olive) !important; /* Keeps text readable */
+    color: var(--color-olive) !important; 
     transition: all 0.2s ease;
 }
 
-/* 2. Ensure the icon also looks good on hover */
+
 .category-btn:hover i {
     color: var(--color-olive) !important;
 }
-
-/* 3. Keep the .active state as you have it */
-/* This way, the user sees mint on hover, but the specific color (Red, Blue, etc.) 
-   only "locks in" once they actually click the button. */
 
 
 /* 1. Active State for both Desktop and Mobile Tabs */
@@ -69,12 +65,12 @@
 
 /* 3. Spacing for Mobile Tabs */
 #mobileTabs {
-    gap: 10px; /* This adds the margin-right effect between mobile buttons */
+    gap: 10px; 
     border: none;
-    background: transparent !important; /* Removes the default gray background if you want them as floating pills */
+    background: transparent !important; 
 }
 
-/* 4. Ensure the non-active text color is visible */
+
 #pills-tab .nav-link,
 #mobileTabs .nav-link {
     color: var(--color-olive);
@@ -82,17 +78,17 @@
 }
 
 .btn-see-all {
-    /* Uses your Sage color for a soft green border */
+    
     border: 1px solid #dee2e6 !important;
     color: var(--color-olive) !important;
-    background-color: #ffffff; /* Clean white background */
+    background-color: #ffffff; 
     font-weight: 500;
     font-size: 0.75rem;
     transition: all 0.3s ease;
 }
 
 .btn-see-all:hover {
-    /* Flips the colors on hover for better visibility */
+    
     background-color: #C4DBC7 !important;
     color: var(--color-olive) !important;
     transition: background-color 0.3s ease;
@@ -100,14 +96,14 @@
 
 /* Base style for all notification items */
 .noti-item-minimal {
-    background: rgba(255, 255, 255, 0.7); /* Frosted glass base */
-    backdrop-filter: blur(10px); /* Blurs what is behind it */
+    background: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(10px); 
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     position: relative;
     overflow: hidden;
 }
 
-/* Individual Gradient Colors (matching your screenshot) */
+/* Individual Gradient Colors */
 .glass-blue {
     background: linear-gradient(135deg, rgba(179, 205, 224, 0.4) 0%, rgba(255, 255, 255, 0.9) 50%);
 }
@@ -118,7 +114,7 @@
 
 .glass-yellow {
     background: linear-gradient(135deg, rgba(255, 248, 236, 0.8) 0%, rgba(255, 255, 255, 0.9) 50%);
-    /* Yellow needs a bit more opacity to show up against cream */
+    
 }
 
 .glass-red {
@@ -127,18 +123,18 @@
 .glass-purple {
     
     background: linear-gradient(135deg, rgba(155, 89, 182, 0.15) 0%, rgba(255, 255, 255, 0.9) 50%);
-    border-left: 4px solid rgba(155, 89, 182, 0.5); /* Optional: adds a nice accent border */
+    border-left: 4px solid rgba(155, 89, 182, 0.5); 
 }
 .glass-orange {
     background: linear-gradient(
         135deg,
-        rgba(243, 156, 18, 0.15) 0%,   /* soft orange */
+        rgba(243, 156, 18, 0.15) 0%,   
         rgba(255, 255, 255, 0.9) 50%
     );
     border-left: 4px solid rgba(243, 156, 18, 0.5);
 }
 
-/* The White Icon Box (matching the screenshot) */
+
 .noti-icon-box {
     width: 40px;
     height: 40px;
@@ -153,13 +149,13 @@
     background-color: var(--color-olive);
     color: #ffffff !important;
     border: none;
-    border-radius: 16px; /* Modern rounded look, matches your cards */
+    border-radius: 16px; 
     font-weight: 600;
     padding: 14px 20px;
-    text-transform: none; /* Forces "Create Reminder" (not all caps) */
+    text-transform: none; 
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(84, 107, 65, 0.2); /* Soft olive shadow */
+    box-shadow: 0 4px 15px rgba(84, 107, 65, 0.2); 
 }
 
 .btn-flow:hover {
@@ -172,14 +168,14 @@
     transform: translateY(0);
 }
 
-/* Disable the lift effect for the reminder card */
+/* Disable lift effect for reminder card */
 #remind-section .feature-card:hover {
     transform: none !important;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important; /* Keeps shadow subtle like notification card */
     border-color: transparent !important; /* Keeps border-less look */
 }
 
-/* Unread Dot Styling */
+/* unread Dot Styling */
 .unread-dot {
     width: 6px;
     height: 6px;
@@ -188,32 +184,32 @@
     display: inline-block;
 }
 
-/* Optional: Only show the dot if the parent has the .unread class */
+/* unread class */
 .noti-item-minimal:not(.unread) .unread-dot {
     display: none;
 }
 
-/* Subtle styling for the timestamp to keep it light */
+
 .extra-small {
     font-size: 0.75rem;
     font-weight: 400;
     color: #adb5bd !important;
 }
 
-/* 1. Remove any custom border from the unread state */
+
 .noti-item-minimal.unread {
     border: none !important;
-    /* Keeps the glass effect without the status line */
+    
 }
 
-/* 1. Aligned Action Icons (Check and X) */
+/* Aligned Action Icons (Check and X) */
 .noti-item-minimal .d-flex.flex-column.align-items-end {
-    min-width: 60px; /* Ensures space for the buttons */
+    min-width: 60px; 
     margin-top: 5px !important;
 }
 
 .btn-action-small {
-    font-size: 0.8rem; /* Slightly larger for easier clicking */
+    font-size: 0.8rem; 
     color: #adb5bd !important;
     background: none;
     border: none;
@@ -225,7 +221,7 @@
     color: var(--color-olive) !important;
 }
 
-/* 2. Consistent Category Buttons (Matching Glass Design) */
+
 .category-btn {
     background: #ffffff !important;
     border: 1px solid #dee2e6 !important;
@@ -247,15 +243,15 @@
 .category-btn.border-blue.active { border-color: #007bff !important; background-color: rgba(0, 123, 255, 0.05) !important; }
 .category-btn.border-green.active { border-color: #28a745 !important; background-color: rgba(40, 167, 69, 0.05) !important; }
 
-/* 3. Updated Description Text (Matches 3rd Screenshot size) */
+
 .noti-description {
-    font-size: 0.88rem !important; /* Larger, readable size */
+    font-size: 0.88rem !important; 
     color: #6c757d !important;
     margin-top: 4px;
     line-height: 1.4;
 }
 
-/* Customizes the calendar/clock icon to match your Olive/Sand theme */
+
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
     background-color: #f8f9fa;
@@ -265,7 +261,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     
 }
 
-/* Ensure the input feels premium */
+
 input[type="date"], input[type="time"] {
     appearance: none;
     -webkit-appearance: none;
@@ -273,21 +269,21 @@ input[type="date"], input[type="time"] {
     font-family: inherit;
 }
 
-/* This makes the notification list scrollable while keeping the card header fixed */
+/* list jadi scrollable */
 #pills-tabContent {
-    max-height: 450px; /* Adjust height as needed */
+    max-height: 450px; 
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 10px;
 }
 
-/* Customizing the scroller to look modern */
+/* scroller Customization */
 #pills-tabContent::-webkit-scrollbar {
     width: 6px;
 }
 
 #pills-tabContent::-webkit-scrollbar-thumb {
-    background: #8e9d7e; /* Olive color */
+    background: #8e9d7e; 
     border-radius: 10px;
 }
 
